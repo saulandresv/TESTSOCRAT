@@ -1,0 +1,35 @@
+CERTIFICADO SSL PRÓXIMO A EXPIRAR
+=====================================
+
+⚠️ ALERTA DE EXPIRACIÓN ⚠️
+
+El certificado SSL del siguiente servicio expirará en {{ days_until_expiry }} días.
+
+DETALLES DEL CERTIFICADO:
+------------------------
+Servicio: {{ target }}:{{ certificate.puerto }}
+Cliente: {{ client_name }}
+Protocolo: {{ certificate.protocolo }}
+{% if certificate.nombre_certificado %}Nombre: {{ certificate.nombre_certificado }}{% endif %}
+Fecha de Expiración: {{ expiry_date|date:"d/m/Y H:i" }}
+
+ACCIONES RECOMENDADAS:
+---------------------
+• Renovar el certificado antes de la fecha de expiración
+• Verificar la configuración del servidor web
+• Probar el nuevo certificado en un entorno de pruebas
+• Actualizar la configuración en el sistema de monitoreo
+
+ENLACES ÚTILES:
+--------------
+Ver Detalles del Certificado: {{ certificate_url }}
+Dashboard: {{ dashboard_url }}
+
+{% if days_until_expiry <= 7 %}
+🚨 URGENTE: Este certificado expira en menos de una semana. 
+Es crítico renovarlo inmediatamente para evitar interrupciones del servicio.
+{% endif %}
+
+---
+Este mensaje fue enviado automáticamente por el Sistema de Monitoreo SSL/TLS Sócrates.
+No responder a este email. Para soporte técnico, contactar a través del dashboard.

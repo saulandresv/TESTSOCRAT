@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/Desktop/i3g/**)",
+      "Bash(sudo chown:*)",
+      "Bash(python3:*)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(pip install:*)",
+      "Bash(source:*)",
+      "Bash(django-admin --version)",
+      "Bash(python:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(curl:*)",
+      "Read(/mnt/c/users/saulv/desktop/i3g/**)",
+      "Bash(docker compose exec:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

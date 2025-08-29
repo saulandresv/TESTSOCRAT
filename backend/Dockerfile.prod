@@ -1,0 +1,53 @@
+# Multi-stage build para producción
+FROM python:3.12-slim as base
+
+# Instalar dependencias del sistema necesarias para SSL analysis
+RUN apt-get update && apt-get install -y \
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
+    nmap \
+    openssl \
+    curl \
+    sslscan \
+    dnsutils \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Crear usuario no-root para seguridad
+RUN groupadd -g 1000 socrates && \
+    useradd -u 1000 -g socrates -m -s /bin/bash socrates
+
+WORKDIR /app
+
+# Copiar requirements e instalar dependencias Python
+COPY requirements.prod.txt ./
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.prod.txt
+
+# Crear directorios necesarios
+RUN mkdir -p /app/staticfiles /app/media /var/log/socrates && \
+    chown -R socrates:socrates /app /var/log/socrates
+
+# Copiar código de la aplicación
+COPY --chown=socrates:socrates . .
+
+# Compilar archivos estáticos
+RUN python manage.py collectstatic --noinput --settings=config.settings_prod || true
+
+# Configurar permisos
+RUN chmod +x ./docker-entrypoint.prod.sh
+
+# Cambiar a usuario no-root
+USER socrates
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health/ || exit 1
+
+# Exponer puerto
+EXPOSE 8000
+
+# Script de entrada
+ENTRYPOINT ["./docker-entrypoint.prod.sh"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120", "config.wsgi:application"]

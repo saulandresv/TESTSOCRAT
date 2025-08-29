@@ -1,0 +1,72 @@
+# Proyecto Sócrates - Production Requirements
+# Sistema de Monitoreo SSL/TLS
+
+# Django Core
+Django==5.0.6
+djangorestframework==3.15.2
+djangorestframework-simplejwt==5.3.1
+drf-spectacular==0.27.2
+django-cors-headers==4.4.0
+
+# Database
+mysqlclient==2.2.4
+
+# Async Processing
+celery==5.4.0
+django-celery-beat==2.5.0
+redis==5.0.7
+
+# Environment & Configuration
+python-dotenv==1.0.1
+
+# HTTP Client
+requests==2.31.0
+
+# SSL Analysis Tools
+sslyze==5.2.0
+python-libnmap==0.7.3
+
+# Document Generation
+reportlab==4.0.4
+openpyxl==3.1.2
+
+# Image Processing
+Pillow==10.0.0
+
+# Authentication
+pyotp==2.9.0
+qrcode[pil]==7.4.2
+
+# Production Web Server
+gunicorn==21.2.0
+whitenoise==6.5.0
+
+# Caching
+django-redis==5.3.0
+
+# Monitoring & Logging
+python-json-logger==2.0.7
+sentry-sdk[django]==1.32.0
+
+# Security & Rate Limiting
+django-ratelimit==4.1.0
+django-axes==6.1.1
+
+# Health Checks
+django-health-check==3.17.0
+
+# Static Files (Production)
+boto3==1.28.57  # For S3 static files (optional)
+django-storages==1.13.2  # For cloud storage (optional)
+
+# Email
+django-anymail==10.1  # For advanced email providers (optional)
+
+# Backup
+django-dbbackup==4.0.2
+
+# Filtering & Search
+django-filter==23.2
+
+# Performance
+django-extensions==3.2.3

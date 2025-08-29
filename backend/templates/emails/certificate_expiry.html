@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado SSL Próximo a Expirar</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 8px 8px; }
+        .alert-box { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .cert-details { background: white; padding: 20px; border-radius: 5px; margin: 15px 0; }
+        .button { display: inline-block; background: #4CAF50; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin: 10px 0; }
+        .footer { text-align: center; margin-top: 30px; color: #666; font-size: 12px; }
+        .warning { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 Certificado SSL Próximo a Expirar</h1>
+            <p>Sistema de Monitoreo Sócrates</p>
+        </div>
+        
+        <div class="content">
+            <div class="alert-box">
+                <strong>⚠️ ALERTA DE EXPIRACIÓN</strong>
+                <p>El certificado SSL del siguiente servicio expirará en <span class="warning">{{ days_until_expiry }} días</span>.</p>
+            </div>
+            
+            <div class="cert-details">
+                <h2>📋 Detalles del Certificado</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold;">Servicio:</td>
+                        <td style="padding: 8px;">{{ target }}:{{ certificate.puerto }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold;">Cliente:</td>
+                        <td style="padding: 8px;">{{ client_name }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold;">Protocolo:</td>
+                        <td style="padding: 8px;">{{ certificate.protocolo }}</td>
+                    </tr>
+                    {% if certificate.nombre_certificado %}
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold;">Nombre:</td>
+                        <td style="padding: 8px;">{{ certificate.nombre_certificado }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <td style="padding: 8px; font-weight: bold;">Fecha de Expiración:</td>
+                        <td style="padding: 8px; color: #e74c3c; font-weight: bold;">{{ expiry_date|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h2>🔧 Acciones Recomendadas</h2>
+            <ul>
+                <li><strong>Renovar el certificado</strong> antes de la fecha de expiración</li>
+                <li><strong>Verificar la configuración</strong> del servidor web</li>
+                <li><strong>Probar el nuevo certificado</strong> en un entorno de pruebas</li>
+                <li><strong>Actualizar la configuración</strong> en el sistema de monitoreo</li>
+            </ul>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="{{ certificate_url }}" class="button">🔍 Ver Detalles del Certificado</a>
+                <a href="{{ dashboard_url }}" class="button" style="background: #2196F3;">📊 Ir al Dashboard</a>
+            </div>
+            
+            {% if days_until_expiry <= 7 %}
+            <div style="background: #ffebee; border: 2px solid #f44336; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <strong>🚨 URGENTE:</strong> Este certificado expira en menos de una semana. Es crítico renovarlo inmediatamente para evitar interrupciones del servicio.
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="footer">
+            <p>Este mensaje fue enviado automáticamente por el Sistema de Monitoreo SSL/TLS Sócrates.</p>
+            <p>No responder a este email. Para soporte técnico, contactar a través del dashboard.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+version: '3.8'
+
+services:
+  # Database
+  mysql:
+    image: mysql:8.0
+    container_name: socrates_mysql_prod
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-socrates_prod}
+      MYSQL_USER: ${DB_USER:-socrates_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mysql_prod_data:/var/lib/mysql
+      - ./mysql/prod-config.cnf:/etc/mysql/conf.d/custom.cnf:ro
+    ports:
+      - "3306:3306"
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      interval: 30s
+    command: --default-authentication-plugin=mysql_native_password
+    security_opt:
+      - no-new-privileges:true
+
+  # Redis Cache & Message Broker
+  redis:
+    image: redis:7-alpine
+    container_name: socrates_redis_prod
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_prod_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    ports:
+      - "6379:6379"
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    security_opt:
+      - no-new-privileges:true
+
+  # Django Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: socrates_backend_prod
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings_prod
+    env_file:
+      - .env.production
+    volumes:
+      - static_files:/app/staticfiles
+      - media_files:/app/media
+      - ./logs:/var/log/socrates
+      - ./ssl-certs:/etc/ssl/certs:ro
+    expose:
+      - "8000"
+    networks:
+      - socrates_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    security_opt:
+      - no-new-privileges:true
+    user: "1000:1000"
+    
+  # Celery Worker
+  celery_worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: socrates_celery_worker_prod
+    command: celery -A config worker -l info --concurrency=2 --prefetch-multiplier=1
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings_prod
+      - C_FORCE_ROOT=1
+    env_file:
+      - .env.production
+    volumes:
+      - media_files:/app/media
+      - ./logs:/var/log/socrates
+    networks:
+      - socrates_network
+    depends_on:
+      - mysql
+      - redis
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "celery", "-A", "config", "inspect", "ping"]
+      interval: 60s
+      timeout: 30s
+      retries: 3
+    security_opt:
+      - no-new-privileges:true
+    user: "1000:1000"
+
+  # Celery Beat (Scheduler)
+  celery_beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: socrates_celery_beat_prod
+    command: celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings_prod
+    env_file:
+      - .env.production
+    volumes:
+      - ./logs:/var/log/socrates
+      - celery_beat_data:/app/celerybeat-schedule
+    networks:
+      - socrates_network
+    depends_on:
+      - mysql
+      - redis
+      - backend
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    user: "1000:1000"
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: socrates_nginx_prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/sites-available:/etc/nginx/sites-available:ro
+      - static_files:/app/staticfiles:ro
+      - media_files:/app/media:ro
+      - ./ssl-certs:/etc/nginx/ssl:ro
+      - ./logs/nginx:/var/log/nginx
+    networks:
+      - socrates_network
+    depends_on:
+      - backend
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    security_opt:
+      - no-new-privileges:true
+
+  # Frontend (if served separately)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: socrates_frontend_prod
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=https://api.socrates.yourdomain.com
+      - REACT_APP_SENTRY_DSN=${FRONTEND_SENTRY_DSN}
+    volumes:
+      - frontend_build:/app/build:ro
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+
+  # Monitoring - Prometheus (Optional)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: socrates_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    profiles: ["monitoring"]
+
+  # Monitoring - Grafana (Optional)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: socrates_grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin123}
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    profiles: ["monitoring"]
+
+  # Log Management - ELK Stack (Optional)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+    container_name: socrates_elasticsearch
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    profiles: ["logging"]
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.8.0
+    container_name: socrates_kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    networks:
+      - socrates_network
+    restart: unless-stopped
+    profiles: ["logging"]
+
+  # Backup Service
+  backup:
+    build:
+      context: ./backup
+      dockerfile: Dockerfile
+    container_name: socrates_backup
+    environment:
+      - BACKUP_SCHEDULE=${BACKUP_SCHEDULE:-0 3 * * *}
+      - BACKUP_RETENTION_DAYS=${BACKUP_RETENTION_DAYS:-30}
+    env_file:
+      - .env.production
+    volumes:
+      - mysql_prod_data:/data/mysql:ro
+      - media_files:/data/media:ro
+      - ./backups:/backups
+    networks:
+      - socrates_network
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    profiles: ["backup"]
+
+volumes:
+  mysql_prod_data:
+    driver: local
+  redis_prod_data:
+    driver: local
+  static_files:
+    driver: local
+  media_files:
+    driver: local
+  frontend_build:
+    driver: local
+  celery_beat_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  elasticsearch_data:
+    driver: local
+
+networks:
+  socrates_network:
+    driver: bridge
+    enable_ipv6: false
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

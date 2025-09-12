@@ -7,6 +7,8 @@ import Certificates from './components/Certificates';
 import Analysis from './components/Analysis';
 import Reports from './components/Reports';
 import Profile from './components/Profile';
+import Clients from './components/Clients';
+import Users from './components/Users';
 
 // Componente de ruta protegida
 const ProtectedRoute = ({ children }) => {
@@ -92,12 +94,12 @@ function App() {
             } 
           />
           
-          {/* Placeholder para rutas de admin */}
+          {/* Rutas de administración */}
           <Route 
             path="/users" 
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Users />
               </ProtectedRoute>
             } 
           />
@@ -106,7 +108,7 @@ function App() {
             path="/clients" 
             element={
               <ProtectedRoute>
-                <Dashboard />
+                <Clients />
               </ProtectedRoute>
             } 
           />

@@ -5,7 +5,7 @@ export class CertificateService {
    * Obtener lista de certificados
    */
   static async getCertificates(params = {}) {
-    const response = await apiClient.get('/certificates/', { params });
+    const response = await apiClient.get('http://localhost:8000/api/certs/certificates/', { params });
     return response.data;
   }
 

@@ -44,7 +44,7 @@ const CertificateForm = ({ onClose, onSuccess }) => {
 
   const loadClients = async () => {
     try {
-      const response = await fetch('/api/v1/clients/');
+      const response = await fetch('http://localhost:8000/api/clients/');
       const data = await response.json();
       setClients(data.results || data);
     } catch (error) {

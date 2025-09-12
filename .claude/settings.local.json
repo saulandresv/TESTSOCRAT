@@ -21,7 +21,10 @@
       "Bash(docker-compose up:*)",
       "Bash(curl:*)",
       "Read(/mnt/c/users/saulv/desktop/i3g/**)",
-      "Bash(docker compose exec:*)"
+      "Bash(docker compose exec:*)",
+      "Read(/mnt/c/Users/saulv/desktop/i3g/**)",
+      "Read(/mnt/c/Users/saulv/desktop/i3g/**)",
+      "Bash(docker compose stop:*)"
     ],
     "deny": [],
     "ask": []

@@ -18,7 +18,7 @@ from rest_framework.throttling import UserRateThrottle
 from .models import Report
 from .serializers import ReportSerializer, ReportCreateSerializer
 from .tasks import generate_report_async, send_report_via_email
-from clients.models import Cliente
+from clients.models import Client
 
 
 class ReportsRateThrottle(UserRateThrottle):
@@ -245,7 +245,7 @@ class ReportViewSet(viewsets.ModelViewSet):
             }, status=status.HTTP_400_BAD_REQUEST)
         
         # Validar clientes
-        clients = Cliente.objects.filter(id__in=client_ids)
+        clients = Client.objects.filter(id__in=client_ids)
         if not clients.exists():
             return Response({
                 'error': 'No se encontraron clientes válidos'

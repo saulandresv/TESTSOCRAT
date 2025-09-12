@@ -9,9 +9,9 @@ from typing import List
 from celery import shared_task
 from django.utils import timezone
 from django.db.models import Q
-from clients.models import Cliente
-from certs.models import Certificado, VitalidadCertificado
-from analysis.models import AnalisisSSL, Vulnerabilidad
+from clients.models import Client
+from certs.models import Certificate, VitalityStatus
+from analysis.models import Analysis, Vulnerabilidades
 from notifications.email_service import email_service
 
 logger = logging.getLogger(__name__)
@@ -33,10 +33,10 @@ def check_certificate_expiration_alerts(self):
             expiry_date = now + timedelta(days=days)
             
             # Buscar certificados que expiran en exactamente N días
-            certificates = Certificado.objects.filter(
-                fecha_expiracion__date=expiry_date.date(),
-                fecha_expiracion__gte=now
-            ).select_related('cliente')
+            certificates = Certificate.objects.filter(
+                expiry_date__date=expiry_date.date(),
+                expiry_date__gte=now
+            ).select_related('client')
             
             for certificate in certificates:
                 try:
@@ -73,18 +73,17 @@ def check_vulnerability_alerts(self):
         # Buscar análisis de las últimas 24 horas con vulnerabilidades críticas
         cutoff_time = timezone.now() - timedelta(hours=24)
         
-        critical_analyses = AnalisisSSL.objects.filter(
+        critical_analyses = Analysis.objects.filter(
             fecha_fin__gte=cutoff_time,
-            estado_analisis='COMPLETED',
-            vulnerabilidades_encontradas__gt=0
-        ).select_related('certificado', 'certificado__cliente')
+            tuvo_exito=True
+        ).select_related('certificado', 'certificado__client')
         
         results = {'alerts_sent': 0, 'errors': 0}
         
         for analysis in critical_analyses:
             try:
                 # Obtener vulnerabilidades críticas y altas
-                critical_vulns = Vulnerabilidad.objects.filter(
+                critical_vulns = Vulnerabilidades.objects.filter(
                     analisis=analysis,
                     severity__in=['CRITICAL', 'HIGH']
                 )
@@ -124,8 +123,8 @@ def check_certificate_down_alerts(self):
         cutoff_time = timezone.now() - timedelta(hours=2)
         
         # Obtener vitalidades recientes con estado inactivo
-        down_vitalities = VitalidadCertificado.objects.filter(
-            fecha_verificacion__gte=cutoff_time,
+        down_vitalities = VitalityStatus.objects.filter(
+            hora__gte=cutoff_time,
             estado='inactivo'
         ).select_related('certificado', 'certificado__cliente')
         
@@ -134,10 +133,10 @@ def check_certificate_down_alerts(self):
         for vitality in down_vitalities:
             try:
                 # Verificar si ya se envió una alerta reciente para este certificado
-                recent_alert = VitalidadCertificado.objects.filter(
+                recent_alert = VitalityStatus.objects.filter(
                     certificado=vitality.certificado,
-                    fecha_verificacion__lt=vitality.fecha_verificacion,
-                    fecha_verificacion__gte=cutoff_time - timedelta(hours=6),
+                    hora__lt=vitality.hora,
+                    hora__gte=cutoff_time - timedelta(hours=6),
                     estado='inactivo'
                 ).exists()
                 
@@ -173,7 +172,7 @@ def send_weekly_summary_reports(self):
     Enviar reportes semanales a todos los clientes
     """
     try:
-        clients = Cliente.objects.all()
+        clients = Client.objects.all()
         results = {'reports_sent': 0, 'errors': 0}
         
         for client in clients:
@@ -211,7 +210,7 @@ def send_monthly_summary_reports(self):
     Enviar reportes mensuales a todos los clientes
     """
     try:
-        clients = Cliente.objects.all()
+        clients = Client.objects.all()
         results = {'reports_sent': 0, 'errors': 0}
         
         for client in clients:
@@ -267,11 +266,11 @@ def send_bulk_certificate_reports_task(client_ids: List[int] = None):
     """
     try:
         if client_ids:
-            certificates = Certificado.objects.filter(
-                cliente_id__in=client_ids
-            ).select_related('cliente')
+            certificates = Certificate.objects.filter(
+                client_id__in=client_ids
+            ).select_related('client')
         else:
-            certificates = Certificado.objects.all().select_related('cliente')
+            certificates = Certificate.objects.all().select_related('client')
         
         results = email_service.send_bulk_certificate_report(list(certificates))
         logger.info(f"Bulk certificate reports completed: {results}")

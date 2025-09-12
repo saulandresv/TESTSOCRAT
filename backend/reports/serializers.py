@@ -4,7 +4,7 @@ Serializers para reportes - Proyecto Sócrates
 
 from rest_framework import serializers
 from .models import Report
-from clients.models import Cliente
+from clients.models import Client
 
 
 class ReportSerializer(serializers.ModelSerializer):
@@ -62,7 +62,7 @@ class ReportCreateSerializer(serializers.ModelSerializer):
     
     def validate_client_id(self, value):
         """Validar que el cliente existe"""
-        if not Cliente.objects.filter(id=value).exists():
+        if not Client.objects.filter(id=value).exists():
             raise serializers.ValidationError("Cliente no encontrado")
         return value
     
@@ -118,7 +118,7 @@ class ReportCreateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Crear reporte con cliente asociado"""
         client_id = validated_data.pop('client_id')
-        client = Cliente.objects.get(id=client_id)
+        client = Client.objects.get(id=client_id)
         
         return Report.objects.create(
             client=client,

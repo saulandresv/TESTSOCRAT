@@ -27,19 +27,32 @@ const Login = () => {
     setError('');
 
     try {
+      console.log('🔍 Iniciando login con:', formData.email);
       const response = await AuthService.login(formData.email, formData.password);
+      console.log('✅ Respuesta del login:', response);
 
       if (response.mfa_required) {
         // Requiere MFA
+        console.log('🔒 MFA requerido');
         setStep('mfa');
         setUserId(response.user_id);
       } else {
         // Login exitoso sin MFA
+        console.log('💾 Guardando datos de auth...');
         AuthService.saveAuthData(response);
-        navigate('/dashboard');
+        console.log('🚀 Navegando a dashboard...');
+        
+        // Usar window.location como backup
+        try {
+          navigate('/dashboard');
+        } catch (navError) {
+          console.log('❌ Error con navigate, usando window.location');
+          window.location.href = '/dashboard';
+        }
       }
     } catch (error) {
-      setError(error.response?.data?.error || 'Error al iniciar sesión');
+      console.error('❌ Error en login:', error);
+      setError(error.response?.data?.error || error.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);
     }

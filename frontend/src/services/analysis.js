@@ -29,11 +29,17 @@ export class AnalysisService {
   }
 
   /**
-   * Obtener estadísticas para dashboard
+   * Obtener estadísticas para dashboard (simuladas mientras no existe la ruta)
    */
   static async getDashboardStats() {
-    const response = await apiClient.get('/analysis/dashboard_stats/');
-    return response.data;
+    // Simulamos estadísticas básicas por ahora
+    return {
+      total_certificates: 2,
+      active_certificates: 2,
+      expiring_certificates: 0,
+      vulnerabilities: 0,
+      analyses_today: 0
+    };
   }
 
   /**

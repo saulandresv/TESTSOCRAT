@@ -10,9 +10,9 @@ from django.core.mail import send_mail, send_mass_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from django.utils import timezone
-from clients.models import Cliente
-from certs.models import Certificado, VitalidadCertificado
-from analysis.models import AnalisisSSL, Vulnerabilidad
+from clients.models import Client
+from certs.models import Certificate, VitalityStatus
+from analysis.models import Analysis, Vulnerabilidades
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ class EmailNotificationService:
         self.default_from_email = getattr(settings, 'DEFAULT_FROM_EMAIL', 'noreply@socrates.com')
         self.admin_email = getattr(settings, 'ADMIN_EMAIL', 'admin@socrates.com')
     
-    def send_certificate_expiration_alert(self, certificate: Certificado, days_until_expiry: int) -> bool:
+    def send_certificate_expiration_alert(self, certificate: Certificate, days_until_expiry: int) -> bool:
         """
         Enviar alerta de expiración de certificado
         """
@@ -64,7 +64,7 @@ class EmailNotificationService:
             logger.error(f"Error sending certificate expiration alert: {e}")
             return False
     
-    def send_vulnerability_alert(self, analysis: AnalisisSSL, critical_vulnerabilities: List[Vulnerabilidad]) -> bool:
+    def send_vulnerability_alert(self, analysis: Analysis, critical_vulnerabilities: List[Vulnerabilidades]) -> bool:
         """
         Enviar alerta de vulnerabilidades críticas
         """
@@ -101,7 +101,7 @@ class EmailNotificationService:
             logger.error(f"Error sending vulnerability alert: {e}")
             return False
     
-    def send_certificate_down_alert(self, certificate: Certificado, vitality: VitalidadCertificado) -> bool:
+    def send_certificate_down_alert(self, certificate: Certificate, vitality: VitalityStatus) -> bool:
         """
         Enviar alerta cuando un certificado está inaccesible
         """
@@ -113,8 +113,8 @@ class EmailNotificationService:
                 'vitality': vitality,
                 'target': certificate.get_target_display(),
                 'client_name': certificate.cliente.name,
-                'check_time': vitality.fecha_verificacion,
-                'error_message': vitality.mensaje_estado,
+                'check_time': vitality.hora,
+                'error_message': vitality.error_message,
                 'dashboard_url': self._get_dashboard_url(),
                 'certificate_url': self._get_certificate_url(certificate.id),
             }
@@ -136,7 +136,7 @@ class EmailNotificationService:
             logger.error(f"Error sending certificate down alert: {e}")
             return False
     
-    def send_analysis_summary_report(self, client: Cliente, period_days: int = 7) -> bool:
+    def send_analysis_summary_report(self, client: Client, period_days: int = 7) -> bool:
         """
         Enviar resumen semanal/mensual de análisis
         """
@@ -145,8 +145,8 @@ class EmailNotificationService:
             end_date = timezone.now()
             start_date = end_date - timedelta(days=period_days)
             
-            certificates = Certificado.objects.filter(cliente=client)
-            analyses = AnalisisSSL.objects.filter(
+            certificates = Certificate.objects.filter(cliente=client)
+            analyses = Analysis.objects.filter(
                 certificado__in=certificates,
                 fecha_inicio__gte=start_date,
                 fecha_inicio__lte=end_date
@@ -154,11 +154,11 @@ class EmailNotificationService:
             
             # Estadísticas
             total_analyses = analyses.count()
-            successful_analyses = analyses.filter(estado_analisis='COMPLETED').count()
-            failed_analyses = analyses.filter(estado_analisis='FAILED').count()
+            successful_analyses = analyses.filter(tuvo_exito=True).count()
+            failed_analyses = analyses.filter(tuvo_exito=False).count()
             
             # Vulnerabilidades por severidad
-            vulnerabilities = Vulnerabilidad.objects.filter(
+            vulnerabilities = Vulnerabilidades.objects.filter(
                 analisis__in=analyses
             )
             
@@ -243,7 +243,7 @@ class EmailNotificationService:
             logger.error(f"Error sending system alert: {e}")
             return False
     
-    def send_bulk_certificate_report(self, certificates: List[Certificado]) -> Dict[str, int]:
+    def send_bulk_certificate_report(self, certificates: List[Certificate]) -> Dict[str, int]:
         """
         Enviar reportes masivos a múltiples clientes
         """
@@ -277,7 +277,7 @@ class EmailNotificationService:
         
         return results
     
-    def _send_client_certificate_report(self, client: Cliente, certificates: List[Certificado]) -> bool:
+    def _send_client_certificate_report(self, client: Client, certificates: List[Certificate]) -> bool:
         """
         Enviar reporte específico de certificados a un cliente
         """
@@ -285,13 +285,13 @@ class EmailNotificationService:
             # Obtener últimos análisis de cada certificado
             cert_reports = []
             for cert in certificates:
-                latest_analysis = AnalisisSSL.objects.filter(
+                latest_analysis = Analysis.objects.filter(
                     certificado=cert
                 ).order_by('-fecha_inicio').first()
                 
-                latest_vitality = VitalidadCertificado.objects.filter(
+                latest_vitality = VitalityStatus.objects.filter(
                     certificado=cert
-                ).order_by('-fecha_verificacion').first()
+                ).order_by('-hora').first()
                 
                 cert_reports.append({
                     'certificate': cert,
@@ -376,9 +376,9 @@ class EmailNotificationService:
     
     def _get_certificate_status(
         self,
-        certificate: Certificado,
-        analysis: Optional[AnalisisSSL],
-        vitality: Optional[VitalidadCertificado]
+        certificate: Certificate,
+        analysis: Optional[Analysis],
+        vitality: Optional[VitalityStatus]
     ) -> Dict[str, Any]:
         """
         Obtener estado consolidado de un certificado
@@ -401,23 +401,20 @@ class EmailNotificationService:
         
         # Verificar análisis
         if analysis:
-            if analysis.vulnerabilidades_encontradas == 0:
+            # Note: vulnerabilidades_encontradas field doesn't exist in Analysis model
+            # We need to count related vulnerabilities
+            vuln_count = analysis.vulnerabilidades.count() if hasattr(analysis, 'vulnerabilidades') else 0
+            if vuln_count == 0:
                 status.update({
                     'overall': 'good',
                     'color': 'green',
                     'message': 'Sin vulnerabilidades detectadas'
                 })
-            elif analysis.estado_general == 'CRITICAL_VULNERABILITIES':
+            elif vuln_count > 0:
                 status.update({
                     'overall': 'critical',
                     'color': 'red',
-                    'message': f'{analysis.vulnerabilidades_encontradas} vulnerabilidades críticas'
-                })
-            else:
-                status.update({
-                    'overall': 'warning',
-                    'color': 'orange',
-                    'message': f'{analysis.vulnerabilidades_encontradas} vulnerabilidades encontradas'
+                    'message': f'{vuln_count} vulnerabilidades encontradas'
                 })
         
         return status

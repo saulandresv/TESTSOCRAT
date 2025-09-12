@@ -9,7 +9,7 @@ import logging
 
 from .models import Report
 from .generators import PDFReportGenerator, ExcelReportGenerator
-from clients.models import Cliente
+from clients.models import Client
 
 logger = logging.getLogger(__name__)
 

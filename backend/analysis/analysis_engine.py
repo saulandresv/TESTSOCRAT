@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 from django.utils import timezone
 
 from .models import (
-    AnalisisSSL, Vulnerabilidad, ParametrosGenerales, ParametrosTLS,
+    Analysis, Vulnerabilidades, ParametrosGenerales, ParametrosTLS,
     CadenaCertificacion, ParametrosWeb, OtrosParametros
 )
 from .external_tools import ExternalSSLAnalyzer
@@ -31,10 +31,10 @@ class SSLAnalysisEngine:
         logger = logging.getLogger(__name__)
         
         # Crear registro de análisis
-        analisis = AnalisisSSL.objects.create(
+        analisis = Analysis.objects.create(
             certificado=certificado,
-            tipo_analisis='SSL_TLS',
-            estado_analisis='IN_PROGRESS',
+            tipo='SSL_TLS',
+            tuvo_exito=False,
             fecha_inicio=timezone.now()
         )
         
@@ -58,16 +58,13 @@ class SSLAnalysisEngine:
             
             # Actualizar análisis
             analisis.fecha_fin = timezone.now()
-            analisis.estado_analisis = 'COMPLETED'
-            analisis.resultados = results
-            analisis.puntuacion_seguridad = security_score
-            analisis.vulnerabilidades_encontradas = len(vulnerabilities)
-            analisis.estado_general = estado_general
+            analisis.tuvo_exito = True
+            analisis.comentarios = f"Análisis completado. Puntuación: {security_score}/100. Vulnerabilidades: {len(vulnerabilities)}. Estado: {estado_general}"
             analisis.save()
             
             # Crear registros de vulnerabilidades
             for vuln_data in vulnerabilities:
-                Vulnerabilidad.objects.create(
+                Vulnerabilidades.objects.create(
                     analisis=analisis,
                     vulnerabilidad=vuln_data.get('name', 'Unknown'),
                     severity=vuln_data.get('severity', 'MEDIUM'),
@@ -87,7 +84,7 @@ class SSLAnalysisEngine:
         except Exception as e:
             # Marcar como fallido
             analisis.fecha_fin = timezone.now()
-            analisis.estado_analisis = 'FAILED'
+            analisis.tuvo_exito = False
             analisis.error_message = str(e)
             analisis.save()
             

@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "drf_spectacular",
-    "django_ratelimit",
+    # "django_ratelimit",  # Temporalmente deshabilitado para desarrollo
     # Tus apps
     "accounts",
     "access",
@@ -91,6 +91,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Media files (uploads and reports)
@@ -104,13 +106,14 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
     "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
+        # Temporalmente deshabilitado para desarrollo
+        # "rest_framework.throttling.AnonRateThrottle",
+        # "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
         "anon": "100/hour",
         "user": "1000/hour",
-        "login": "5/minute",
+        "login": "1000/minute",  # Sin límite para desarrollo
         "analysis": "20/minute",
         "certificate": "50/minute",
         "reports": "10/hour",
@@ -195,6 +198,17 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'reports.tasks.cleanup_old_reports',
         'schedule': 604800.0,  # Run weekly
     },
+}
+
+# Cache Configuration
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
 }
 
 # Rate Limiting Configuration

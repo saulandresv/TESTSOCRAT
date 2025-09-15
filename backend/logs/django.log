@@ -502,3 +502,19 @@ WARNING 2025-09-12 12:13:16,478 log 11 139829582939840 Not Found: /api/v1/certif
 WARNING 2025-09-12 12:13:16,478 basehttp 11 139829582939840 "POST /api/v1/certificates/1/check_vitality/ HTTP/1.1" 404 6325
 WARNING 2025-09-12 12:13:22,016 log 11 139829582939840 Not Found: /api/v1/analysis/run_analysis/
 WARNING 2025-09-12 12:13:22,017 basehttp 11 139829582939840 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 404 6301
+WARNING 2025-09-12 12:14:25,101 log 11 139829362812608 Unauthorized: /api/clients/
+WARNING 2025-09-12 12:14:25,102 basehttp 11 139829362812608 "GET /api/clients/ HTTP/1.1" 401 107
+INFO 2025-09-12 12:14:29,626 basehttp 11 139829362812608 "GET /api/clients/ HTTP/1.1" 200 188
+WARNING 2025-09-12 12:17:48,702 log 11 139829582939840 Unauthorized: /api/analysis/run_analysis/
+WARNING 2025-09-12 12:17:48,703 basehttp 11 139829582939840 "POST /api/analysis/run_analysis/ HTTP/1.1" 401 65
+ERROR 2025-09-12 12:23:39,025 email_service 22 139828218203008 Error sending certificate down alert: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:23:39,026 tasks 22 139828218203008 Error sending down alert for certificate 2: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:23:39,027 email_service 22 139828218203008 Error sending certificate down alert: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:23:39,028 tasks 22 139828218203008 Error sending down alert for certificate 1: 'Certificate' object has no attribute 'get_target_display'
+INFO 2025-09-12 12:23:39,028 tasks 22 139828218203008 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+ERROR 2025-09-12 12:38:35,606 tasks 22 139828218203008 Error in vulnerability alerts check: Invalid field name(s) given in select_related: 'client'. Choices are: cliente
+ERROR 2025-09-12 12:38:39,024 email_service 22 139828218203008 Error sending certificate down alert: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:38:39,024 tasks 22 139828218203008 Error sending down alert for certificate 2: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:38:39,025 email_service 22 139828218203008 Error sending certificate down alert: 'Certificate' object has no attribute 'get_target_display'
+ERROR 2025-09-12 12:38:39,026 tasks 22 139828218203008 Error sending down alert for certificate 1: 'Certificate' object has no attribute 'get_target_display'
+INFO 2025-09-12 12:38:39,026 tasks 22 139828218203008 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}

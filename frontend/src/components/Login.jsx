@@ -8,10 +8,11 @@ const Login = () => {
     password: '',
     mfaCode: ''
   });
-  const [step, setStep] = useState('login'); // 'login' | 'mfa'
+  const [step, setStep] = useState('login'); // 'login' | 'mfa' | 'mfa-setup'
   const [userId, setUserId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [mfaData, setMfaData] = useState(null); // Para datos del QR code
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -36,12 +37,17 @@ const Login = () => {
         console.log('🔒 MFA requerido');
         setStep('mfa');
         setUserId(response.user_id);
+      } else if (response.mfa_setup_required) {
+        // Requiere configurar MFA
+        console.log('⚙️ MFA setup requerido');
+        setError(''); // Limpiar error ya que vamos a mostrar setup
+        handleMFASetupRequired();
       } else {
         // Login exitoso sin MFA
         console.log('💾 Guardando datos de auth...');
         AuthService.saveAuthData(response);
         console.log('🚀 Navegando a dashboard...');
-        
+
         // Usar window.location como backup
         try {
           navigate('/dashboard');
@@ -52,6 +58,15 @@ const Login = () => {
       }
     } catch (error) {
       console.error('❌ Error en login:', error);
+
+      // FORZAR ejecución del MFA setup si hay error 403
+      if (error.response?.status === 403) {
+        console.log('🚀 FORZANDO MFA SETUP - Error 403 detectado');
+        setError('');
+        handleMFASetupRequired();
+        return;
+      }
+
       setError(error.response?.data?.error || error.message || 'Error al iniciar sesión');
     } finally {
       setLoading(false);
@@ -63,8 +78,67 @@ const Login = () => {
     setLoading(true);
     setError('');
 
+    console.log('🔒 Iniciando verificación MFA...');
+    console.log('🔒 User ID:', userId);
+    console.log('🔒 MFA Code:', formData.mfaCode);
+
     try {
+      console.log('🔒 Llamando a AuthService.verifyMFA...');
       const response = await AuthService.verifyMFA(userId, formData.mfaCode);
+      console.log('🔒 Respuesta MFA exitosa:', response);
+
+      console.log('🔒 Guardando datos de autenticación...');
+      AuthService.saveAuthData(response);
+
+      console.log('🔒 Navegando a dashboard...');
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('🔒 Error en verificación MFA:', error);
+      console.error('🔒 Error response:', error.response?.data);
+      setError(error.response?.data?.error || 'Código MFA inválido');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleMFASetupRequired = async () => {
+    console.log('🔧 Iniciando handleMFASetupRequired');
+    setLoading(true);
+    setError('');
+
+    try {
+      console.log('🔧 Paso 1: Obteniendo token temporal...');
+      // Obtener token temporal para configurar MFA
+      const loginResponse = await AuthService.setupLogin(formData.email, formData.password);
+      console.log('🔧 Token temporal obtenido:', loginResponse);
+      AuthService.saveAuthData(loginResponse);
+
+      console.log('🔧 Paso 2: Configurando MFA...');
+      // Iniciar configuración MFA
+      const setupResponse = await AuthService.setupMFA();
+      console.log('🔧 MFA setup response:', setupResponse);
+      console.log('🔧 QR code data available:', !!setupResponse.qr_code);
+      console.log('🔧 QR code length:', setupResponse.qr_code ? setupResponse.qr_code.length : 0);
+      setMfaData(setupResponse);
+      setStep('mfa-setup');
+      console.log('🔧 Paso cambiado a mfa-setup');
+    } catch (error) {
+      console.error('🔧 Error en handleMFASetupRequired:', error);
+      setError(error.response?.data?.error || 'Error al iniciar configuración MFA');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleMFASetupConfirm = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      await AuthService.confirmMFA(formData.mfaCode);
+      // MFA configurado exitosamente, ahora hacer login normal
+      const response = await AuthService.login(formData.email, formData.password);
       AuthService.saveAuthData(response);
       navigate('/dashboard');
     } catch (error) {
@@ -252,6 +326,82 @@ const Login = () => {
               ← Volver al login
             </button>
           </form>
+        )}
+
+        {/* MFA Setup Form */}
+        {step === 'mfa-setup' && mfaData && (
+          <div>
+            <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
+              <h3 style={{ color: '#1f2937' }}>
+                🔐 Configuración Obligatoria de MFA
+              </h3>
+              <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
+                Para garantizar la seguridad, todos los usuarios deben configurar autenticación de dos factores
+              </p>
+            </div>
+
+            <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
+              <h4 style={{ marginBottom: '1rem', fontSize: '1rem', fontWeight: '500' }}>
+                Paso 1: Escanee este código QR
+              </h4>
+              <img
+                src={mfaData.qr_code}
+                alt="QR Code para MFA"
+                style={{
+                  maxWidth: '200px',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  display: 'block',
+                  margin: '0 auto'
+                }}
+              />
+              <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem' }}>
+                Use Google Authenticator, Authy u otra app TOTP
+              </p>
+            </div>
+
+            <form onSubmit={handleMFASetupConfirm}>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
+                  Paso 2: Ingrese el código de 6 dígitos
+                </label>
+                <input
+                  type="text"
+                  name="mfaCode"
+                  value={formData.mfaCode}
+                  onChange={handleInputChange}
+                  placeholder="123456"
+                  maxLength="6"
+                  required
+                  style={{
+                    ...inputStyle,
+                    textAlign: 'center',
+                    fontSize: '1.5rem',
+                    letterSpacing: '0.5rem'
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                style={buttonStyle}
+              >
+                {loading ? 'Configurando MFA...' : 'Completar Configuración'}
+              </button>
+            </form>
+
+            <div style={{
+              marginTop: '1rem',
+              padding: '1rem',
+              backgroundColor: '#fef3c7',
+              borderRadius: '0.5rem',
+              fontSize: '0.875rem',
+              color: '#92400e'
+            }}>
+              <strong>Código manual:</strong> {mfaData.secret}
+            </div>
+          </div>
         )}
       </div>
     </div>

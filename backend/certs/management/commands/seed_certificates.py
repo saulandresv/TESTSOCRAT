@@ -1,8 +1,9 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
-from clients.models import Cliente
-from certs.models import Certificado
-from analysis.models import AnalisisSSL, VitalidadCertificado
+from clients.models import Client
+from certs.models import Certificate
+from analysis.models import Analysis, Vulnerabilidades
+from certs.models import VitalityStatus
 from datetime import datetime, timedelta
 import random
 
@@ -28,47 +29,22 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if options['clean']:
             self.stdout.write('🗑️  Limpiando datos existentes...')
-            Certificado.objects.all().delete()
-            Cliente.objects.all().delete()
+            Certificate.objects.all().delete()
+            Client.objects.all().delete()
             
         # Crear clientes de ejemplo
         self.stdout.write('👥 Creando clientes de ejemplo...')
         clientes_data = [
-            {
-                'name': 'Banco Nacional',
-                'description': 'Entidad financiera principal',
-                'contact_email': 'seguridad@banconacional.com',
-                'contact_phone': '+56-2-2555-0001'
-            },
-            {
-                'name': 'E-commerce Global',
-                'description': 'Plataforma de comercio electrónico',
-                'contact_email': 'admin@ecommerce.com',
-                'contact_phone': '+56-9-8888-0002'
-            },
-            {
-                'name': 'Universidad TechPro',
-                'description': 'Institución educacional superior',
-                'contact_email': 'it@utechpro.edu',
-                'contact_phone': '+56-2-2777-0003'
-            },
-            {
-                'name': 'Clínica Salud Plus',
-                'description': 'Centro médico privado',
-                'contact_email': 'sistemas@saludplus.cl',
-                'contact_phone': '+56-2-2333-0004'
-            },
-            {
-                'name': 'Startup Innovation',
-                'description': 'Empresa tecnológica emergente',
-                'contact_email': 'devops@startup-innovation.com',
-                'contact_phone': '+56-9-7777-0005'
-            }
+            {'name': 'Banco Nacional', 'status': 'activo'},
+            {'name': 'E-commerce Global', 'status': 'activo'},
+            {'name': 'Universidad TechPro', 'status': 'activo'},
+            {'name': 'Clínica Salud Plus', 'status': 'activo'},
+            {'name': 'Startup Innovation', 'status': 'activo'}
         ]
         
         clientes_creados = []
         for cliente_data in clientes_data:
-            cliente, created = Cliente.objects.get_or_create(
+            cliente, created = Client.objects.get_or_create(
                 name=cliente_data['name'],
                 defaults=cliente_data
             )
@@ -133,17 +109,16 @@ class Command(BaseCommand):
                 **cert_data  # url o ip
             }
             
-            certificado = Certificado.objects.create(**certificado_data)
+            certificado = Certificate.objects.create(**certificado_data)
             certificados_creados.append(certificado)
             
             # Crear vitalidad simulada
             estado = random.choice(['activo', 'inactivo', 'activo', 'activo'])  # 75% activos
-            VitalidadCertificado.objects.create(
+            VitalityStatus.objects.create(
                 certificado=certificado,
                 estado=estado,
-                tiempo_respuesta=random.randint(50, 500),
-                mensaje_estado='Certificado verificado automáticamente' if estado == 'activo' else 'No se pudo conectar al servidor',
-                fecha_verificacion=datetime.now() - timedelta(hours=random.randint(1, 24))
+                response_time_ms=random.randint(50, 500),
+                error_message='' if estado == 'activo' else 'No se pudo conectar al servidor'
             )
             
             # Crear análisis SSL simulado para algunos certificados
@@ -157,69 +132,40 @@ class Command(BaseCommand):
                     {'name': 'SHORT_KEY_LENGTH', 'severity': 'HIGH', 'description': 'Longitudes de clave cortas detectadas'},
                 ]
                 
-                # Algunos certificados sin vulnerabilidades
-                if random.choice([True, False, False]):  # 33% con vulnerabilidades
-                    vulnerabilidades = [random.choice(vulnerabilidades_posibles)]
-                    estado_general = 'VULNERABILITIES_FOUND'
-                    puntuacion = random.randint(60, 79)
-                else:
-                    vulnerabilidades = []
-                    estado_general = 'SECURE'
-                    puntuacion = random.randint(80, 100)
-                
-                resultados_simulados = {
-                    'timestamp': fecha_analisis.isoformat(),
-                    'target': f"{target_display}:{cert_data['puerto']}",
-                    'summary': {
-                        'protocols': {
-                            'TLS1.2': True,
-                            'TLS1.3': random.choice([True, False]),
-                            'SSLv3': random.choice([True, False, False, False])  # Mayormente False
-                        },
-                        'vulnerabilities': vulnerabilidades,
-                        'certificate': {
-                            'issuer': random.choice([
-                                'Let\'s Encrypt Authority X3',
-                                'DigiCert SHA2 Extended Validation Server CA',
-                                'Cloudflare Inc ECC CA-3',
-                                'Amazon',
-                                'Google Trust Services'
-                            ]),
-                            'not_valid_after': (fecha_analisis + timedelta(days=random.randint(30, 365))).isoformat(),
-                            'signature_algorithm': 'sha256WithRSAEncryption'
-                        },
-                        'recommendations': [
-                            'Enable TLS 1.3 for better security',
-                            'Disable SSLv3 to prevent POODLE attacks'
-                        ] if vulnerabilidades else ['Configuration looks secure']
-                    }
-                }
-                
-                AnalisisSSL.objects.create(
+                # Crear análisis básico
+                analysis = Analysis.objects.create(
                     certificado=certificado,
-                    tipo_analisis='SSL_TLS',
-                    estado_analisis='COMPLETED',
+                    tipo='SSL_TLS',
+                    tuvo_exito=True,
                     fecha_inicio=fecha_analisis,
                     fecha_fin=fecha_analisis + timedelta(minutes=random.randint(2, 10)),
-                    resultados=resultados_simulados,
-                    puntuacion_seguridad=puntuacion,
-                    vulnerabilidades_encontradas=len(vulnerabilidades),
-                    estado_general=estado_general
+                    comentarios='Análisis automático generado por seeder',
+                    triggered_by='MANUAL'
                 )
+
+                # Crear vulnerabilidades si es necesario
+                if random.choice([True, False, False]):  # 33% con vulnerabilidades
+                    vuln_data = random.choice(vulnerabilidades_posibles)
+                    Vulnerabilidades.objects.create(
+                        analisis=analysis,
+                        vulnerabilidad=vuln_data['name'],
+                        severity=vuln_data['severity'],
+                        description=vuln_data['description']
+                    )
                 
-                self.stdout.write(f'  🔍 Análisis creado para {target_display} - Estado: {estado_general}')
+                self.stdout.write(f'  🔍 Análisis creado para {target_display}')
             
             self.stdout.write(f'  ✅ Certificado creado: {target_display}:{cert_data["puerto"]} ({cert_data["protocolo"]}) -> {cliente.name}')
         
         # Estadísticas finales
         self.stdout.write('\n📊 Resumen de datos creados:')
-        self.stdout.write(f'  👥 Clientes: {Cliente.objects.count()}')
-        self.stdout.write(f'  🔒 Certificados: {Certificado.objects.count()}')
-        self.stdout.write(f'  💗 Controles de vitalidad: {VitalidadCertificado.objects.count()}')
-        self.stdout.write(f'  🔍 Análisis SSL: {AnalisisSSL.objects.count()}')
-        
-        certificados_activos = VitalidadCertificado.objects.filter(estado='activo').count()
-        certificados_con_vulnerabilidades = AnalisisSSL.objects.filter(vulnerabilidades_encontradas__gt=0).count()
+        self.stdout.write(f'  👥 Clientes: {Client.objects.count()}')
+        self.stdout.write(f'  🔒 Certificados: {Certificate.objects.count()}')
+        self.stdout.write(f'  💗 Controles de vitalidad: {VitalityStatus.objects.count()}')
+        self.stdout.write(f'  🔍 Análisis SSL: {Analysis.objects.count()}')
+
+        certificados_activos = VitalityStatus.objects.filter(estado='activo').count()
+        certificados_con_vulnerabilidades = Vulnerabilidades.objects.count()
         
         self.stdout.write(f'  🟢 Certificados activos: {certificados_activos}')
         self.stdout.write(f'  ⚠️  Certificados con vulnerabilidades: {certificados_con_vulnerabilidades}')

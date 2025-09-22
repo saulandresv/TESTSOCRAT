@@ -47,24 +47,20 @@ class LoginView(APIView):
                 'error': 'Usuario inactivo'
             }, status=status.HTTP_403_FORBIDDEN)
         
-        # Si tiene MFA habilitado, requerir código
-        if user.token_mfa:
+        # MFA OBLIGATORIO: Verificar que el usuario tenga MFA configurado
+        if not user.token_mfa or not user.mfa_enabled:
             return Response({
-                'mfa_required': True,
-                'message': 'Ingrese código MFA',
+                'mfa_setup_required': True,
+                'error': 'MFA es obligatorio para todos los usuarios. Configure MFA desde su perfil.',
+                'message': 'Debe configurar autenticación de dos factores antes de continuar',
                 'user_id': user.id
-            }, status=status.HTTP_200_OK)
-        
-        # Sin MFA, generar tokens directamente
-        refresh = RefreshToken.for_user(user)
-        user.ultimo_login = timezone.now()
-        user.save()
-        
+            }, status=status.HTTP_403_FORBIDDEN)
+
+        # Si tiene MFA habilitado, requerir código
         return Response({
-            'access': str(refresh.access_token),
-            'refresh': str(refresh),
-            'user': UserSerializer(user).data,
-            'message': 'Login exitoso'
+            'mfa_required': True,
+            'message': 'Ingrese código MFA',
+            'user_id': user.id
         }, status=status.HTTP_200_OK)
 
 
@@ -92,17 +88,43 @@ class MFAVerifyView(APIView):
                 'error': 'Usuario no encontrado'
             }, status=status.HTTP_404_NOT_FOUND)
         
-        if not user.token_mfa:
+        if not user.token_mfa or not user.mfa_enabled:
             return Response({
-                'error': 'MFA no configurado para este usuario'
+                'error': 'MFA no configurado o no habilitado para este usuario'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        # Verificar código TOTP
-        totp = pyotp.TOTP(user.token_mfa)
-        if not totp.verify(mfa_code):
+        # Verificar código TOTP con validación estricta
+        try:
+            # Convertir a string y limpiar espacios
+            mfa_code = str(mfa_code).strip()
+
+            # Verificar que sea un código de 6 dígitos
+            if not mfa_code.isdigit() or len(mfa_code) != 6:
+                return Response({
+                    'error': 'Código MFA debe ser de 6 dígitos numéricos'
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            totp = pyotp.TOTP(user.token_mfa)
+
+            # Verificar código actual y permitir una ventana de 30 segundos antes/después
+            is_valid = totp.verify(mfa_code, valid_window=1)
+
+            if not is_valid:
+                # Log del intento fallido para debug
+                import logging
+                logger = logging.getLogger(__name__)
+                current_code = totp.now()
+                logger.warning(f"MFA verification failed for user {user.email}. "
+                             f"Provided: {mfa_code}, Expected: {current_code}")
+
+                return Response({
+                    'error': 'Código MFA inválido'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+        except Exception as e:
             return Response({
-                'error': 'Código MFA inválido'
-            }, status=status.HTTP_401_UNAUTHORIZED)
+                'error': 'Error al verificar código MFA'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
         # Generar tokens JWT
         refresh = RefreshToken.for_user(user)
@@ -160,14 +182,126 @@ class MFASetupView(APIView):
             'totp_uri': totp_uri
         }, status=status.HTTP_200_OK)
     
+    def put(self, request):
+        """Confirmar y habilitar MFA tras verificar código TOTP"""
+        user = request.user
+        mfa_code = request.data.get('mfa_code')
+
+        if not mfa_code:
+            return Response({
+                'error': 'Código MFA requerido'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        if not user.token_mfa:
+            return Response({
+                'error': 'No hay configuración MFA pendiente'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Verificar código TOTP con validación estricta
+        try:
+            # Convertir a string y limpiar espacios
+            mfa_code = str(mfa_code).strip()
+
+            # Verificar que sea un código de 6 dígitos
+            if not mfa_code.isdigit() or len(mfa_code) != 6:
+                return Response({
+                    'error': 'Código MFA debe ser de 6 dígitos numéricos'
+                }, status=status.HTTP_400_BAD_REQUEST)
+
+            totp = pyotp.TOTP(user.token_mfa)
+
+            # Verificar código con ventana de tiempo más amplia para setup (2 períodos = 60 segundos)
+            is_valid = totp.verify(mfa_code, valid_window=2)
+
+            if not is_valid:
+                # Log del intento fallido para debug
+                import logging
+                logger = logging.getLogger(__name__)
+                current_code = totp.now()
+                logger.warning(f"MFA setup verification failed for user {user.email}. "
+                             f"Provided: {mfa_code}, Expected: {current_code}")
+
+                return Response({
+                    'error': 'Código MFA inválido. Asegúrese de usar el código actual de su aplicación autenticadora.'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+
+        except Exception as e:
+            return Response({
+                'error': 'Error al verificar código MFA'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        # Habilitar MFA definitivamente
+        user.mfa_enabled = True
+        user.save()
+
+        return Response({
+            'message': 'MFA habilitado exitosamente',
+            'mfa_enabled': True
+        }, status=status.HTTP_200_OK)
+
     def delete(self, request):
-        """Deshabilitar MFA"""
+        """Deshabilitar MFA - SOLO PARA TESTING, NO USAR EN PRODUCCIÓN"""
         user = request.user
         user.token_mfa = None
+        user.mfa_enabled = False
         user.save()
-        
+
         return Response({
             'message': 'MFA deshabilitado'
+        }, status=status.HTTP_200_OK)
+
+
+class MFASetupLoginView(APIView):
+    """
+    POST /api/v1/auth/mfa/setup-login
+    Login especial para usuarios sin MFA que necesitan configurarlo
+    """
+    permission_classes = [permissions.AllowAny]
+    throttle_classes = [LoginThrottle]
+
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        if not email or not password:
+            return Response({
+                'error': 'Email y password requeridos'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Autenticar usuario
+        user = authenticate(request, username=email, password=password)
+        if not user:
+            return Response({
+                'error': 'Credenciales inválidas'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        if user.estado != 'activo':
+            return Response({
+                'error': 'Usuario inactivo'
+            }, status=status.HTTP_403_FORBIDDEN)
+
+        # Solo permitir si el usuario NO tiene MFA configurado
+        if user.token_mfa and user.mfa_enabled:
+            return Response({
+                'error': 'Usuario ya tiene MFA configurado. Use login normal.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        # Generar token temporal para configurar MFA (15 minutos)
+        refresh = RefreshToken.for_user(user)
+        access_token = refresh.access_token
+        access_token.set_exp(lifetime=timezone.timedelta(minutes=15))
+
+        return Response({
+            'access': str(access_token),
+            'temp_token': True,
+            'message': 'Token temporal para configurar MFA',
+            'user': {
+                'id': user.id,
+                'email': user.email,
+                'nombre_usuario': user.nombre_usuario,
+                'rol': user.rol,
+                'mfa_enabled': user.mfa_enabled
+            }
         }, status=status.HTTP_200_OK)
 
 

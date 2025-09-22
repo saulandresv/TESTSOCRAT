@@ -16,19 +16,55 @@ export class AuthService {
    * Verificar MFA
    */
   static async verifyMFA(userId, mfaCode) {
-    const response = await apiClient.post('/auth/mfa/verify/', {
-      user_id: userId,
-      mfa_code: mfaCode,
+    console.log('🔐 AuthService.verifyMFA called with:', { userId, mfaCode });
+
+    try {
+      const response = await apiClient.post('/auth/mfa/verify/', {
+        user_id: userId,
+        mfa_code: mfaCode,
+      });
+      console.log('🔐 MFA verification response:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('🔐 MFA verification error:', error);
+      console.error('🔐 Error response data:', error.response?.data);
+      throw error;
+    }
+  }
+
+  /**
+   * Login temporal para configurar MFA
+   */
+  static async setupLogin(email, password) {
+    const response = await apiClient.post('/auth/mfa/setup-login/', {
+      email,
+      password,
     });
     return response.data;
   }
 
   /**
-   * Configurar MFA
+   * Configurar MFA (solo requiere autenticación)
    */
-  static async setupMFA(password) {
-    const response = await apiClient.post('/auth/mfa/setup/', {
-      password,
+  static async setupMFA() {
+    console.log('🔐 AuthService.setupMFA called');
+    try {
+      const response = await apiClient.post('/auth/mfa/setup/', {});
+      console.log('🔐 MFA setup response:', response.data);
+      console.log('🔐 QR code present:', !!response.data.qr_code);
+      return response.data;
+    } catch (error) {
+      console.error('🔐 MFA setup error:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Confirmar y habilitar MFA con código TOTP
+   */
+  static async confirmMFA(mfaCode) {
+    const response = await apiClient.put('/auth/mfa/setup/', {
+      mfa_code: mfaCode,
     });
     return response.data;
   }

@@ -24,28 +24,43 @@ class RateLimitMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
         
-        # Configuraciones de rate limiting
+        # Configuraciones de rate limiting - AUMENTADAS PARA DESARROLLO
         self.rate_limits = {
-            # APIs críticas - límites más estrictos
+            # APIs críticas - límites más permisivos para desarrollo
             '/api/analysis/': {
-                'requests': 10,
-                'window': 60,  # 10 requests per minute
+                'requests': 100,
+                'window': 60,  # 100 requests per minute
                 'message': 'Demasiadas solicitudes de análisis. Intente más tarde.'
             },
-            '/api/auth/login/': {
-                'requests': 5,
-                'window': 300,  # 5 attempts per 5 minutes
+            '/api/v1/auth/login/': {
+                'requests': 50,
+                'window': 300,  # 50 attempts per 5 minutes
                 'message': 'Demasiados intentos de login. Espere 5 minutos.'
             },
             '/api/certificates/create/': {
-                'requests': 20,
-                'window': 3600,  # 20 certificates per hour
+                'requests': 200,
+                'window': 3600,  # 200 certificates per hour
                 'message': 'Límite de certificados creados por hora alcanzado.'
             },
-            # API general
+            '/api/certs/': {
+                'requests': 1000,
+                'window': 3600,  # 1000 requests per hour for certificates API
+                'message': 'Límite de requests de certificados por hora alcanzado.'
+            },
+            '/api/clients/': {
+                'requests': 500,
+                'window': 3600,  # 500 requests per hour for clients API
+                'message': 'Límite de requests de clientes por hora alcanzado.'
+            },
+            '/api/v1/': {
+                'requests': 1000,
+                'window': 3600,  # 1000 requests per hour for v1 API
+                'message': 'Límite de requests v1 por hora alcanzado.'
+            },
+            # API general - límite muy alto para desarrollo
             '/api/': {
-                'requests': 100,
-                'window': 3600,  # 100 requests per hour for general API
+                'requests': 2000,
+                'window': 3600,  # 2000 requests per hour for general API
                 'message': 'Límite de requests por hora alcanzado.'
             }
         }

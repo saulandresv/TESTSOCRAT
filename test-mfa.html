@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test MFA Setup</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        input, button { padding: 10px; margin: 5px; display: block; width: 300px; }
+        .qr-code { text-align: center; margin: 20px 0; }
+        .qr-code img { max-width: 200px; border: 1px solid #ccc; }
+        .step { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        .error { color: red; background: #ffe6e6; padding: 10px; border-radius: 5px; }
+        .success { color: green; background: #e6ffe6; padding: 10px; border-radius: 5px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Test MFA Setup</h1>
+
+        <!-- Step 1: Login -->
+        <div id="step1" class="step">
+            <h3>Paso 1: Login</h3>
+            <input type="email" id="email" placeholder="Email" value="admin@socrates.com">
+            <input type="password" id="password" placeholder="Password" value="admin123">
+            <button onclick="testLogin()">Login</button>
+        </div>
+
+        <!-- Step 2: MFA Setup -->
+        <div id="step2" class="step hidden">
+            <h3>Paso 2: Configurar MFA</h3>
+            <button onclick="setupMFA()">Obtener QR Code</button>
+        </div>
+
+        <!-- Step 3: QR Code -->
+        <div id="step3" class="step hidden">
+            <h3>Paso 3: Escanear QR Code</h3>
+            <div class="qr-code">
+                <img id="qrImage" src="" alt="QR Code">
+            </div>
+            <p><strong>Código manual:</strong> <span id="secretCode"></span></p>
+            <input type="text" id="mfaCode" placeholder="Código de 6 dígitos" maxlength="6">
+            <button onclick="confirmMFA()">Confirmar MFA</button>
+        </div>
+
+        <!-- Messages -->
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api/v1';
+        let tempToken = null;
+
+        function showMessage(msg, type = 'info') {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = type;
+            messageDiv.innerHTML = msg;
+        }
+
+        function showStep(stepNum) {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`step${i}`).classList.toggle('hidden', i !== stepNum);
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                showMessage('🔍 Intentando login...');
+                const response = await fetch(`${API_BASE}/auth/login/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                console.log('Login response:', data);
+
+                if (data.mfa_setup_required) {
+                    showMessage('⚙️ MFA requerido. Configurando...', 'info');
+                    showStep(2);
+
+                    // Obtener token temporal
+                    const setupResponse = await fetch(`${API_BASE}/auth/mfa/setup-login/`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+
+                    const setupData = await setupResponse.json();
+                    tempToken = setupData.access;
+                    showMessage('✅ Token temporal obtenido', 'success');
+                } else if (data.mfa_required) {
+                    showMessage('🔒 MFA requerido pero ya configurado', 'info');
+                } else {
+                    showMessage('✅ Login exitoso', 'success');
+                }
+            } catch (error) {
+                showMessage(`❌ Error: ${error.message}`, 'error');
+                console.error('Error:', error);
+            }
+        }
+
+        async function setupMFA() {
+            if (!tempToken) {
+                showMessage('❌ No hay token temporal', 'error');
+                return;
+            }
+
+            try {
+                showMessage('📱 Generando QR code...');
+                const response = await fetch(`${API_BASE}/auth/mfa/setup/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${tempToken}`
+                    },
+                    body: JSON.stringify({})
+                });
+
+                const data = await response.json();
+                console.log('Setup response:', data);
+
+                if (data.qr_code) {
+                    document.getElementById('qrImage').src = data.qr_code;
+                    document.getElementById('secretCode').textContent = data.secret;
+                    showMessage('✅ QR Code generado. Escanéalo con tu app autenticadora', 'success');
+                    showStep(3);
+                } else {
+                    showMessage('❌ Error generando QR code', 'error');
+                }
+            } catch (error) {
+                showMessage(`❌ Error: ${error.message}`, 'error');
+                console.error('Error:', error);
+            }
+        }
+
+        async function confirmMFA() {
+            const mfaCode = document.getElementById('mfaCode').value;
+
+            if (!mfaCode || mfaCode.length !== 6) {
+                showMessage('❌ Ingresa un código de 6 dígitos', 'error');
+                return;
+            }
+
+            try {
+                showMessage('🔐 Confirmando MFA...');
+                const response = await fetch(`${API_BASE}/auth/mfa/setup/`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${tempToken}`
+                    },
+                    body: JSON.stringify({ mfa_code: mfaCode })
+                });
+
+                const data = await response.json();
+                console.log('Confirm response:', data);
+
+                if (data.mfa_enabled) {
+                    showMessage('🎉 MFA configurado exitosamente!', 'success');
+                } else {
+                    showMessage(`❌ Error: ${data.error || 'Código inválido'}`, 'error');
+                }
+            } catch (error) {
+                showMessage(`❌ Error: ${error.message}`, 'error');
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

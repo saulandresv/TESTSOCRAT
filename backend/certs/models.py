@@ -60,6 +60,11 @@ class Certificate(models.Model):
         if self.ip and self.url:
             raise ValidationError('Especifique solo IP o URL, no ambos')
     
+    def get_target_display(self):
+        """Retorna la representación del target (IP o URL) con puerto"""
+        target = self.ip or self.url
+        return f"{target}:{self.puerto}"
+
     def __str__(self):
         target = self.ip or self.url
         return f"{target}:{self.puerto} ({self.protocolo})"

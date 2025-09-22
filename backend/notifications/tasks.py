@@ -34,9 +34,8 @@ def check_certificate_expiration_alerts(self):
             
             # Buscar certificados que expiran en exactamente N días
             certificates = Certificate.objects.filter(
-                expiry_date__date=expiry_date.date(),
-                expiry_date__gte=now
-            ).select_related('client')
+                fecha_expiracion=expiry_date.date()
+            ).select_related('cliente')
             
             for certificate in certificates:
                 try:
@@ -76,7 +75,7 @@ def check_vulnerability_alerts(self):
         critical_analyses = Analysis.objects.filter(
             fecha_fin__gte=cutoff_time,
             tuvo_exito=True
-        ).select_related('certificado', 'certificado__client')
+        ).select_related('certificado', 'certificado__cliente')
         
         results = {'alerts_sent': 0, 'errors': 0}
         
@@ -178,7 +177,7 @@ def send_weekly_summary_reports(self):
         for client in clients:
             try:
                 # Verificar si el cliente tiene certificados
-                cert_count = Certificado.objects.filter(cliente=client).count()
+                cert_count = Certificate.objects.filter(cliente=client).count()
                 if cert_count == 0:
                     continue
                 
@@ -215,7 +214,7 @@ def send_monthly_summary_reports(self):
         
         for client in clients:
             try:
-                cert_count = Certificado.objects.filter(cliente=client).count()
+                cert_count = Certificate.objects.filter(cliente=client).count()
                 if cert_count == 0:
                     continue
                 

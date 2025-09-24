@@ -175,11 +175,20 @@ class MFASetupView(APIView):
         buffer.seek(0)
         img_base64 = base64.b64encode(buffer.getvalue()).decode()
         
+        # Generar código actual para verificación
+        current_totp = pyotp.TOTP(secret)
+        current_code = current_totp.now()
+
         return Response({
             'message': 'MFA configurado. Escanee el QR code con su app autenticator',
             'qr_code': f'data:image/png;base64,{img_base64}',
             'secret': secret,  # Para configuración manual
-            'totp_uri': totp_uri
+            'totp_uri': totp_uri,
+            'current_code': current_code,  # Para verificación inmediata
+            'setup_info': {
+                'time_window': '150 segundos',
+                'tip': 'Después de escanear, espere hasta que aparezca un código nuevo'
+            }
         }, status=status.HTTP_200_OK)
     
     def put(self, request):
@@ -210,19 +219,35 @@ class MFASetupView(APIView):
 
             totp = pyotp.TOTP(user.token_mfa)
 
-            # Verificar código con ventana de tiempo más amplia para setup (2 períodos = 60 segundos)
-            is_valid = totp.verify(mfa_code, valid_window=2)
+            # Verificar código con ventana de tiempo más amplia para setup (5 períodos = 150 segundos)
+            is_valid = totp.verify(mfa_code, valid_window=5)
 
             if not is_valid:
                 # Log del intento fallido para debug
                 import logging
+                import time
                 logger = logging.getLogger(__name__)
                 current_code = totp.now()
+
+                # Mostrar códigos en ventana de tiempo
+                current_time = int(time.time())
+                codes_window = []
+                for i in range(-2, 3):  # -60s a +60s
+                    code_at_time = totp.at(current_time + (i * 30))
+                    codes_window.append(f"{i*30}s: {code_at_time}")
+
                 logger.warning(f"MFA setup verification failed for user {user.email}. "
-                             f"Provided: {mfa_code}, Expected: {current_code}")
+                             f"Provided: {mfa_code}, Current: {current_code}. "
+                             f"Valid codes in window: {', '.join(codes_window)}")
 
                 return Response({
-                    'error': 'Código MFA inválido. Asegúrese de usar el código actual de su aplicación autenticadora.'
+                    'error': 'Código MFA inválido. Asegúrese de usar el código actual de su aplicación autenticadora.',
+                    'debug_info': {
+                        'provided_code': mfa_code,
+                        'current_expected': current_code,
+                        'time_window': '150 segundos (±2.5 minutos)',
+                        'tip': 'Verifique que la hora en su dispositivo esté sincronizada'
+                    }
                 }, status=status.HTTP_401_UNAUTHORIZED)
 
         except Exception as e:

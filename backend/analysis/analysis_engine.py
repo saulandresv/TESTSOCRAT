@@ -3,6 +3,8 @@ import socket
 import subprocess
 import json
 import re
+import requests
+import logging
 from datetime import datetime, date
 from urllib.parse import urlparse
 from django.utils import timezone
@@ -12,6 +14,8 @@ from .models import (
     CadenaCertificacion, ParametrosWeb, OtrosParametros
 )
 from .external_tools import ExternalSSLAnalyzer
+from .ssh_analyzer import SSHAnalyzer
+from .vulnerability_scanner import VulnerabilityScanner
 
 
 class SSLAnalysisEngine:
@@ -22,6 +26,9 @@ class SSLAnalysisEngine:
     def __init__(self):
         self.timeout = 10
         self.external_analyzer = ExternalSSLAnalyzer()
+        self.ssh_analyzer = SSHAnalyzer()
+        self.vulnerability_scanner = VulnerabilityScanner()
+        self.logger = logging.getLogger(__name__)
     
     def ejecutar_analisis_ssl(self, certificado):
         """
@@ -179,14 +186,19 @@ class SSLAnalysisEngine:
             else:
                 hostname = cert.ip
 
-            # Ejecutar diferentes tipos de análisis
+            # Ejecutar diferentes tipos de análisis según el protocolo
             if analysis.tipo in ['SSL_TLS', 'FULL']:
                 self._analyze_ssl_certificate(analysis, hostname, cert.puerto)
-                self._check_ssl_vulnerabilities(analysis, hostname, cert.puerto)
-                self._run_external_analysis(analysis, hostname, cert.puerto)
+                self._run_comprehensive_ssl_analysis(analysis, hostname, cert.puerto)
 
-            if analysis.tipo in ['WEB', 'FULL']:
+            elif analysis.tipo == 'SSH':
+                self._analyze_ssh_service(analysis, hostname, cert.puerto)
+
+            elif analysis.tipo in ['WEB', 'FULL']:
                 self._analyze_web_security(analysis, hostname, cert.puerto)
+
+            # Análisis de vulnerabilidades para todos los tipos
+            self._scan_vulnerabilities(analysis, hostname, cert.puerto)
 
             # Marcar como exitoso y guardar
             analysis.tuvo_exito = True
@@ -436,195 +448,142 @@ class SSLAnalysisEngine:
             )
         except Exception:
             pass  # Ignorar errores en análisis de respaldo
-        # Verificar protocolos débiles
-        try:
-            tls_params = analysis.parametros_tls
-            if tls_params:
-                if tls_params.sslv2_supported:
-                    vulnerabilities.append({
-                        'name': 'WEAK_PROTOCOL',
-                        'severity': 'CRITICAL',
-                        'description': 'SSLv2 soportado - protocolo inseguro'
-                    })
-                if tls_params.sslv3_supported:
-                    vulnerabilities.append({
-                        'name': 'POODLE',
-                        'severity': 'HIGH',
-                        'description': 'SSLv3 soportado - vulnerable a POODLE'
-                    })
-        except:
-            pass
-        
-        # Crear registros de vulnerabilidades
-        for vuln in vulnerabilities:
-            Vulnerabilidades.objects.create(
-                analisis=analysis,
-                vulnerabilidad=vuln['name'],
-                severity=vuln['severity'],
-                description=vuln['description']
-            )
-    
-    def _validate_certificate_chain(self, analysis, hostname, port):
+
+    def _run_comprehensive_ssl_analysis(self, analysis, hostname, port):
         """
-        Validar cadena de certificación
+        Ejecutar análisis SSL/TLS completo según especificaciones del PDF
         """
         try:
-            # Usar openssl para validar cadena
-            cmd = [
-                'openssl', 's_client', '-connect', f'{hostname}:{port}',
-                '-verify_return_error', '-brief'
-            ]
-            
-            result = subprocess.run(
-                cmd, capture_output=True, text=True, 
-                timeout=self.timeout, input=''
-            )
-            
-            chain_ok = result.returncode == 0
-            errors = not chain_ok
-            
-            # Detectar auto-firmado
-            autofirmado = 'self signed' in result.stderr.lower()
-            
-            CadenaCertificacion.objects.create(
-                analisis=analysis,
-                cadena_ok=chain_ok,
-                errores=errors,
-                autofirmado=autofirmado,
-                validation_errors=result.stderr[:500] if result.stderr else ''
-            )
-            
-        except subprocess.TimeoutExpired:
-            CadenaCertificacion.objects.create(
-                analisis=analysis,
-                cadena_ok=False,
-                errores=True,
-                validation_errors='Timeout en validación de cadena'
-            )
+            # Usar herramientas externas para análisis completo
+            results = self.external_analyzer.comprehensive_ssl_analysis(hostname, port)
+
+            # Actualizar parámetros TLS con información detallada
+            if hasattr(analysis, 'parametros_tls'):
+                tls_params = analysis.parametros_tls
+
+                # Actualizar con protocolos soportados
+                if 'supported_protocols' in results:
+                    tls_params.sslv2_supported = 'SSLv2' in results['supported_protocols']
+                    tls_params.sslv3_supported = 'SSLv3' in results['supported_protocols']
+                    tls_params.tls10_supported = 'TLSv1.0' in results['supported_protocols']
+                    tls_params.tls11_supported = 'TLSv1.1' in results['supported_protocols']
+                    tls_params.tls12_supported = 'TLSv1.2' in results['supported_protocols']
+                    tls_params.tls13_supported = 'TLSv1.3' in results['supported_protocols']
+
+                # Actualizar con cifrados disponibles
+                if 'cipher_suites' in results:
+                    tls_params.cifrados_disponibles = json.dumps(results['cipher_suites'])
+
+                # Verificar Perfect Forward Secrecy
+                if 'pfs_supported' in results:
+                    tls_params.pfs = results['pfs_supported']
+
+                tls_params.save()
+
         except Exception as e:
-            CadenaCertificacion.objects.create(
-                analisis=analysis,
-                cadena_ok=False,
-                errores=True,
-                validation_errors=f'Error: {str(e)}'
-            )
-    
-    def _analyze_web_security(self, analysis, hostname, port):
+            logger.error(f"Comprehensive SSL analysis failed: {e}")
+
+    def _analyze_ssh_service(self, analysis, hostname, port):
         """
-        Analizar headers de seguridad web
+        Análisis completo de servicio SSH
         """
         try:
-            import urllib.request
-            
-            url = f'https://{hostname}:{port}' if port != 443 else f'https://{hostname}'
-            
-            request = urllib.request.Request(url)
-            request.add_header('User-Agent', 'Socrates-SSL-Analyzer/1.0')
-            
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
-                headers = response.headers
-                
-                ParametrosWeb.objects.create(
+            # Ejecutar análisis SSH usando el nuevo analizador
+            ssh_results = self.ssh_analyzer.analyze_ssh_service(hostname, port)
+
+            # Crear parámetros específicos para SSH (agregar a un nuevo modelo si es necesario)
+            OtrosParametros.objects.create(
+                analisis=analysis,
+                disponibilidad=ssh_results.get('connection_successful', False),
+                tiempo_respuesta_ssl=0,  # No aplica para SSH
+                handshake_time_ms=0,     # No aplica para SSH
+                observaciones=f"SSH Analysis: Version {ssh_results.get('ssh_version', 'Unknown')}, "
+                             f"Security Score: {ssh_results.get('security_score', 0)}/100"
+            )
+
+            # Crear vulnerabilidades específicas de SSH
+            for weak_alg in ssh_results.get('weak_algorithms', []):
+                Vulnerabilidades.objects.create(
                     analisis=analysis,
-                    hsts='strict-transport-security' in headers,
-                    expect_ct='expect-ct' in headers,
-                    hpkp='public-key-pins' in headers,
-                    sni=True,  # Asumir SNI si la conexión funcionó
-                    ocsp_stapling=False,  # Requiere análisis más profundo
-                    content_security_policy=headers.get('content-security-policy', ''),
-                    x_frame_options=headers.get('x-frame-options', ''),
-                    x_content_type_options=headers.get('x-content-type-options', ''),
-                    referrer_policy=headers.get('referrer-policy', '')
+                    vulnerabilidad=f"SSH Weak Algorithm: {weak_alg['algorithm']}",
+                    severity='MEDIUM',
+                    description=weak_alg['issue'],
+                    recommendation=f"Replace {weak_alg['algorithm']} with stronger alternative"
                 )
-                
+
         except Exception as e:
-            # Crear registro con valores por defecto
-            ParametrosWeb.objects.create(
-                analisis=analysis,
-                hsts=False,
-                expect_ct=False,
-                hpkp=False,
-                sni=None,
-                ocsp_stapling=None
-            )
-    
-    def _fallback_openssl_analysis(self, analysis, hostname, port):
+            logger.error(f"SSH analysis failed: {e}")
+
+    def _scan_vulnerabilities(self, analysis, hostname, port):
         """
-        Análisis de respaldo usando openssl command line
+        Escanear vulnerabilidades conocidas según especificaciones del PDF
         """
         try:
-            cmd = ['openssl', 's_client', '-connect', f'{hostname}:{port}', '-showcerts']
-            
-            result = subprocess.run(
-                cmd, capture_output=True, text=True,
-                timeout=self.timeout, input=''
-            )
-            
-            if result.returncode == 0:
-                # Extraer información básica del output
-                output = result.stdout
-                
-                # Buscar información del certificado
-                cert_match = re.search(r'subject=(.+)', output)
-                issuer_match = re.search(r'issuer=(.+)', output)
-                
-                subject = cert_match.group(1) if cert_match else ''
-                issuer = issuer_match.group(1) if issuer_match else ''
-                
-                ParametrosGenerales.objects.create(
-                    analisis=analysis,
-                    subject=subject[:255],
-                    issuer=issuer[:255]
-                )
-                
-        except Exception as e:
-            pass
-    
-    def _run_external_analysis(self, analysis, hostname, port):
-        """
-        Ejecutar análisis con herramientas externas
-        """
-        try:
-            # Análisis con herramientas externas
-            nmap_results = self.external_analyzer.analyze_with_nmap(hostname, port)
-            openssl_results = self.external_analyzer.analyze_with_openssl(hostname, port)
-            
-            # Verificaciones adicionales de vulnerabilidades
-            external_vulns = self.external_analyzer.check_vulnerabilities(hostname, port)
-            for vuln in external_vulns:
+            # Ejecutar escaneo de vulnerabilidades
+            vulnerabilities = self.vulnerability_scanner.scan_vulnerabilities(hostname, port)
+
+            # Crear registros de vulnerabilidades encontradas
+            for vuln in vulnerabilities:
                 Vulnerabilidades.objects.create(
                     analisis=analysis,
                     vulnerabilidad=vuln['name'],
                     severity=vuln['severity'],
-                    description=vuln['description']
+                    description=vuln['description'],
+                    recommendation=vuln['recommendation']
                 )
-            
-            # Verificar Certificate Transparency
-            ct_results = self.external_analyzer.check_certificate_transparency(hostname)
-            
-            # Verificar OCSP Stapling
-            ocsp_results = self.external_analyzer.check_ocsp_stapling(hostname, port)
-            
-            # Actualizar parámetros web con resultados OCSP
-            if hasattr(analysis, 'parametros_web') and analysis.parametros_web:
-                web_params = analysis.parametros_web
-                if 'ocsp_stapling' in ocsp_results:
-                    web_params.ocsp_stapling = ocsp_results['ocsp_stapling']
-                    web_params.save()
-            
-            # Guardar resultados en otros_parametros
-            otros_params, created = OtrosParametros.objects.get_or_create(
-                analisis=analysis,
-                defaults={
-                    'observaciones': json.dumps({
-                        'nmap_results': nmap_results,
-                        'openssl_advanced': openssl_results,
-                        'ct_logs': ct_results,
-                        'ocsp_stapling': ocsp_results
-                    })
-                }
-            )
-            
+
         except Exception as e:
-            # Log error but don't fail the entire analysis
-            analysis.comentarios += f"\nExternal analysis error: {str(e)}"
+            logger.error(f"Vulnerability scanning failed: {e}")
+
+    def _enhanced_web_security_analysis(self, analysis, hostname, port):
+        """
+        Análisis mejorado de seguridad web según especificaciones del PDF
+        """
+        try:
+            # Análisis de headers de seguridad HTTP
+            url = f"https://{hostname}:{port}" if port != 443 else f"https://{hostname}"
+
+            headers_to_check = {
+                'Strict-Transport-Security': 'hsts',
+                'Expect-CT': 'expect_ct',
+                'Public-Key-Pins': 'hpkp'
+            }
+
+            response = requests.get(url, timeout=self.timeout, verify=False)
+
+            web_params = {
+                'hsts': 'Strict-Transport-Security' in response.headers,
+                'expect_ct': 'Expect-CT' in response.headers,
+                'hpkp': 'Public-Key-Pins' in response.headers,
+                'sni': True,  # Asumir SNI soportado si HTTPS funciona
+                'ocsp_stapling': False  # Requiere análisis más profundo
+            }
+
+            # Verificar OCSP Stapling usando herramientas externas
+            ocsp_result = self._check_ocsp_stapling(hostname, port)
+            web_params['ocsp_stapling'] = ocsp_result
+
+            ParametrosWeb.objects.create(
+                analisis=analysis,
+                **web_params
+            )
+
+        except Exception as e:
+            logger.error(f"Enhanced web security analysis failed: {e}")
+
+    def _check_ocsp_stapling(self, hostname, port):
+        """
+        Verificar si OCSP Stapling está habilitado
+        """
+        try:
+            # Usar openssl para verificar OCSP stapling
+            cmd = ['openssl', 's_client', '-connect', f'{hostname}:{port}',
+                   '-status', '-servername', hostname]
+
+            result = subprocess.run(cmd, input='', capture_output=True,
+                                  text=True, timeout=self.timeout)
+
+            return 'OCSP response' in result.stdout
+
+        except Exception:
+            return False

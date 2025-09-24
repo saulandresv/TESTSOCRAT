@@ -1915,3 +1915,910 @@ WARNING 2025-09-22 10:19:03,420 tasks 22 140016034491264 Failed to send down ale
 ERROR 2025-09-22 10:19:03,422 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
 WARNING 2025-09-22 10:19:03,423 tasks 22 140016034491264 Failed to send down alert for https://www.google.com:443
 INFO 2025-09-22 10:19:03,423 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 7}
+INFO 2025-09-22 10:29:42,036 autoreload 12 140366297324416 Watching for file changes with StatReloader
+INFO 2025-09-22 10:31:10,528 autoreload 11 140257784130432 Watching for file changes with StatReloader
+INFO 2025-09-22 10:33:10,328 autoreload 11 140257784130432 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:33:11,542 autoreload 25 139679079078784 Watching for file changes with StatReloader
+INFO 2025-09-22 10:33:18,650 autoreload 25 139679079078784 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:33:20,033 autoreload 27 139932713028480 Watching for file changes with StatReloader
+INFO 2025-09-22 10:33:28,533 autoreload 27 139932713028480 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:33:29,767 autoreload 29 140320812383104 Watching for file changes with StatReloader
+ERROR 2025-09-22 10:34:03,345 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,346 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 10:34:03,347 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,348 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 10:34:03,350 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,350 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 10:34:03,385 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,385 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 10:34:03,388 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,389 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 10:34:03,403 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,404 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 10:34:03,413 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,413 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 10:34:03,439 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,439 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 10:34:03,450 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,450 tasks 22 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 10:34:03,452 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:34:03,453 tasks 22 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 10:34:03,453 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+INFO 2025-09-22 10:34:08,612 autoreload 29 140320812383104 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:34:09,941 autoreload 31 140348815059840 Watching for file changes with StatReloader
+INFO 2025-09-22 10:35:53,567 autoreload 31 140348815059840 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:35:54,865 autoreload 33 140506633325440 Watching for file changes with StatReloader
+INFO 2025-09-22 10:36:03,722 autoreload 33 140506633325440 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:36:04,882 autoreload 35 139722077473664 Watching for file changes with StatReloader
+INFO 2025-09-22 10:37:53,295 tasks 22 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-22 10:37:53,388 tasks 23 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-22 10:39:52,716 autoreload 35 139722077473664 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:39:53,937 autoreload 68 140498826910592 Watching for file changes with StatReloader
+INFO 2025-09-22 10:40:12,549 autoreload 68 140498826910592 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-22 10:40:13,779 autoreload 70 140466436905856 Watching for file changes with StatReloader
+WARNING 2025-09-22 10:42:24,732 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:24,733 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:24,739 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:24,740 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,013 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,015 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,026 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,027 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,357 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,358 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,371 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,372 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,719 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,721 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:25,736 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:25,738 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,155 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,157 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,163 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,165 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,519 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,521 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,531 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,533 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,890 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,891 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:26,905 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:26,906 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:27,314 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:27,315 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:27,334 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:27,336 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:27,837 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:27,838 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:27,846 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:27,848 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:28,315 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:28,316 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:28,324 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:28,326 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:28,680 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:28,681 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:28,699 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:28,700 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:28,987 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:28,988 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,000 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:29,001 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,319 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:29,320 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,329 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:29,330 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,613 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:29,617 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,630 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:29,632 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:29,998 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,000 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:30,010 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,011 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:30,422 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,424 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:30,435 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,437 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:30,758 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,759 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:30,771 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:30,772 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,056 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,057 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,069 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,070 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,403 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,405 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,413 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,414 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,728 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,729 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:31,739 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:31,740 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,070 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,071 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,084 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,085 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,406 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,408 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,424 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,425 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,758 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,759 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:32,768 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:32,769 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,023 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,025 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,033 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,034 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,273 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,274 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,283 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,284 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,494 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,495 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,503 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,504 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,802 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,804 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:33,813 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:33,814 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,055 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,056 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,068 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,069 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,286 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,287 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,294 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,295 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,526 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,527 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,535 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,536 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,798 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,799 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:34,807 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:34,808 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,067 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,068 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,079 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,080 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,330 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,331 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,338 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,339 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,591 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,593 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,600 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,601 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,872 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,873 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:35,880 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:35,881 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,174 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,175 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,181 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,182 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,417 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,418 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,424 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,425 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,668 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,669 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,687 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,688 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,957 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,958 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:36,964 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:36,965 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,246 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,246 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,259 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,260 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,464 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,465 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,472 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,473 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,729 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,730 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,738 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,739 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,980 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,981 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:37,990 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:37,991 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,319 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,322 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,335 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,336 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,657 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,658 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,666 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,668 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,971 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,972 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:38,982 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:38,983 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,262 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,263 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,271 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,272 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,537 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,538 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,548 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,549 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,820 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,821 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:39,829 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:39,830 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,099 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,101 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,109 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,110 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,419 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,420 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,429 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,431 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,745 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,746 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:40,756 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:40,757 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,059 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,060 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,074 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,075 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,374 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,375 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,384 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,385 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,660 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,661 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,672 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,673 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,924 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,925 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:41,936 log 70 140466288608960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 10:42:41,937 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 10:42:46,814 log 70 140466288608960 Forbidden: /api/v1/auth/login/
+WARNING 2025-09-22 10:42:46,815 basehttp 70 140466288608960 "POST /api/v1/auth/login/ HTTP/1.1" 403 202
+INFO 2025-09-22 10:42:47,053 basehttp 70 140466288608960 "POST /api/v1/auth/mfa/setup-login/ HTTP/1.1" 200 410
+INFO 2025-09-22 10:42:47,166 basehttp 70 140466288608960 "POST /api/v1/auth/mfa/setup/ HTTP/1.1" 200 2146
+WARNING 2025-09-22 10:42:52,198 log 70 140466288608960 Unauthorized: /api/v1/auth/mfa/setup/
+WARNING 2025-09-22 10:42:52,199 basehttp 70 140466288608960 "PUT /api/v1/auth/mfa/setup/ HTTP/1.1" 401 104
+INFO 2025-09-22 10:42:52,476 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20848
+INFO 2025-09-22 10:42:52,568 basehttp 70 140466270004928 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20848
+WARNING 2025-09-22 10:43:19,861 log 70 140466270004928 Forbidden: /api/v1/auth/login/
+WARNING 2025-09-22 10:43:19,862 basehttp 70 140466270004928 "POST /api/v1/auth/login/ HTTP/1.1" 403 202
+INFO 2025-09-22 10:43:20,112 basehttp 70 140466270004928 "POST /api/v1/auth/mfa/setup-login/ HTTP/1.1" 200 410
+INFO 2025-09-22 10:43:20,214 basehttp 70 140466270004928 "POST /api/v1/auth/mfa/setup/ HTTP/1.1" 200 2154
+WARNING 2025-09-22 10:43:44,030 log 70 140466270004928 Unauthorized: /api/v1/auth/mfa/setup/
+WARNING 2025-09-22 10:43:44,031 basehttp 70 140466270004928 "PUT /api/v1/auth/mfa/setup/ HTTP/1.1" 401 104
+INFO 2025-09-22 10:43:44,293 basehttp 70 140466270004928 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20848
+INFO 2025-09-22 10:43:44,386 basehttp 70 140466288608960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20848
+INFO 2025-09-22 10:44:32,267 autoreload 70 140466436905856 /app/accounts/views.py changed, reloading.
+INFO 2025-09-22 10:44:33,497 autoreload 89 140709932428160 Watching for file changes with StatReloader
+INFO 2025-09-22 10:44:44,043 autoreload 89 140709932428160 /app/accounts/views.py changed, reloading.
+INFO 2025-09-22 10:44:45,440 autoreload 91 139659243150208 Watching for file changes with StatReloader
+ERROR 2025-09-22 10:49:03,346 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,346 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 10:49:03,348 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,349 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 10:49:03,352 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,352 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 10:49:03,355 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,356 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 10:49:03,357 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,357 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 10:49:03,358 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,359 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 10:49:03,378 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,378 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 10:49:03,380 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,380 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 10:49:03,389 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,390 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 10:49:03,396 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 10:49:03,396 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+INFO 2025-09-22 10:49:03,409 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+ERROR 2025-09-22 11:04:03,343 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,343 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:04:03,360 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,360 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:04:03,362 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,362 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:04:03,365 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,365 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 11:04:03,368 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,369 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:04:03,370 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,370 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 11:04:03,371 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,371 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:04:03,389 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,389 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:04:03,390 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,391 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:04:03,399 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,399 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 11:04:03,406 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:04:03,406 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+INFO 2025-09-22 11:04:03,412 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 11}
+INFO 2025-09-22 11:07:53,338 tasks 22 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 11:19:03,340 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,340 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 11:19:03,345 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,345 tasks 22 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 11:19:03,353 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,359 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:19:03,373 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,374 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:19:03,375 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,375 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:19:03,378 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,378 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 11:19:03,381 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,381 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:19:03,382 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,382 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 11:19:03,383 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,384 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:19:03,401 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,401 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:19:03,402 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,403 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:19:03,410 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:19:03,410 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+INFO 2025-09-22 11:19:03,416 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 12}
+ERROR 2025-09-22 11:34:03,395 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,395 tasks 22 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 11:34:03,397 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,397 tasks 22 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 11:34:03,399 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,399 tasks 22 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 11:34:03,403 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,403 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:34:03,404 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,404 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 11:34:03,407 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,407 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:34:03,408 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,409 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:34:03,410 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,411 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:34:03,412 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,412 tasks 22 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 11:34:03,413 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,414 tasks 22 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 11:34:03,415 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,415 tasks 22 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 11:34:03,416 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,417 tasks 22 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 11:34:03,419 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,419 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:34:03,420 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,420 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:34:03,421 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,421 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:34:03,422 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,422 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 11:34:03,424 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,424 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:34:03,425 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,425 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:34:03,427 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,427 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:34:03,429 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,429 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:34:03,432 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,432 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:34:03,433 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,433 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:34:03,438 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,438 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 11:34:03,442 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,443 tasks 22 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 11:34:03,451 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,451 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:34:03,465 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,465 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:34:03,466 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,466 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:34:03,469 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,469 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 11:34:03,472 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,472 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:34:03,473 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,474 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 11:34:03,475 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,475 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:34:03,492 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,492 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:34:03,493 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:34:03,494 tasks 22 140016034491264 Failed to send down alert for github.com:443
+INFO 2025-09-22 11:34:03,498 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 33}
+INFO 2025-09-22 11:37:53,294 tasks 22 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-22 11:37:53,334 tasks 22 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 11:49:03,489 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,489 tasks 22 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 11:49:03,492 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,492 tasks 22 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 11:49:03,493 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,493 tasks 22 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 11:49:03,497 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,497 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:49:03,499 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,499 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 11:49:03,501 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,501 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:49:03,502 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,503 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:49:03,505 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,505 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:49:03,506 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,507 tasks 22 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 11:49:03,508 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,508 tasks 22 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 11:49:03,509 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,510 tasks 22 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 11:49:03,511 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,511 tasks 22 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 11:49:03,513 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,513 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:49:03,515 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,515 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:49:03,516 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,516 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:49:03,518 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,518 tasks 22 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 11:49:03,519 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,520 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:49:03,521 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,521 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:49:03,523 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,523 tasks 22 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 11:49:03,525 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,526 tasks 22 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 11:49:03,528 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,529 tasks 22 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 11:49:03,530 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,530 tasks 22 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 11:49:03,535 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,536 tasks 22 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 11:49:03,541 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,541 tasks 22 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 11:49:03,550 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,550 tasks 22 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 11:49:03,565 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,565 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:49:03,567 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,567 tasks 22 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 11:49:03,570 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,570 tasks 22 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 11:49:03,573 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,574 tasks 22 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 11:49:03,575 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,575 tasks 22 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 11:49:03,576 email_service 22 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 11:49:03,577 tasks 22 140016034491264 Failed to send down alert for github.com:443
+INFO 2025-09-22 11:49:03,592 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 31}
+INFO 2025-09-22 12:24:37,648 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 12:24:37,787 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,788 tasks 23 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 12:24:37,792 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,793 tasks 23 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 12:24:37,795 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,795 tasks 23 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 12:24:37,803 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,803 tasks 23 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 12:24:37,805 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,805 tasks 23 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 12:24:37,809 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,810 tasks 23 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 12:24:37,811 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,812 tasks 23 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 12:24:37,815 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,816 tasks 23 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 12:24:37,817 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,818 tasks 23 140016034491264 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-22 12:24:37,820 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,820 tasks 23 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 12:24:37,822 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,823 tasks 23 140016034491264 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-22 12:24:37,825 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,825 tasks 23 140016034491264 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-22 12:24:37,828 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,829 tasks 23 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 12:24:37,830 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,831 tasks 23 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 12:24:37,832 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,833 tasks 23 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 12:24:37,835 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,835 tasks 23 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-22 12:24:37,837 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,837 tasks 23 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 12:24:37,839 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,840 tasks 23 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 12:24:37,843 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,843 tasks 23 140016034491264 Failed to send down alert for google.com:443
+ERROR 2025-09-22 12:24:37,846 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,846 tasks 23 140016034491264 Failed to send down alert for apple.com:443
+ERROR 2025-09-22 12:24:37,851 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,851 tasks 23 140016034491264 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-22 12:24:37,854 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,855 tasks 23 140016034491264 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-22 12:24:37,866 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,867 tasks 23 140016034491264 Failed to send down alert for amazon.com:443
+ERROR 2025-09-22 12:24:37,875 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,876 tasks 23 140016034491264 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-22 12:24:37,896 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,896 tasks 23 140016034491264 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-22 12:24:37,936 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,937 tasks 23 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 12:24:37,938 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,939 tasks 23 140016034491264 Failed to send down alert for github.com:443
+ERROR 2025-09-22 12:24:37,943 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,943 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 12:24:37,949 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,949 tasks 23 140016034491264 Failed to send down alert for twitter.com:443
+ERROR 2025-09-22 12:24:37,950 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,950 tasks 23 140016034491264 Failed to send down alert for facebook.com:443
+ERROR 2025-09-22 12:24:37,952 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 12:24:37,952 tasks 23 140016034491264 Failed to send down alert for github.com:443
+INFO 2025-09-22 12:24:37,958 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 31}
+INFO 2025-09-22 22:21:24,605 basehttp 91 139659087357632 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-22 22:21:24,608 basehttp 91 139659095750336 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-22 22:21:24,949 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:24,951 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:25,009 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:25,010 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:25,481 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:25,483 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:25,511 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:25,524 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:25,912 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:25,913 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:25,924 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:25,925 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:26,513 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:26,516 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:26,524 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:26,527 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:26,890 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:26,891 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:26,901 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:26,904 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,260 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,262 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,273 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,280 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,623 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,624 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,632 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,634 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,973 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,974 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:27,983 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:27,985 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:28,328 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:28,329 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:28,337 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:28,339 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:28,668 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:28,670 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:28,678 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:28,680 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:29,133 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:29,135 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:29,147 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:29,148 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:29,808 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:29,810 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:29,821 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:29,822 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:30,284 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:30,286 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-22 22:21:30,299 log 91 139659095750336 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-22 22:21:30,301 basehttp 91 139659095750336 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-22 22:21:42,724 tasks 23 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 22:21:42,819 email_service 10 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:21:42,822 tasks 10 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 22:21:42,827 email_service 10 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:21:42,828 tasks 10 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 22:21:42,830 tasks 10 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 2}
+INFO 2025-09-22 22:21:43,016 tasks 11 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 22:52:03,436 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:52:03,436 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 22:52:03,437 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:52:03,437 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 22:52:03,439 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:52:03,439 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 22:52:03,440 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 22:52:03,440 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 22:52:03,440 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-22 22:52:03,462 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 23:07:03,442 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:07:03,443 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:07:03,444 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:07:03,444 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:07:03,445 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:07:03,445 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 23:07:03,447 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:07:03,447 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 23:07:03,447 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-22 23:21:42,715 tasks 22 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 23:22:03,453 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:22:03,453 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:22:03,454 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:22:03,455 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:22:03,456 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:22:03,456 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 23:22:03,458 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:22:03,458 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 23:22:03,458 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-22 23:22:03,474 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 23:37:03,457 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:37:03,457 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:37:03,459 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:37:03,459 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:37:03,460 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:37:03,461 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 23:37:03,462 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:37:03,462 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 23:37:03,462 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-22 23:52:03,454 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-22 23:52:03,466 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:52:03,466 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:52:03,468 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:52:03,468 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-22 23:52:03,469 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:52:03,469 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-22 23:52:03,471 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-22 23:52:03,471 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-22 23:52:03,471 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+ERROR 2025-09-23 00:07:03,501 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 00:07:03,501 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-23 00:07:03,503 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 00:07:03,503 tasks 23 140016034491264 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-23 00:07:03,505 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 00:07:03,506 tasks 23 140016034491264 Failed to send down alert for https://github.com:443
+ERROR 2025-09-23 00:07:03,508 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 00:07:03,508 tasks 23 140016034491264 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-23 00:07:03,508 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-23 00:46:04,436 tasks 22 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 00:46:04,530 tasks 11 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 00:46:04,573 tasks 10 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 11:56:07,123 autoreload 91 139659243150208 /app/accounts/views.py changed, reloading.
+INFO 2025-09-23 11:56:11,696 autoreload 95 140019857587072 Watching for file changes with StatReloader
+INFO 2025-09-23 11:56:51,152 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 11:56:51,161 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 11:56:51,190 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 11:59:54,421 autoreload 95 140019857587072 /app/accounts/views.py changed, reloading.
+INFO 2025-09-23 11:59:56,791 autoreload 97 139889869773696 Watching for file changes with StatReloader
+INFO 2025-09-23 12:00:34,843 autoreload 11 139753504304000 Watching for file changes with StatReloader
+INFO 2025-09-23 12:00:51,571 basehttp 11 139753424352960 "POST /api/v1/auth/mfa/setup-login/ HTTP/1.1" 200 410
+INFO 2025-09-23 12:01:00,640 basehttp 11 139753424352960 "POST /api/v1/auth/mfa/setup/ HTTP/1.1" 200 2331
+INFO 2025-09-23 12:01:08,823 basehttp 11 139753424352960 "POST /api/v1/auth/mfa/setup/ HTTP/1.1" 200 2315
+INFO 2025-09-23 15:23:19,559 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 15:23:19,571 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 15:23:19,646 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 15:49:20,119 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+WARNING 2025-09-23 15:52:29,637 log 11 139753424352960 Unauthorized: /api/v1/auth/mfa/setup/
+WARNING 2025-09-23 15:52:29,643 basehttp 11 139753424352960 "PUT /api/v1/auth/mfa/setup/ HTTP/1.1" 401 183
+INFO 2025-09-23 15:53:19,249 tasks 22 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 16:01:04,045 basehttp 11 139753424352960 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-23 16:01:04,045 basehttp 11 139753336862400 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-23 16:01:04,053 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,054 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,106 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,107 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,343 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,344 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,354 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,355 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,593 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,594 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,603 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,604 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,879 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,880 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:04,888 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:04,889 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,108 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,109 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,114 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,115 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,392 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,393 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,401 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,401 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,619 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,620 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,627 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,627 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,866 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,867 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:05,875 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:05,876 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,071 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,071 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,078 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,079 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,293 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,294 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,301 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,302 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,501 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,502 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,508 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,509 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,724 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,725 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,733 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,734 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,930 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,931 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:06,938 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:06,938 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,165 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,166 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,173 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,174 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,380 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,381 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,390 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,392 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,604 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,605 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,613 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,614 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,839 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,840 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:07,847 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:07,848 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,045 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,045 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,053 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,054 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,288 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,289 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,296 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,297 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,507 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,508 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,515 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,516 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,715 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,716 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:08,724 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:08,725 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,025 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,027 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,035 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,037 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,347 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,350 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,359 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,361 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,658 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,660 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,668 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,669 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,954 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,955 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:09,963 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:09,963 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,166 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,167 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,178 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,179 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,429 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,430 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,439 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,440 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,691 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,691 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,699 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,700 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,928 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,930 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:10,938 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:10,938 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,139 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,140 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,147 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,148 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,365 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,367 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,372 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,373 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,450 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,450 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,461 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,462 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,683 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,685 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,696 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,697 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,984 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,985 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:11,991 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:11,992 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,185 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,186 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,192 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,193 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,384 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,384 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,391 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,392 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,585 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,587 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 16:01:12,594 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 16:01:12,595 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-23 16:01:33,212 basehttp 11 139753336862400 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-23 16:01:33,453 basehttp 11 139753336862400 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-23 16:01:49,290 basehttp 11 139753336862400 "OPTIONS /api/v1/auth/mfa/verify/ HTTP/1.1" 200 0
+WARNING 2025-09-23 16:01:49,301 log 11 139753336862400 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-23 16:01:49,302 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+WARNING 2025-09-23 16:01:55,517 log 11 139753336862400 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-23 16:01:55,518 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+WARNING 2025-09-23 16:01:59,098 log 11 139753336862400 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-23 16:01:59,099 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+WARNING 2025-09-23 16:02:13,775 log 11 139753336862400 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-23 16:02:13,775 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+WARNING 2025-09-23 16:02:15,439 log 11 139753336862400 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-23 16:02:15,440 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+ERROR 2025-09-23 16:04:20,149 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 16:04:20,152 tasks 23 140016034491264 Failed to send down alert for smtp.gmail.com:587
+INFO 2025-09-23 16:04:20,169 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 1}
+INFO 2025-09-23 16:11:03,626 basehttp 11 139753336862400 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-23 16:11:13,773 basehttp 11 139753336862400 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-23 16:11:13,963 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20724
+INFO 2025-09-23 16:11:14,128 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20724
+ERROR 2025-09-23 16:19:20,094 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 16:19:20,095 tasks 23 140016034491264 Failed to send down alert for smtp.gmail.com:587
+INFO 2025-09-23 16:19:20,104 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 1}
+INFO 2025-09-23 17:20:27,128 tasks 23 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 17:20:27,157 tasks 22 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-23 17:20:27,283 email_service 11 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-23 17:20:27,286 tasks 11 140016034491264 Failed to send down alert for smtp.gmail.com:587
+INFO 2025-09-23 17:20:27,298 tasks 11 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 1}
+INFO 2025-09-23 19:09:35,210 basehttp 11 139753336862400 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-23 19:09:35,207 basehttp 11 139753424352960 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-23 19:09:35,289 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 19:09:35,291 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-23 19:09:35,349 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-23 19:09:35,352 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-23 19:09:35,353 basehttp 11 139753424352960 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-23 19:09:35,417 basehttp 11 139753424352960 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-23 19:09:35,421 basehttp 11 139753336862400 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-23 19:09:35,894 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20721
+INFO 2025-09-23 19:09:36,907 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20721
+INFO 2025-09-23 19:09:38,176 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 19:09:38,195 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 19:09:38,341 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 19:32:03,308 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 19:39:38,254 tasks 22 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 21:08:33,339 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 21:08:33,395 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-23 21:08:33,508 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 01:28:50,732 basehttp 11 139753424352960 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-24 01:28:50,730 basehttp 11 139753336862400 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-24 01:28:50,793 log 11 139753336862400 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-24 01:28:50,794 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-24 01:28:50,848 log 11 139753424352960 Unauthorized: /api/certs/certificates/
+INFO 2025-09-24 01:28:50,851 basehttp 11 139753336862400 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-24 01:28:50,853 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-24 01:28:50,863 basehttp 11 139753424352960 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-24 01:28:50,926 basehttp 11 139753336862400 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-24 01:28:50,932 basehttp 11 139753424352960 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-24 01:28:51,427 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20819
+INFO 2025-09-24 01:28:51,752 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20819
+INFO 2025-09-24 01:30:21,226 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 01:30:21,247 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 01:30:21,322 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 01:45:21,276 tasks 22 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 10:08:31,364 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 10:08:31,369 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 10:08:31,487 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}

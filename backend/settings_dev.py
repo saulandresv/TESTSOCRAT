@@ -18,10 +18,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Apps de terceros
     "rest_framework",
-    "corsheaders", 
+    "rest_framework_simplejwt",
+    "corsheaders",
     "drf_spectacular",
     # Tus apps
+    "accounts",
     "clients",
+    "certs",
+    "analysis",
+    "reports",
 ]
 
 MIDDLEWARE = [
@@ -79,6 +84,9 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Modelo de usuario personalizado
+AUTH_USER_MODEL = 'accounts.User'
 
 # Django REST Framework
 REST_FRAMEWORK = {

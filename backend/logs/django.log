@@ -2822,3 +2822,573 @@ INFO 2025-09-24 01:45:21,276 tasks 22 140016034491264 Certificate down alerts ch
 INFO 2025-09-24 10:08:31,364 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
 INFO 2025-09-24 10:08:31,369 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
 INFO 2025-09-24 10:08:31,487 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 12:47:06,804 basehttp 11 139753424352960 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-24 12:47:06,812 basehttp 11 139753336862400 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-24 12:47:07,073 log 11 139753424352960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-24 12:47:07,077 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-24 12:47:07,138 log 11 139753424352960 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-24 12:47:07,140 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-24 12:47:07,144 basehttp 11 139753336862400 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:47:07,181 basehttp 11 139753336862400 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-24 12:47:07,207 basehttp 11 139753424352960 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-24 12:47:08,011 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20735
+INFO 2025-09-24 12:47:10,023 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20735
+INFO 2025-09-24 12:47:13,646 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 12:47:13,654 tasks 9 140016034491264 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 12:47:13,717 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 12:47:16,042 basehttp 11 139753424352960 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:47:16,624 basehttp 11 139753424352960 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-24 12:49:01,503 basehttp 11 139753424352960 "OPTIONS /api/v1/auth/mfa/verify/ HTTP/1.1" 200 0
+WARNING 2025-09-24 12:49:01,539 log 11 139753424352960 Unauthorized: /api/v1/auth/mfa/verify/
+WARNING 2025-09-24 12:49:01,540 basehttp 11 139753424352960 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 401 33
+INFO 2025-09-24 12:49:23,376 basehttp 11 139753424352960 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-24 12:49:23,796 basehttp 11 139753424352960 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20734
+INFO 2025-09-24 12:49:24,059 basehttp 11 139753336862400 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20734
+INFO 2025-09-24 12:49:56,826 basehttp 11 139753336862400 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:49:56,830 basehttp 11 139753424352960 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:49:56,885 basehttp 11 139753336862400 "GET /api/v1/users/ HTTP/1.1" 200 496
+INFO 2025-09-24 12:49:56,968 basehttp 11 139753424352960 "GET /api/v1/users/ HTTP/1.1" 200 496
+WARNING 2025-09-24 12:50:16,245 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:16,247 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 149
+WARNING 2025-09-24 12:50:18,691 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:18,693 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 149
+WARNING 2025-09-24 12:50:21,777 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:21,779 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 49
+WARNING 2025-09-24 12:50:23,338 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:23,340 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 49
+WARNING 2025-09-24 12:50:23,941 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:23,943 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 49
+WARNING 2025-09-24 12:50:28,640 log 11 139753424352960 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:50:28,641 basehttp 11 139753424352960 "POST /api/v1/users/ HTTP/1.1" 400 49
+INFO 2025-09-24 12:52:24,603 autoreload 11 139753504304000 /app/accounts/viewsets.py changed, reloading.
+INFO 2025-09-24 12:52:27,236 autoreload 83 140711049808768 Watching for file changes with StatReloader
+INFO 2025-09-24 12:54:19,233 basehttp 83 140710902515392 "GET /api/v1/users/ HTTP/1.1" 200 496
+INFO 2025-09-24 12:54:19,260 basehttp 83 140710884959936 "GET /api/v1/users/ HTTP/1.1" 200 496
+WARNING 2025-09-24 12:54:34,128 log 83 140710884959936 Bad Request: /api/v1/users/
+WARNING 2025-09-24 12:54:34,131 basehttp 83 140710884959936 "POST /api/v1/users/ HTTP/1.1" 400 102
+INFO 2025-09-24 12:56:28,084 basehttp 83 140710884959936 "GET /api/v1/users/ HTTP/1.1" 200 496
+INFO 2025-09-24 12:56:28,111 basehttp 83 140710902515392 "GET /api/v1/users/ HTTP/1.1" 200 496
+INFO 2025-09-24 12:56:44,262 basehttp 83 140710902515392 "POST /api/v1/users/ HTTP/1.1" 201 90
+INFO 2025-09-24 12:56:44,303 basehttp 83 140710902515392 "GET /api/v1/users/ HTTP/1.1" 200 751
+WARNING 2025-09-24 12:57:27,469 log 83 140710902515392 Forbidden: /api/v1/auth/login/
+WARNING 2025-09-24 12:57:27,472 basehttp 83 140710902515392 "POST /api/v1/auth/login/ HTTP/1.1" 403 202
+INFO 2025-09-24 12:57:27,513 basehttp 83 140710902515392 "OPTIONS /api/v1/auth/mfa/setup-login/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:57:28,046 basehttp 83 140710902515392 "POST /api/v1/auth/mfa/setup-login/ HTTP/1.1" 200 413
+INFO 2025-09-24 12:57:28,101 basehttp 83 140710902515392 "OPTIONS /api/v1/auth/mfa/setup/ HTTP/1.1" 200 0
+INFO 2025-09-24 12:57:28,278 basehttp 83 140710902515392 "POST /api/v1/auth/mfa/setup/ HTTP/1.1" 200 2317
+INFO 2025-09-24 12:57:51,864 basehttp 83 140710902515392 "PUT /api/v1/auth/mfa/setup/ HTTP/1.1" 200 60
+INFO 2025-09-24 12:57:52,412 basehttp 83 140710902515392 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-24 12:57:52,883 basehttp 83 140710902515392 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20735
+INFO 2025-09-24 12:57:53,198 basehttp 83 140710884959936 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20735
+INFO 2025-09-24 13:02:13,570 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 13:03:54,866 basehttp 83 140710902515392 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:03:54,876 basehttp 83 140710884959936 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+WARNING 2025-09-24 13:03:55,072 log 83 140710902515392 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:03:55,074 basehttp 83 140710902515392 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+WARNING 2025-09-24 13:03:55,107 log 83 140710884959936 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:03:55,109 basehttp 83 140710884959936 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+INFO 2025-09-24 13:03:56,416 basehttp 83 140710884959936 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:03:56,419 basehttp 83 140710902515392 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:03:56,702 basehttp 83 140710902515392 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:03:57,115 basehttp 83 140710884959936 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+WARNING 2025-09-24 13:03:58,014 log 83 140710884959936 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:03:58,017 basehttp 83 140710884959936 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+WARNING 2025-09-24 13:03:58,075 log 83 140710902515392 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:03:58,077 basehttp 83 140710902515392 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+INFO 2025-09-24 13:03:59,312 basehttp 83 140710902515392 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:03:59,568 basehttp 83 140710884959936 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+WARNING 2025-09-24 13:04:01,466 log 83 140710884959936 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:04:01,470 basehttp 83 140710884959936 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+WARNING 2025-09-24 13:04:01,516 log 83 140710902515392 Not Found: /api/v1/analysis/
+WARNING 2025-09-24 13:04:01,519 basehttp 83 140710902515392 "GET /api/v1/analysis/ HTTP/1.1" 404 6460
+INFO 2025-09-24 13:04:04,625 basehttp 83 140710902515392 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:04:04,930 basehttp 83 140710884959936 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:04:09,996 basehttp 83 140710884959936 "OPTIONS /api/v1/reports/history/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:04:10,000 basehttp 83 140710902515392 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:04:10,009 basehttp 83 140710858737344 "OPTIONS /api/v1/reports/history/ HTTP/1.1" 200 0
+INFO 2025-09-24 13:04:10,025 basehttp 83 140710644807360 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+WARNING 2025-09-24 13:04:10,076 log 83 140710858737344 Not Found: /api/v1/reports/history/
+WARNING 2025-09-24 13:04:10,082 log 83 140710902515392 Not Found: /api/v1/clients/
+WARNING 2025-09-24 13:04:10,083 basehttp 83 140710858737344 "GET /api/v1/reports/history/ HTTP/1.1" 404 6481
+WARNING 2025-09-24 13:04:10,084 basehttp 83 140710902515392 "GET /api/v1/clients/ HTTP/1.1" 404 6457
+WARNING 2025-09-24 13:04:10,128 log 83 140710644807360 Not Found: /api/v1/reports/history/
+WARNING 2025-09-24 13:04:10,133 log 83 140710884959936 Not Found: /api/v1/clients/
+WARNING 2025-09-24 13:04:10,134 basehttp 83 140710644807360 "GET /api/v1/reports/history/ HTTP/1.1" 404 6481
+WARNING 2025-09-24 13:04:10,135 basehttp 83 140710884959936 "GET /api/v1/clients/ HTTP/1.1" 404 6457
+INFO 2025-09-24 13:04:13,374 basehttp 83 140710884959936 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:04:13,692 basehttp 83 140710644807360 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:04:23,854 basehttp 83 140710644807360 "OPTIONS /api/v1/analysis/run_analysis/ HTTP/1.1" 200 0
+WARNING 2025-09-24 13:04:23,889 log 83 140710644807360 Not Found: /api/v1/analysis/run_analysis/
+WARNING 2025-09-24 13:04:23,891 basehttp 83 140710644807360 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 404 6500
+INFO 2025-09-24 13:05:42,748 autoreload 83 140711049808768 /app/config/urls.py changed, reloading.
+INFO 2025-09-24 13:05:45,140 autoreload 91 139655280450432 Watching for file changes with StatReloader
+INFO 2025-09-24 13:06:26,097 autoreload 11 140336759155584 Watching for file changes with StatReloader
+INFO 2025-09-24 13:06:45,184 basehttp 11 140336670746304 "GET /api/v1/analysis/ HTTP/1.1" 200 44593
+WARNING 2025-09-24 13:07:09,001 log 11 140336670746304 Bad Request: /api/v1/analysis/run_analysis/
+WARNING 2025-09-24 13:07:09,002 basehttp 11 140336670746304 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 400 37
+INFO 2025-09-24 13:07:13,307 basehttp 11 140336670746304 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:07:13,707 basehttp 11 140336579999424 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+WARNING 2025-09-24 13:07:17,333 log 11 140336579999424 Forbidden: /api/v1/analysis/run_analysis/
+WARNING 2025-09-24 13:07:17,335 basehttp 11 140336579999424 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 403 63
+INFO 2025-09-24 13:08:06,779 basehttp 11 140336567412416 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 152
+WARNING 2025-09-24 13:08:30,045 log 11 140336670746304 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-24 13:08:30,047 basehttp 11 140336670746304 "POST /api/v1/auth/login/ HTTP/1.1" 401 35
+WARNING 2025-09-24 13:08:33,215 log 11 140336670746304 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-24 13:08:33,216 basehttp 11 140336670746304 "POST /api/v1/auth/login/ HTTP/1.1" 401 35
+INFO 2025-09-24 13:08:39,499 basehttp 11 140336670746304 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-24 13:08:51,224 basehttp 11 140336670746304 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-24 13:08:51,627 basehttp 11 140336670746304 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20734
+INFO 2025-09-24 13:08:51,917 basehttp 11 140336579999424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20734
+INFO 2025-09-24 13:08:54,312 basehttp 11 140336579999424 "GET /api/v1/analysis/ HTTP/1.1" 200 44881
+INFO 2025-09-24 13:08:54,869 basehttp 11 140336670746304 "GET /api/v1/analysis/ HTTP/1.1" 200 44881
+INFO 2025-09-24 13:09:02,411 basehttp 11 140336670746304 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:09:02,684 basehttp 11 140336579999424 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:09:03,715 basehttp 11 140336579999424 "GET /api/v1/analysis/ HTTP/1.1" 200 44881
+INFO 2025-09-24 13:09:04,236 basehttp 11 140336670746304 "GET /api/v1/analysis/ HTTP/1.1" 200 44881
+INFO 2025-09-24 13:09:06,263 basehttp 11 140336670746304 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:09:06,697 basehttp 11 140336579999424 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:09:18,948 basehttp 11 140336544335552 "GET /api/v1/analysis/ HTTP/1.1" 200 45913
+INFO 2025-09-24 13:09:19,482 basehttp 11 140336535942848 "GET /api/v1/analysis/ HTTP/1.1" 200 45913
+INFO 2025-09-24 13:09:41,215 autoreload 11 140336759155584 /app/analysis/views.py changed, reloading.
+INFO 2025-09-24 13:09:43,436 autoreload 79 140511498656640 Watching for file changes with StatReloader
+INFO 2025-09-24 13:09:49,782 autoreload 79 140511498656640 /app/analysis/views.py changed, reloading.
+INFO 2025-09-24 13:09:51,951 autoreload 81 140332169890688 Watching for file changes with StatReloader
+INFO 2025-09-24 13:10:13,325 basehttp 81 140332013450944 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:10:13,578 basehttp 81 140331992749760 "GET /api/certs/certificates/ HTTP/1.1" 200 20734
+INFO 2025-09-24 13:11:56,054 autoreload 11 140157067783040 Watching for file changes with StatReloader
+ERROR 2025-09-24 13:21:31,318 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:21:31,319 tasks 23 140016034491264 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 13:21:31,324 email_service 23 140016034491264 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:21:31,325 tasks 23 140016034491264 Failed to send down alert for apple.com:443
+INFO 2025-09-24 13:21:31,381 tasks 23 140016034491264 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 2}
+INFO 2025-09-24 13:21:31,505 tasks 8 140016034491264 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 13:25:10,973 basehttp 11 140156912965312 "GET /api/certs/certificates/ HTTP/1.1" 200 20877
+INFO 2025-09-24 13:25:11,228 basehttp 11 140156891215552 "GET /api/certs/certificates/ HTTP/1.1" 200 20877
+INFO 2025-09-24 13:25:26,945 basehttp 11 140156877579968 "GET /api/certs/certificates/ HTTP/1.1" 200 20877
+INFO 2025-09-24 13:25:27,192 basehttp 11 140156661135040 "GET /api/certs/certificates/ HTTP/1.1" 200 20877
+INFO 2025-09-24 13:25:53,462 basehttp 11 140156891215552 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 152
+INFO 2025-09-24 13:25:55,823 basehttp 11 140156912965312 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 152
+INFO 2025-09-24 13:26:13,121 basehttp 11 140156661135040 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 152
+INFO 2025-09-24 13:27:27,823 autoreload 11 140157067783040 /app/analysis/views.py changed, reloading.
+INFO 2025-09-24 13:27:30,215 autoreload 38 139678188682112 Watching for file changes with StatReloader
+INFO 2025-09-24 13:27:51,380 autoreload 38 139678188682112 /app/analysis/views.py changed, reloading.
+INFO 2025-09-24 13:27:53,634 autoreload 40 139687052082048 Watching for file changes with StatReloader
+INFO 2025-09-24 13:29:50,295 autoreload 11 140403452373888 Watching for file changes with StatReloader
+ERROR 2025-09-24 13:36:31,388 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:36:31,391 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-24 13:36:31,397 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:36:31,399 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-24 13:36:31,419 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:36:31,421 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-24 13:36:31,434 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:36:31,435 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 13:36:31,440 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 13:36:31,441 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-24 13:36:31,493 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 5}
+INFO 2025-09-24 14:03:08,650 basehttp 11 140403364030144 "GET /api/certs/certificates/ HTTP/1.1" 200 20736
+INFO 2025-09-24 14:03:09,184 basehttp 11 140403274950336 "GET /api/certs/certificates/ HTTP/1.1" 200 20736
+INFO 2025-09-24 14:05:55,344 tasks 23 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-24 14:05:55,383 email_service 11 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:05:55,384 tasks 11 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-24 14:05:55,386 email_service 11 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:05:55,386 tasks 11 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+INFO 2025-09-24 14:05:55,389 tasks 10 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-24 14:05:55,392 email_service 11 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:05:55,393 tasks 11 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-24 14:05:55,397 email_service 11 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:05:55,398 tasks 11 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 14:05:55,399 email_service 11 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:05:55,400 tasks 11 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-24 14:05:55,418 tasks 11 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 5}
+ERROR 2025-09-24 14:20:55,380 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:20:55,380 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-24 14:20:55,382 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:20:55,383 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-24 14:20:55,389 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:20:55,389 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-24 14:20:55,394 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:20:55,394 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 14:20:55,396 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 14:20:55,397 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-24 14:20:55,417 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 5}
+INFO 2025-09-24 17:17:20,195 tasks 9 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 17:17:20,238 tasks 8 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-24 17:17:20,325 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-24 17:32:20,036 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:32:20,037 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-24 17:32:20,043 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:32:20,045 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 17:32:20,076 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:32:20,077 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-24 17:32:20,082 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:32:20,083 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+INFO 2025-09-24 17:32:20,094 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-24 17:47:20,028 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-24 17:47:20,181 email_service 8 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:47:20,183 tasks 8 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-24 17:47:20,190 email_service 8 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:47:20,191 tasks 8 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-24 17:47:20,230 email_service 8 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:47:20,231 tasks 8 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-24 17:47:20,236 email_service 8 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-24 17:47:20,237 tasks 8 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+INFO 2025-09-24 17:47:20,248 tasks 8 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-25 00:48:57,896 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 00:48:57,910 tasks 9 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 00:48:57,942 tasks 8 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 01:03:58,007 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,011 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:03:58,022 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,023 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:03:58,030 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,032 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:03:58,036 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,037 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:03:58,043 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,044 tasks 23 139975588797312 Failed to send down alert for facebook.com:443
+ERROR 2025-09-25 01:03:58,048 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,049 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:03:58,054 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,055 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:03:58,059 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,060 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:03:58,064 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,065 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:03:58,069 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,071 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:03:58,074 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,076 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:03:58,080 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,081 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:03:58,085 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,086 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:03:58,095 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,097 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:03:58,105 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,108 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:03:58,114 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,115 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:03:58,119 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,120 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:03:58,129 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,131 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:03:58,135 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,136 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:03:58,141 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,143 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:03:58,147 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,149 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:03:58,153 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,154 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:03:58,158 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,160 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:03:58,164 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,165 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:03:58,169 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,170 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:03:58,174 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,175 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:03:58,180 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,181 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:03:58,186 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:03:58,187 tasks 23 139975588797312 Failed to send down alert for google.com:443
+INFO 2025-09-25 01:03:58,193 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 28}
+ERROR 2025-09-25 01:18:57,976 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:57,978 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:18:57,987 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:57,988 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:18:57,995 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:57,996 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:18:58,000 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,001 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:18:58,005 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,007 tasks 23 139975588797312 Failed to send down alert for facebook.com:443
+ERROR 2025-09-25 01:18:58,010 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,011 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:18:58,015 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,017 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:18:58,020 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,022 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:18:58,026 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,027 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:18:58,030 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,031 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:18:58,035 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,036 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:18:58,040 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,041 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:18:58,045 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,046 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:18:58,049 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,050 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 01:18:58,054 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,055 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 01:18:58,059 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,060 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:18:58,066 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,067 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:18:58,072 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,074 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:18:58,078 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,079 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:18:58,089 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,090 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:18:58,095 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,096 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:18:58,101 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,102 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:18:58,106 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,107 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:18:58,111 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,111 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:18:58,115 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+INFO 2025-09-25 01:18:58,110 tasks 8 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+WARNING 2025-09-25 01:18:58,116 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:18:58,120 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,121 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:18:58,124 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,126 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:18:58,129 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,130 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:18:58,134 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,135 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:18:58,139 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:18:58,140 tasks 23 139975588797312 Failed to send down alert for google.com:443
+INFO 2025-09-25 01:18:58,146 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 30}
+ERROR 2025-09-25 01:33:58,005 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,006 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:33:58,013 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,014 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 01:33:58,018 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,019 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 01:33:58,023 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,024 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:33:58,031 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,032 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:33:58,037 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,038 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:33:58,042 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,043 tasks 23 139975588797312 Failed to send down alert for facebook.com:443
+ERROR 2025-09-25 01:33:58,047 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,048 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:33:58,052 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,053 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:33:58,057 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,058 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:33:58,062 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,063 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:33:58,067 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,068 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:33:58,072 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,073 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:33:58,078 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,079 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:33:58,083 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,084 tasks 23 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:33:58,087 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,089 tasks 23 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 01:33:58,093 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,094 tasks 23 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 01:33:58,098 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,099 tasks 23 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:33:58,106 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,109 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:33:58,114 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,115 tasks 23 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:33:58,119 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,120 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:33:58,124 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,125 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:33:58,130 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,131 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:33:58,135 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,136 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:33:58,141 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,142 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:33:58,146 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,147 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:33:58,151 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,152 tasks 23 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:33:58,156 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,157 tasks 23 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:33:58,161 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,162 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:33:58,166 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,167 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:33:58,171 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,172 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:33:58,175 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,176 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:33:58,181 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,182 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:33:58,187 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:33:58,188 tasks 23 139975588797312 Failed to send down alert for google.com:443
+INFO 2025-09-25 01:33:58,195 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 34}
+INFO 2025-09-25 01:48:57,903 tasks 23 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 01:48:58,138 tasks 11 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 01:48:58,315 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,322 tasks 10 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:48:58,327 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,328 tasks 10 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 01:48:58,333 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,334 tasks 10 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 01:48:58,340 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,342 tasks 10 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:48:58,349 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,350 tasks 10 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:48:58,355 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,356 tasks 10 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:48:58,361 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,361 tasks 10 139975588797312 Failed to send down alert for facebook.com:443
+ERROR 2025-09-25 01:48:58,366 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,367 tasks 10 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:48:58,371 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,373 tasks 10 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:48:58,377 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,379 tasks 10 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:48:58,383 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,384 tasks 10 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:48:58,388 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,390 tasks 10 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:48:58,395 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,396 tasks 10 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:48:58,401 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,402 tasks 10 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:48:58,406 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,407 tasks 10 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 01:48:58,412 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,413 tasks 10 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 01:48:58,417 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,418 tasks 10 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 01:48:58,423 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,424 tasks 10 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 01:48:58,431 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,432 tasks 10 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:48:58,437 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,438 tasks 10 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 01:48:58,443 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,444 tasks 10 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:48:58,448 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,449 tasks 10 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:48:58,454 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,455 tasks 10 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:48:58,460 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,461 tasks 10 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:48:58,465 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,466 tasks 10 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:48:58,470 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,471 tasks 10 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 01:48:58,476 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,477 tasks 10 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 01:48:58,481 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,482 tasks 10 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 01:48:58,487 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,488 tasks 10 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 01:48:58,492 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,493 tasks 10 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 01:48:58,497 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,498 tasks 10 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 01:48:58,503 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,504 tasks 10 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 01:48:58,508 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,509 tasks 10 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 01:48:58,528 email_service 10 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 01:48:58,529 tasks 10 139975588797312 Failed to send down alert for google.com:443
+INFO 2025-09-25 01:48:58,536 tasks 10 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 34}
+INFO 2025-09-25 10:05:43,962 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 10:05:43,967 tasks 9 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 10:05:44,035 tasks 8 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 10:15:31,542 basehttp 11 140403274950336 "GET /api/v1/ HTTP/1.1" 200 47
+WARNING 2025-09-25 10:15:36,735 log 11 140403274950336 Unauthorized: /api/v1/analysis/
+WARNING 2025-09-25 10:15:36,736 basehttp 11 140403274950336 "GET /api/v1/analysis/ HTTP/1.1" 401 65
+INFO 2025-09-25 10:15:42,339 basehttp 11 140403274950336 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 10:17:17,354 basehttp 11 140403274950336 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 220
+INFO 2025-09-25 10:17:17,371 tasks 22 139975588797312 Starting background analysis for github.com:443
+INFO 2025-09-25 10:18:21,022 tasks 22 139975588797312 Analysis completed for github.com:443, success: False
+ERROR 2025-09-25 10:20:46,042 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,043 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:20:46,045 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,045 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:20:46,048 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,049 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 10:20:46,051 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,051 tasks 22 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 10:20:46,053 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,053 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 10:20:46,055 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,056 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 10:20:46,057 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,057 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 10:20:46,059 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,059 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 10:20:46,061 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,061 tasks 22 139975588797312 Failed to send down alert for https://github.com:443
+ERROR 2025-09-25 10:20:46,062 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:20:46,063 tasks 22 139975588797312 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-25 10:20:46,063 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+INFO 2025-09-25 10:35:46,084 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 10:35:46,117 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,120 tasks 23 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:35:46,122 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,122 tasks 23 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:35:46,123 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,124 tasks 23 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 10:35:46,126 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,126 tasks 23 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 10:35:46,128 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,128 tasks 23 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 10:35:46,129 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,130 tasks 23 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 10:35:46,131 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,132 tasks 23 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 10:35:46,133 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,133 tasks 23 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 10:35:46,134 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,135 tasks 23 139975588797312 Failed to send down alert for https://github.com:443
+ERROR 2025-09-25 10:35:46,136 email_service 23 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:35:46,136 tasks 23 139975588797312 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-25 10:35:46,137 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+ERROR 2025-09-25 10:50:48,209 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,210 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:50:48,212 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,212 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 10:50:48,214 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,214 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 10:50:48,216 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,216 tasks 22 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 10:50:48,217 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,218 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 10:50:48,220 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,221 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 10:50:48,222 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,223 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 10:50:48,224 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,224 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 10:50:48,225 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,226 tasks 22 139975588797312 Failed to send down alert for https://github.com:443
+ERROR 2025-09-25 10:50:48,227 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 10:50:48,227 tasks 22 139975588797312 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-25 10:50:48,228 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+INFO 2025-09-25 11:05:45,959 tasks 22 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 11:05:46,129 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 11:05:48,298 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,299 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 11:05:48,303 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,305 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 11:05:48,308 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,310 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 11:05:48,313 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,315 tasks 22 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 11:05:48,318 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,319 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 11:05:48,323 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,324 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 11:05:48,329 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,330 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 11:05:48,334 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,335 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 11:05:48,339 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,340 tasks 22 139975588797312 Failed to send down alert for https://github.com:443
+ERROR 2025-09-25 11:05:48,345 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:05:48,346 tasks 22 139975588797312 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-25 11:05:48,347 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}

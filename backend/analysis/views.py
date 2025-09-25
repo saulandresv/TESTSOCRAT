@@ -18,9 +18,16 @@ class IsAdminOrAnalyst(permissions.BasePermission):
     Permiso para ADMIN o ANALISTA
     """
     def has_permission(self, request, view):
+        import logging
+        logger = logging.getLogger(__name__)
+
         if not request.user.is_authenticated:
+            logger.warning(f"Permission denied: User not authenticated")
             return False
-        return request.user.rol in ['ADMIN', 'ANALISTA']
+
+        has_perm = request.user.rol in ['ADMIN', 'ANALISTA']
+        logger.info(f"Permission check - User: {request.user.email}, Role: {request.user.rol}, Has permission: {has_perm}")
+        return has_perm
 
 
 class AnalysisThrottle(UserRateThrottle):
@@ -86,6 +93,11 @@ class AnalysisViewSet(APIRateLimitMixin, viewsets.ModelViewSet):
         POST /api/analysis/run_analysis/
         Body: {"certificate_ids": [1, 2, 3], "tipo": "SSL_TLS"}
         """
+        # Debug logging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"run_analysis called by user: {request.user.email}, rol: {request.user.rol}")
+        logger.info(f"request.data: {request.data}")
         certificate_ids = request.data.get('certificate_ids', [])
         tipo = request.data.get('tipo', 'SSL_TLS')
         
@@ -106,10 +118,9 @@ class AnalysisViewSet(APIRateLimitMixin, viewsets.ModelViewSet):
                 'error': 'No se encontraron certificados válidos'
             }, status=status.HTTP_404_NOT_FOUND)
         
-        # Crear análisis y ejecutar
+        # Crear análisis y programar ejecución
         results = []
-        engine = SSLAnalysisEngine()
-        
+
         for cert in certificates:
             # Crear registro de análisis
             analysis = Analysis.objects.create(
@@ -118,36 +129,39 @@ class AnalysisViewSet(APIRateLimitMixin, viewsets.ModelViewSet):
                 triggered_by='MANUAL',
                 comentarios=f'Análisis manual ejecutado por {request.user.email}'
             )
-            
-            # Ejecutar análisis (asíncrono en producción)
+
+            # Programar análisis en background usando Celery
             try:
-                success = engine.analyze_certificate(analysis)
-                analysis.tuvo_exito = success
-                analysis.fecha_fin = timezone.now()
-                analysis.save()
-                
+                # Importar task de Celery
+                from notifications.tasks import analyze_certificate_task
+
+                # Ejecutar en background
+                task_result = analyze_certificate_task.delay(analysis.id)
+
                 results.append({
                     'certificate_id': cert.id,
                     'analysis_id': analysis.id,
-                    'success': success,
+                    'task_id': str(task_result.id),
+                    'status': 'PROGRAMADO',
                     'target': cert.ip or cert.url
                 })
             except Exception as e:
+                logger.error(f"Error al programar análisis: {e}")
                 analysis.tuvo_exito = False
-                analysis.error_message = str(e)
-                analysis.fecha_fin = timezone.now()
                 analysis.save()
-                
+
                 results.append({
                     'certificate_id': cert.id,
                     'analysis_id': analysis.id,
-                    'success': False,
-                    'error': str(e)
+                    'status': 'ERROR',
+                    'error': str(e),
+                    'target': cert.ip or cert.url
                 })
-        
+
         return Response({
-            'message': f'Análisis ejecutado en {len(results)} certificados',
-            'results': results
+            'message': f'Análisis programado para {len(results)} certificados',
+            'results': results,
+            'status': 'PROGRAMADO'
         }, status=status.HTTP_200_OK)
     
     @action(detail=False, methods=['get'])

@@ -13,6 +13,7 @@ const Users = () => {
     email: '',
     nombre_usuario: '',
     password: '',
+    password_confirm: '',
     rol: 'CLIENTE',
     estado: 'activo'
   });
@@ -24,7 +25,7 @@ const Users = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.get('http://localhost:8000/api/v1/users/');
+      const response = await apiClient.get('/users/');
       setUsers(response.data);
     } catch (error) {
       setError('Error al cargar usuarios');
@@ -36,6 +37,13 @@ const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validar que las contraseñas coincidan al crear usuario
+    if (!editingUser && formData.password !== formData.password_confirm) {
+      setError('Las contraseñas no coinciden');
+      return;
+    }
+
     try {
       if (editingUser) {
         // Para editar, no enviamos password si está vacío
@@ -43,9 +51,10 @@ const Users = () => {
         if (!updateData.password) {
           delete updateData.password;
         }
-        await apiClient.put(`http://localhost:8000/api/v1/users/${editingUser.id}/`, updateData);
+        await apiClient.put(`/users/${editingUser.id}/`, updateData);
       } else {
-        await apiClient.post('http://localhost:8000/api/v1/users/', formData);
+        // Para crear usuario, usar formData directamente (ya incluye password_confirm)
+        await apiClient.post('/users/', formData);
       }
       
       setShowForm(false);
@@ -54,6 +63,7 @@ const Users = () => {
         email: '',
         nombre_usuario: '',
         password: '',
+        password_confirm: '',
         rol: 'CLIENTE',
         estado: 'activo'
       });
@@ -70,6 +80,7 @@ const Users = () => {
       email: user.email,
       nombre_usuario: user.nombre_usuario,
       password: '', // No mostramos la contraseña actual
+      password_confirm: '',
       rol: user.rol,
       estado: user.estado
     });
@@ -78,7 +89,7 @@ const Users = () => {
 
   const handleToggleStatus = async (userId) => {
     try {
-      await apiClient.post(`http://localhost:8000/api/v1/users/${userId}/toggle_status/`);
+      await apiClient.post(`/users/${userId}/toggle_status/`);
       fetchUsers();
     } catch (error) {
       setError('Error al cambiar estado del usuario');
@@ -91,6 +102,8 @@ const Users = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    // Limpiar error al cambiar datos
+    if (error) setError('');
   };
 
   const getRoleBadge = (rol) => {
@@ -218,6 +231,7 @@ const Users = () => {
                 email: '',
                 nombre_usuario: '',
                 password: '',
+                password_confirm: '',
                 rol: 'CLIENTE',
                 estado: 'activo'
               });
@@ -406,6 +420,23 @@ const Users = () => {
                     style={inputStyle}
                   />
                 </div>
+
+                {!editingUser && (
+                  <div>
+                    <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>
+                      Confirmar Contraseña *
+                    </label>
+                    <input
+                      type="password"
+                      name="password_confirm"
+                      value={formData.password_confirm}
+                      onChange={handleInputChange}
+                      required={!editingUser}
+                      placeholder="Repetir contraseña"
+                      style={inputStyle}
+                    />
+                  </div>
+                )}
 
                 <div>
                   <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>

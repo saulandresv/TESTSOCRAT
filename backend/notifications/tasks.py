@@ -17,6 +17,50 @@ from notifications.email_service import email_service
 logger = logging.getLogger(__name__)
 
 
+@shared_task(bind=True, max_retries=2)
+def analyze_certificate_task(self, analysis_id):
+    """
+    Ejecutar análisis SSL/TLS de certificado en background
+    """
+    try:
+        from analysis.analysis_engine import SSLAnalysisEngine
+
+        # Obtener análisis
+        analysis = Analysis.objects.get(id=analysis_id)
+        logger.info(f"Starting background analysis for {analysis.certificado.get_target_display()}")
+
+        # Ejecutar análisis
+        engine = SSLAnalysisEngine()
+        success = engine.analyze_certificate(analysis)
+
+        # Actualizar resultado
+        analysis.tuvo_exito = success
+        analysis.fecha_fin = timezone.now()
+        analysis.save()
+
+        logger.info(f"Analysis completed for {analysis.certificado.get_target_display()}, success: {success}")
+        return {
+            'analysis_id': analysis_id,
+            'success': success,
+            'target': analysis.certificado.get_target_display()
+        }
+
+    except Analysis.DoesNotExist:
+        logger.error(f"Analysis {analysis_id} not found")
+        raise
+    except Exception as exc:
+        logger.error(f"Analysis task failed for {analysis_id}: {exc}")
+        # Actualizar análisis como fallido
+        try:
+            analysis = Analysis.objects.get(id=analysis_id)
+            analysis.tuvo_exito = False
+            analysis.fecha_fin = timezone.now()
+            analysis.save()
+        except:
+            pass
+        raise self.retry(exc=exc, countdown=60, max_retries=2)
+
+
 @shared_task(bind=True, max_retries=3)
 def check_certificate_expiration_alerts(self):
     """

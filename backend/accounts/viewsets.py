@@ -62,6 +62,12 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response({
                 'error': 'Solo administradores pueden crear usuarios'
             }, status=status.HTTP_403_FORBIDDEN)
+
+        # Debug logging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Creating user with data: {request.data}")
+
         return super().create(request, *args, **kwargs)
     
     def destroy(self, request, *args, **kwargs):

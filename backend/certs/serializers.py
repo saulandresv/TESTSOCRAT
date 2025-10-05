@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.core.exceptions import ValidationError
 from .models import Certificate, VitalityStatus
 
 
@@ -41,15 +42,16 @@ class CertificateSerializer(serializers.ModelSerializer):
     
     def validate(self, attrs):
         """Validate certificate data"""
-        ip = attrs.get('ip')
-        url = attrs.get('url')
-        
-        if not ip and not url:
-            raise serializers.ValidationError("Debe especificar IP o URL")
-        
-        if ip and url:
-            raise serializers.ValidationError("Especifique solo IP o URL, no ambos")
-        
+        # Crear instancia temporal para validar
+        instance = Certificate(**attrs)
+        if hasattr(self, 'instance') and self.instance:
+            instance.pk = self.instance.pk
+
+        try:
+            instance.clean()
+        except ValidationError as e:
+            raise serializers.ValidationError(str(e))
+
         return attrs
 
 
@@ -65,13 +67,14 @@ class CertificateCreateSerializer(serializers.ModelSerializer):
     
     def validate(self, attrs):
         """Validate certificate data"""
-        ip = attrs.get('ip')
-        url = attrs.get('url')
-        
-        if not ip and not url:
-            raise serializers.ValidationError("Debe especificar IP o URL")
-        
-        if ip and url:
-            raise serializers.ValidationError("Especifique solo IP o URL, no ambos")
-        
+        # Crear instancia temporal para validar
+        instance = Certificate(**attrs)
+        if hasattr(self, 'instance') and self.instance:
+            instance.pk = self.instance.pk
+
+        try:
+            instance.clean()
+        except ValidationError as e:
+            raise serializers.ValidationError(str(e))
+
         return attrs

@@ -30,9 +30,16 @@ const Certificates = () => {
       if (filters.status) params.status = filters.status;
 
       const response = await CertificateService.getCertificates(params);
-      setCertificates(response.results || response);
+      console.log('📋 Certificates response:', response);
+
+      // Asegurar que siempre sea un array
+      const certArray = Array.isArray(response) ? response :
+                       Array.isArray(response.results) ? response.results : [];
+
+      setCertificates(certArray);
     } catch (error) {
-      console.error('Error loading certificates:', error);
+      console.error('❌ Error loading certificates:', error);
+      setCertificates([]); // Fallback a array vacío en caso de error
     } finally {
       setLoading(false);
     }

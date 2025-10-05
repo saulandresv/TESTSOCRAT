@@ -1,5 +1,5 @@
-from rest_framework import status, permissions
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework import status, permissions, viewsets
+from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
@@ -10,7 +10,7 @@ import pyotp
 import qrcode
 import io
 import base64
-from .models import User
+from .models import User, UserClientAccess
 from .serializers import UserSerializer
 
 
@@ -342,3 +342,88 @@ class UserProfileView(APIView):
         return Response({
             'user': UserSerializer(request.user).data
         }, status=status.HTTP_200_OK)
+
+
+class IsAdminOnly(permissions.BasePermission):
+    """Solo ADMIN puede gestionar usuarios"""
+    def has_permission(self, request, view):
+        return request.user.is_authenticated and request.user.rol == 'ADMIN'
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """ViewSet para gestión de usuarios con control de acceso"""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminOnly]
+
+    def destroy(self, request, *args, **kwargs):
+        """No permitir eliminación física de usuarios"""
+        return Response(
+            {'error': 'Los usuarios no se pueden eliminar, solo deshabilitar.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    @action(detail=True, methods=['patch'])
+    def toggle_status(self, request, pk=None):
+        """Activar/desactivar usuario"""
+        try:
+            user = self.get_object()
+            new_status = 'inactivo' if user.estado == 'activo' else 'activo'
+            user.estado = new_status
+            user.save()
+            
+            return Response({
+                'message': f'Usuario {user.email} marcado como {new_status}',
+                'user': UserSerializer(user).data
+            })
+        except User.DoesNotExist:
+            return Response({'error': 'Usuario no encontrado'}, status=404)
+
+    @action(detail=False, methods=['post'])
+    def assign_client_access(self, request):
+        """Asignar acceso de usuario a cliente"""
+        user_id = request.data.get('user_id')
+        client_id = request.data.get('client_id')
+        
+        if not user_id or not client_id:
+            return Response({
+                'error': 'user_id y client_id requeridos'
+            }, status=400)
+        
+        try:
+            from clients.models import Client
+            user = User.objects.get(id=user_id)
+            client = Client.objects.get(id=client_id)
+            
+            access, created = UserClientAccess.objects.get_or_create(
+                user=user, 
+                client=client
+            )
+            
+            if created:
+                return Response({
+                    'message': f'Acceso otorgado a {user.email} para cliente {client.name}'
+                })
+            else:
+                return Response({
+                    'message': f'{user.email} ya tiene acceso a {client.name}'
+                })
+                
+        except (User.DoesNotExist, Client.DoesNotExist):
+            return Response({'error': 'Usuario o cliente no encontrado'}, status=404)
+
+    @action(detail=False, methods=['delete'])
+    def remove_client_access(self, request):
+        """Remover acceso de usuario a cliente"""
+        user_id = request.data.get('user_id')
+        client_id = request.data.get('client_id')
+        
+        try:
+            access = UserClientAccess.objects.get(user_id=user_id, client_id=client_id)
+            access.delete()
+            
+            return Response({
+                'message': 'Acceso removido exitosamente'
+            })
+        except UserClientAccess.DoesNotExist:
+            return Response({'error': 'Acceso no encontrado'}, status=404)

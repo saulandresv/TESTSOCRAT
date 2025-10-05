@@ -1,8 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
-from .views import LoginView, MFAVerifyView, MFASetupView, UserProfileView, MFASetupLoginView
-from .viewsets import UserViewSet
+from .views import LoginView, MFAVerifyView, MFASetupView, UserProfileView, MFASetupLoginView, UserViewSet
 
 # Router para ViewSets
 router = DefaultRouter()

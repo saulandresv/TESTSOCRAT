@@ -3392,3 +3392,744 @@ WARNING 2025-09-25 11:05:48,340 tasks 22 139975588797312 Failed to send down ale
 ERROR 2025-09-25 11:05:48,345 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
 WARNING 2025-09-25 11:05:48,346 tasks 22 139975588797312 Failed to send down alert for https://www.google.com:443
 INFO 2025-09-25 11:05:48,347 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+ERROR 2025-09-25 11:20:49,618 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,619 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 11:20:49,623 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,623 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-25 11:20:49,627 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,627 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 11:20:49,631 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,632 tasks 22 139975588797312 Failed to send down alert for amazon.com:443
+ERROR 2025-09-25 11:20:49,635 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,636 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 11:20:49,639 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,640 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 11:20:49,643 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,644 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 11:20:49,646 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,647 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 11:20:49,650 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,651 tasks 22 139975588797312 Failed to send down alert for https://github.com:443
+ERROR 2025-09-25 11:20:49,654 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 11:20:49,655 tasks 22 139975588797312 Failed to send down alert for https://www.google.com:443
+INFO 2025-09-25 11:20:49,655 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 10}
+INFO 2025-09-25 13:25:06,748 tasks 9 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 13:25:06,766 tasks 8 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 13:25:06,805 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 13:40:07,075 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 14:06:29,126 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 14:06:29,157 tasks 8 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 14:08:33,809 autoreload 11 140403452373888 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 14:08:39,479 autoreload 43 140464219163520 Watching for file changes with StatReloader
+INFO 2025-09-25 14:11:45,166 autoreload 43 140464219163520 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 14:11:48,159 autoreload 45 140305862724480 Watching for file changes with StatReloader
+INFO 2025-09-25 14:12:21,496 autoreload 45 140305862724480 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 14:12:24,174 autoreload 47 140324958305152 Watching for file changes with StatReloader
+INFO 2025-09-25 14:14:22,751 basehttp 47 140324803098304 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:22,752 basehttp 47 140324794705600 "OPTIONS /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 0
+WARNING 2025-09-25 14:14:22,940 log 47 140324794705600 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 14:14:22,942 basehttp 47 140324794705600 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+WARNING 2025-09-25 14:14:22,999 log 47 140324794705600 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 14:14:23,001 basehttp 47 140324794705600 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 401 183
+INFO 2025-09-25 14:14:23,008 basehttp 47 140324803098304 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-25 14:14:23,022 log 47 140324803098304 Unauthorized: /api/v1/auth/refresh/
+WARNING 2025-09-25 14:14:23,024 basehttp 47 140324803098304 "POST /api/v1/auth/refresh/ HTTP/1.1" 401 65
+WARNING 2025-09-25 14:14:23,074 log 47 140324794705600 Unauthorized: /api/v1/auth/refresh/
+WARNING 2025-09-25 14:14:23,075 basehttp 47 140324794705600 "POST /api/v1/auth/refresh/ HTTP/1.1" 401 65
+INFO 2025-09-25 14:14:28,679 basehttp 47 140324794705600 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:29,177 basehttp 47 140324794705600 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 14:14:46,287 basehttp 47 140324794705600 "OPTIONS /api/v1/auth/mfa/verify/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:46,347 basehttp 47 140324794705600 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-25 14:14:46,799 basehttp 47 140324794705600 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:47,237 basehttp 47 140324803098304 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:51,983 basehttp 47 140324794705600 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:51,999 basehttp 47 140324803098304 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:52,359 basehttp 47 140324794705600 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:52,692 basehttp 47 140324803098304 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:52,913 basehttp 47 140324803098304 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:52,916 basehttp 47 140324794705600 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:53,885 basehttp 47 140324803098304 "GET /api/v1/analysis/ HTTP/1.1" 200 59917
+INFO 2025-09-25 14:14:54,588 basehttp 47 140324794705600 "GET /api/v1/analysis/ HTTP/1.1" 200 59917
+INFO 2025-09-25 14:14:54,918 basehttp 47 140324803098304 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:55,280 basehttp 47 140324794705600 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 14:14:56,388 basehttp 47 140324794705600 "GET /api/v1/analysis/ HTTP/1.1" 200 59917
+INFO 2025-09-25 14:14:57,102 basehttp 47 140324803098304 "GET /api/v1/analysis/ HTTP/1.1" 200 59917
+INFO 2025-09-25 14:14:57,426 basehttp 47 140324803098304 "OPTIONS /api/v1/analysis/224/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:14:57,550 basehttp 47 140324803098304 "GET /api/v1/analysis/224/ HTTP/1.1" 200 1389
+INFO 2025-09-25 14:15:17,917 basehttp 47 140324794705600 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+INFO 2025-09-25 14:15:18,415 basehttp 47 140324803098304 "GET /api/certs/certificates/ HTTP/1.1" 200 20754
+WARNING 2025-09-25 14:15:20,579 log 47 140324803098304 Not Found: /api/clients/
+WARNING 2025-09-25 14:15:20,581 basehttp 47 140324803098304 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 14:15:20,608 log 47 140324794705600 Not Found: /api/clients/
+WARNING 2025-09-25 14:15:20,610 basehttp 47 140324794705600 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 14:16:00,088 basehttp 47 140324794705600 "OPTIONS /api/v1/analysis/run_analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:16:00,376 basehttp 47 140324794705600 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 232
+INFO 2025-09-25 14:16:00,400 tasks 22 139975588797312 Starting background analysis for https://www.google.com:443
+INFO 2025-09-25 14:16:08,653 basehttp 47 140324794705600 "GET /api/v1/analysis/ HTTP/1.1" 200 60175
+INFO 2025-09-25 14:16:09,364 basehttp 47 140324803098304 "GET /api/v1/analysis/ HTTP/1.1" 200 60175
+INFO 2025-09-25 14:16:13,545 basehttp 47 140324803098304 "OPTIONS /api/v1/analysis/225/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:16:13,611 basehttp 47 140324803098304 "GET /api/v1/analysis/225/ HTTP/1.1" 200 1328
+INFO 2025-09-25 14:16:53,618 tasks 22 139975588797312 Analysis completed for https://www.google.com:443, success: False
+INFO 2025-09-25 14:19:48,125 basehttp 47 140324803098304 "OPTIONS /api/clients/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:19:48,129 basehttp 47 140324794705600 "OPTIONS /api/clients/ HTTP/1.1" 200 0
+WARNING 2025-09-25 14:19:48,197 log 47 140324803098304 Not Found: /api/clients/
+WARNING 2025-09-25 14:19:48,201 basehttp 47 140324803098304 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 14:19:48,247 log 47 140324794705600 Not Found: /api/clients/
+WARNING 2025-09-25 14:19:48,249 basehttp 47 140324794705600 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 14:19:54,215 basehttp 47 140324794705600 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:19:54,219 basehttp 47 140324803098304 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-25 14:19:54,263 basehttp 47 140324803098304 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 14:19:54,340 basehttp 47 140324794705600 "GET /api/v1/users/ HTTP/1.1" 200 750
+ERROR 2025-09-25 14:21:29,112 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,114 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 14:21:29,119 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,121 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 14:21:29,126 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,127 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 14:21:29,131 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,132 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 14:21:29,140 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,141 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:21:29,146 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,147 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 14:21:29,152 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,153 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 14:21:29,157 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,158 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 14:21:29,163 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,164 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 14:21:29,169 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,170 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 14:21:29,175 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,177 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 14:21:29,181 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,182 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 14:21:29,187 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,188 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:21:29,193 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:21:29,194 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 14:21:29,255 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 14:23:23,055 autoreload 47 140324958305152 /app/accounts/models.py changed, reloading.
+INFO 2025-09-25 14:23:26,133 autoreload 62 140388764621696 Watching for file changes with StatReloader
+INFO 2025-09-25 14:23:34,523 autoreload 62 140388764621696 /app/accounts/models.py changed, reloading.
+INFO 2025-09-25 14:23:37,344 autoreload 64 140305484618624 Watching for file changes with StatReloader
+INFO 2025-09-25 14:25:06,579 tasks 22 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 14:26:28,304 autoreload 64 140305484618624 /app/clients/views.py changed, reloading.
+INFO 2025-09-25 14:26:31,163 autoreload 85 140143701113728 Watching for file changes with StatReloader
+INFO 2025-09-25 14:36:28,977 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 14:36:29,110 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,111 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 14:36:29,115 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,116 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 14:36:29,119 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,120 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 14:36:29,124 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,125 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 14:36:29,132 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,133 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:36:29,136 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,137 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 14:36:29,141 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,142 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 14:36:29,145 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,146 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 14:36:29,150 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,151 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 14:36:29,154 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,155 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 14:36:29,159 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,160 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 14:36:29,163 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,164 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 14:36:29,170 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,171 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:36:29,175 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:36:29,176 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 14:36:29,242 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 14:40:03,545 autoreload 85 140143701113728 /app/accounts/views.py changed, reloading.
+INFO 2025-09-25 14:40:06,025 autoreload 106 140521556183936 Watching for file changes with StatReloader
+ERROR 2025-09-25 14:51:29,146 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,148 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 14:51:29,152 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,153 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 14:51:29,156 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,158 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 14:51:29,161 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,163 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 14:51:29,170 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,172 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:51:29,176 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,178 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 14:51:29,181 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,183 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 14:51:29,187 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,189 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 14:51:29,192 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,193 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 14:51:29,197 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,198 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 14:51:29,202 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,203 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 14:51:29,208 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,210 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 14:51:29,214 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,215 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 14:51:29,220 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 14:51:29,221 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 14:51:29,276 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 15:01:06,200 autoreload 106 140521556183936 /app/accounts/views.py changed, reloading.
+INFO 2025-09-25 15:01:07,367 autoreload 115 139972260563840 Watching for file changes with StatReloader
+INFO 2025-09-25 15:01:15,819 autoreload 115 139972260563840 /app/accounts/urls.py changed, reloading.
+INFO 2025-09-25 15:01:16,798 autoreload 124 140462854433664 Watching for file changes with StatReloader
+INFO 2025-09-25 15:02:08,290 autoreload 11 139627124034432 Watching for file changes with StatReloader
+INFO 2025-09-25 15:06:28,926 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 15:06:29,067 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,068 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 15:06:29,070 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,070 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 15:06:29,072 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,072 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 15:06:29,073 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,074 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 15:06:29,076 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,077 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:06:29,078 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,078 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 15:06:29,079 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,080 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 15:06:29,081 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,081 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 15:06:29,083 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,083 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 15:06:29,084 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,085 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 15:06:29,086 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,087 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 15:06:29,088 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,088 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 15:06:29,089 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,090 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:06:29,091 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:06:29,091 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 15:06:29,108 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 15:23:50,390 basehttp 11 139626967725760 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 15:24:05,511 basehttp 11 139626967725760 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-25 15:24:05,726 basehttp 11 139626967725760 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20755
+INFO 2025-09-25 15:24:06,016 basehttp 11 139626944927424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20755
+INFO 2025-09-25 15:26:14,905 tasks 8 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 15:26:14,920 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,921 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 15:26:14,923 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,923 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 15:26:14,926 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,926 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 15:26:14,929 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,929 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 15:26:14,932 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,932 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:26:14,934 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,934 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 15:26:14,935 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,935 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 15:26:14,937 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,937 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 15:26:14,938 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,938 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 15:26:14,940 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,940 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 15:26:14,941 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,941 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 15:26:14,942 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,943 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 15:26:14,944 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,944 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:26:14,945 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:26:14,945 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 15:26:14,960 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 15:36:28,946 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 15:41:14,934 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,936 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 15:41:14,938 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,938 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 15:41:14,940 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,940 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 15:41:14,942 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,942 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 15:41:14,945 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,945 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:41:14,947 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,947 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 15:41:14,949 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,950 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 15:41:14,952 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,952 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 15:41:14,954 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,954 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 15:41:14,956 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,956 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 15:41:14,957 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,957 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 15:41:14,959 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,959 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 15:41:14,960 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,961 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:41:14,962 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:41:14,962 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 15:41:14,970 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+ERROR 2025-09-25 15:56:14,976 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,977 tasks 22 139975588797312 Failed to send down alert for 8.8.8.8:443
+ERROR 2025-09-25 15:56:14,980 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,981 tasks 22 139975588797312 Failed to send down alert for imap.mail.yahoo.com:993
+ERROR 2025-09-25 15:56:14,984 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,986 tasks 22 139975588797312 Failed to send down alert for outlook.live.com:993
+ERROR 2025-09-25 15:56:14,990 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,990 tasks 22 139975588797312 Failed to send down alert for smtp.gmail.com:587
+ERROR 2025-09-25 15:56:14,995 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,995 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:56:14,997 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,997 tasks 22 139975588797312 Failed to send down alert for linkedin.com:443
+ERROR 2025-09-25 15:56:14,999 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:14,999 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+ERROR 2025-09-25 15:56:15,001 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,002 tasks 22 139975588797312 Failed to send down alert for cloudflare.com:443
+ERROR 2025-09-25 15:56:15,004 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,004 tasks 22 139975588797312 Failed to send down alert for microsoft.com:443
+ERROR 2025-09-25 15:56:15,006 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,006 tasks 22 139975588797312 Failed to send down alert for stackoverflow.com:443
+ERROR 2025-09-25 15:56:15,007 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,007 tasks 22 139975588797312 Failed to send down alert for github.com:443
+ERROR 2025-09-25 15:56:15,009 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,009 tasks 22 139975588797312 Failed to send down alert for google.com:443
+ERROR 2025-09-25 15:56:15,010 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,010 tasks 22 139975588797312 Failed to send down alert for twitter.com:443
+ERROR 2025-09-25 15:56:15,011 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 15:56:15,011 tasks 22 139975588797312 Failed to send down alert for apple.com:443
+INFO 2025-09-25 15:56:15,018 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 14}
+INFO 2025-09-25 16:06:28,940 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 16:08:36,320 basehttp 11 139626944927424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20752
+INFO 2025-09-25 16:08:36,808 basehttp 11 139626967725760 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20752
+WARNING 2025-09-25 16:08:38,627 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:38,627 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:08:38,641 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:38,642 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:08:39,787 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:08:39,803 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:08:41,633 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:08:41,649 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+WARNING 2025-09-25 16:08:42,810 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:42,812 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:08:42,832 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:42,834 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:08:43,896 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:08:43,911 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+WARNING 2025-09-25 16:08:45,389 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:45,391 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:08:45,407 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:45,408 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:08:53,895 basehttp 11 139626967725760 "OPTIONS /api/clients/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:08:53,897 basehttp 11 139626944927424 "OPTIONS /api/clients/ HTTP/1.1" 200 0
+WARNING 2025-09-25 16:08:53,918 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:53,919 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:08:53,922 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:08:53,923 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:09:10,860 log 11 139626967725760 Unauthorized: /api/v1/clients/
+WARNING 2025-09-25 16:09:10,860 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 401 65
+INFO 2025-09-25 16:09:39,935 basehttp 11 139626967725760 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 16:10:06,043 basehttp 11 139626967725760 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:10:06,048 basehttp 11 139626944927424 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:10:06,063 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 802
+INFO 2025-09-25 16:10:06,120 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 802
+INFO 2025-09-25 16:10:24,812 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:24,971 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:26,586 basehttp 11 139626967725760 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:26,738 basehttp 11 139626944927424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:28,008 basehttp 11 139626944927424 "GET /api/v1/analysis/ HTTP/1.1" 200 60205
+INFO 2025-09-25 16:10:28,318 basehttp 11 139626967725760 "GET /api/v1/analysis/ HTTP/1.1" 200 60205
+INFO 2025-09-25 16:10:29,435 basehttp 11 139626967725760 "OPTIONS /api/v1/reports/history/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:10:29,435 basehttp 11 139626944927424 "OPTIONS /api/v1/reports/history/ HTTP/1.1" 200 0
+WARNING 2025-09-25 16:10:29,455 log 11 139626944927424 Not Found: /api/v1/reports/history/
+INFO 2025-09-25 16:10:29,455 basehttp 11 139626923951808 "GET /api/v1/clients/ HTTP/1.1" 200 802
+WARNING 2025-09-25 16:10:29,459 basehttp 11 139626944927424 "GET /api/v1/reports/history/ HTTP/1.1" 404 27
+INFO 2025-09-25 16:10:29,466 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 802
+WARNING 2025-09-25 16:10:29,512 log 11 139626923951808 Not Found: /api/v1/reports/history/
+WARNING 2025-09-25 16:10:29,513 basehttp 11 139626923951808 "GET /api/v1/reports/history/ HTTP/1.1" 404 27
+INFO 2025-09-25 16:10:30,608 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:30,839 basehttp 11 139626923951808 "GET /api/certs/certificates/ HTTP/1.1" 200 20752
+INFO 2025-09-25 16:10:36,422 basehttp 11 139626967725760 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 232
+INFO 2025-09-25 16:10:36,434 tasks 22 139975588797312 Starting background analysis for https://www.google.com:443
+INFO 2025-09-25 16:11:14,999 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 16:11:22,338 tasks 22 139975588797312 Analysis completed for https://www.google.com:443, success: False
+INFO 2025-09-25 16:16:53,361 basehttp 11 139626967725760 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:16:53,361 basehttp 11 139626944927424 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:16:53,536 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 20749
+INFO 2025-09-25 16:16:53,829 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 20749
+INFO 2025-09-25 16:16:58,377 basehttp 11 139626967725760 "OPTIONS /api/v1/analysis/run_analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:16:58,415 basehttp 11 139626967725760 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 232
+INFO 2025-09-25 16:16:58,434 tasks 23 139975588797312 Starting background analysis for https://www.google.com:443
+INFO 2025-09-25 16:17:03,353 basehttp 11 139626967725760 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:17:03,356 basehttp 11 139626944927424 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:17:03,593 basehttp 11 139626944927424 "GET /api/v1/analysis/ HTTP/1.1" 200 60751
+INFO 2025-09-25 16:17:03,830 basehttp 11 139626967725760 "GET /api/v1/analysis/ HTTP/1.1" 200 60751
+INFO 2025-09-25 16:17:04,862 basehttp 11 139626967725760 "OPTIONS /api/v1/analysis/227/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:17:04,894 basehttp 11 139626967725760 "GET /api/v1/analysis/227/ HTTP/1.1" 200 1328
+INFO 2025-09-25 16:17:09,170 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:17:09,188 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:17:10,039 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 802
+INFO 2025-09-25 16:17:10,055 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 802
+ERROR 2025-09-25 16:17:46,197 tasks 23 139975588797312 Analysis task failed for 227: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`socrates`.`analisis`, CONSTRAINT `analisis_certificado_id_91a2f656_fk_certificados_id` FOREIGN KEY (`certificado_id`) REFERENCES `certificados` (`id`))')
+ERROR 2025-09-25 16:18:46,072 tasks 22 139975588797312 Analysis 227 not found
+INFO 2025-09-25 16:18:56,654 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:18:56,669 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:19:03,812 basehttp 11 139626967725760 "POST /api/v1/clients/ HTTP/1.1" 201 96
+INFO 2025-09-25 16:19:03,826 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:19:06,437 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:19:06,452 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:19:13,967 basehttp 11 139626967725760 "GET /api/v1/analysis/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:19:13,984 basehttp 11 139626944927424 "GET /api/v1/analysis/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:19:16,286 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:19:16,298 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+WARNING 2025-09-25 16:19:18,381 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:19:18,382 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:19:18,397 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:19:18,398 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:21:22,928 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:21:22,944 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+WARNING 2025-09-25 16:21:25,291 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:21:25,291 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:21:25,301 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:21:25,302 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:21:31,151 basehttp 11 139626944927424 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:21:31,152 basehttp 11 139626967725760 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:21:31,167 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:21:31,169 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+WARNING 2025-09-25 16:21:33,304 log 11 139626944927424 Not Found: /api/clients/
+WARNING 2025-09-25 16:21:33,304 basehttp 11 139626944927424 "GET /api/clients/ HTTP/1.1" 404 2911
+WARNING 2025-09-25 16:21:33,315 log 11 139626967725760 Not Found: /api/clients/
+WARNING 2025-09-25 16:21:33,316 basehttp 11 139626967725760 "GET /api/clients/ HTTP/1.1" 404 2911
+INFO 2025-09-25 16:22:33,877 basehttp 11 139626967725760 "OPTIONS /api/v1/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:22:33,877 basehttp 11 139626944927424 "OPTIONS /api/v1/certs/certificates/ HTTP/1.1" 200 0
+WARNING 2025-09-25 16:22:33,894 log 11 139626944927424 Not Found: /api/v1/certs/certificates/
+WARNING 2025-09-25 16:22:33,894 basehttp 11 139626944927424 "GET /api/v1/certs/certificates/ HTTP/1.1" 404 7147
+WARNING 2025-09-25 16:22:33,910 log 11 139626967725760 Not Found: /api/v1/certs/certificates/
+WARNING 2025-09-25 16:22:33,911 basehttp 11 139626967725760 "GET /api/v1/certs/certificates/ HTTP/1.1" 404 7147
+INFO 2025-09-25 16:22:35,191 basehttp 11 139626967725760 "OPTIONS /api/v1/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:22:35,192 basehttp 11 139626944927424 "OPTIONS /api/v1/certs/certificates/ HTTP/1.1" 200 0
+WARNING 2025-09-25 16:22:35,213 log 11 139626967725760 Not Found: /api/v1/certs/certificates/
+WARNING 2025-09-25 16:22:35,215 log 11 139626944927424 Not Found: /api/v1/certs/certificates/
+WARNING 2025-09-25 16:22:35,215 basehttp 11 139626967725760 "GET /api/v1/certs/certificates/ HTTP/1.1" 404 7147
+WARNING 2025-09-25 16:22:35,216 basehttp 11 139626944927424 "GET /api/v1/certs/certificates/ HTTP/1.1" 404 7147
+INFO 2025-09-25 16:22:36,962 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:22:36,973 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:26:14,857 tasks 22 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 16:26:14,943 tasks 9 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+WARNING 2025-09-25 16:27:28,398 log 11 139626944927424 Not Found: /api/v1/certs/certificates/
+WARNING 2025-09-25 16:27:28,399 basehttp 11 139626944927424 "POST /api/v1/certs/certificates/ HTTP/1.1" 404 7148
+WARNING 2025-09-25 16:29:17,738 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:29:17,739 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:29:17,748 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:29:17,751 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:29:20,959 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:29:20,960 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:29:20,964 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:29:20,965 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:31:19,595 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:31:19,595 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:31:19,600 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:31:19,601 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:31:22,011 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:31:22,012 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+WARNING 2025-09-25 16:31:22,021 log 11 139626944927424 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:31:22,022 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 401 183
+INFO 2025-09-25 16:31:29,840 basehttp 11 139626944927424 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:31:30,045 basehttp 11 139626944927424 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 16:31:55,024 basehttp 11 139626944927424 "OPTIONS /api/v1/auth/mfa/verify/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:31:55,051 basehttp 11 139626944927424 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-25 16:31:55,139 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:31:55,197 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:31:57,253 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:31:57,263 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:31:58,631 basehttp 11 139626944927424 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:31:58,632 basehttp 11 139626967725760 "OPTIONS /api/v1/users/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:31:58,654 basehttp 11 139626967725760 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:31:58,711 basehttp 11 139626944927424 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:32:02,694 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:32:02,706 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:32:06,461 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:32:06,469 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:32:22,168 log 11 139626944927424 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:32:22,169 basehttp 11 139626944927424 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:32:22,179 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:36:10,524 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:36:10,542 basehttp 11 139626967725760 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:36:12,359 basehttp 11 139626967725760 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:36:12,372 basehttp 11 139626944927424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:36:24,784 log 11 139626944927424 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:36:24,785 basehttp 11 139626944927424 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:36:24,799 basehttp 11 139626944927424 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:36:28,914 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 16:38:16,033 autoreload 11 139627124034432 /app/certs/models.py changed, reloading.
+INFO 2025-09-25 16:38:17,584 autoreload 62 139856750332800 Watching for file changes with StatReloader
+INFO 2025-09-25 16:38:41,365 autoreload 62 139856750332800 /app/certs/models.py changed, reloading.
+INFO 2025-09-25 16:38:42,442 autoreload 76 140291962366848 Watching for file changes with StatReloader
+INFO 2025-09-25 16:38:50,781 autoreload 76 140291962366848 /app/certs/models.py changed, reloading.
+INFO 2025-09-25 16:38:51,968 autoreload 78 140630716889984 Watching for file changes with StatReloader
+INFO 2025-09-25 16:39:23,273 autoreload 78 140630716889984 /app/certs/serializers.py changed, reloading.
+INFO 2025-09-25 16:39:24,263 autoreload 92 140188088707968 Watching for file changes with StatReloader
+INFO 2025-09-25 16:39:32,818 autoreload 92 140188088707968 /app/certs/serializers.py changed, reloading.
+INFO 2025-09-25 16:39:33,802 autoreload 94 139708881968000 Watching for file changes with StatReloader
+INFO 2025-09-25 16:40:30,261 basehttp 94 139708794664640 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:40:30,277 basehttp 94 139708709467840 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:40:31,658 basehttp 94 139708709467840 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:40:31,670 basehttp 94 139708794664640 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:40:46,484 log 94 139708794664640 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:40:46,485 basehttp 94 139708794664640 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:40:46,500 basehttp 94 139708794664640 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:41:08,406 basehttp 94 139708794664640 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:41:08,413 basehttp 94 139708709467840 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:41:08,434 basehttp 94 139708794664640 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:41:08,438 basehttp 94 139708709467840 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:41:10,156 basehttp 94 139708709467840 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:41:10,168 basehttp 94 139708794664640 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:41:14,866 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+WARNING 2025-09-25 16:41:19,787 log 94 139708794664640 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:41:19,787 basehttp 94 139708794664640 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:41:19,806 basehttp 94 139708794664640 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:41:32,333 autoreload 94 139708881968000 /app/certs/views.py changed, reloading.
+INFO 2025-09-25 16:41:33,194 autoreload 104 140252183460736 Watching for file changes with StatReloader
+INFO 2025-09-25 16:41:43,666 autoreload 104 140252183460736 /app/certs/views.py changed, reloading.
+INFO 2025-09-25 16:41:44,492 autoreload 106 140492292418432 Watching for file changes with StatReloader
+INFO 2025-09-25 16:41:59,838 autoreload 106 140492292418432 /app/certs/views.py changed, reloading.
+INFO 2025-09-25 16:42:00,652 autoreload 114 140263344126848 Watching for file changes with StatReloader
+INFO 2025-09-25 16:42:06,113 autoreload 114 140263344126848 /app/certs/views.py changed, reloading.
+INFO 2025-09-25 16:42:07,037 autoreload 116 140124779113344 Watching for file changes with StatReloader
+WARNING 2025-09-25 16:42:12,840 log 116 140124623623872 Unauthorized: /api/certs/certificates/
+WARNING 2025-09-25 16:42:12,841 basehttp 116 140124623623872 "POST /api/certs/certificates/ HTTP/1.1" 401 65
+INFO 2025-09-25 16:43:05,187 basehttp 116 140124623623872 "OPTIONS /api/v1/auth/profile/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:43:05,188 basehttp 116 140124615231168 "OPTIONS /api/v1/auth/profile/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:43:05,245 basehttp 116 140124615231168 "GET /api/v1/auth/profile/ HTTP/1.1" 200 257
+INFO 2025-09-25 16:43:05,313 basehttp 116 140124623623872 "GET /api/v1/auth/profile/ HTTP/1.1" 200 257
+INFO 2025-09-25 16:43:18,097 basehttp 116 140124615231168 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:43:18,111 basehttp 116 140124623623872 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:43:19,110 basehttp 116 140124615231168 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:43:19,124 basehttp 116 140124623623872 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 16:45:26,514 basehttp 116 140124623623872 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 16:45:47,675 basehttp 116 140124623623872 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-25 16:45:47,730 basehttp 116 140124623623872 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:45:47,752 basehttp 116 140124615231168 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:45:54,155 basehttp 116 140124623623872 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:45:54,171 basehttp 116 140124615231168 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:45:55,364 basehttp 116 140124615231168 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:45:55,378 basehttp 116 140124623623872 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:46:06,336 log 116 140124615231168 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:46:06,337 basehttp 116 140124615231168 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:46:06,355 basehttp 116 140124615231168 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:46:08,702 basehttp 116 140124615231168 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:46:08,715 basehttp 116 140124623623872 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:46:21,132 log 116 140124615231168 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:46:21,132 basehttp 116 140124615231168 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:46:21,146 basehttp 116 140124615231168 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:47:19,390 autoreload 116 140124779113344 /app/certs/views.py changed, reloading.
+INFO 2025-09-25 16:47:20,533 autoreload 139 139626270321536 Watching for file changes with StatReloader
+INFO 2025-09-25 16:47:34,494 basehttp 139 139626181973696 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:47:34,509 basehttp 139 139626090342080 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:47:36,321 basehttp 139 139626090342080 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:47:36,333 basehttp 139 139626181973696 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:47:49,375 log 139 139626181973696 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:47:49,376 basehttp 139 139626181973696 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:47:49,390 basehttp 139 139626181973696 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:49:25,142 basehttp 139 139626090342080 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:49:25,152 basehttp 139 139626181973696 "OPTIONS /api/certs/certificates/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:49:25,205 basehttp 139 139626181973696 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:49:25,212 basehttp 139 139626090342080 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:49:27,415 basehttp 139 139626181973696 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:49:27,437 basehttp 139 139626090342080 "GET /api/v1/clients/ HTTP/1.1" 200 98
+WARNING 2025-09-25 16:49:38,529 log 139 139626090342080 Bad Request: /api/certs/certificates/
+WARNING 2025-09-25 16:49:38,530 basehttp 139 139626090342080 "POST /api/certs/certificates/ HTTP/1.1" 400 39
+INFO 2025-09-25 16:49:38,564 basehttp 139 139626090342080 "GET /api/certs/certificates/ HTTP/1.1" 200 2
+INFO 2025-09-25 16:52:32,110 basehttp 139 139626081949376 "GET /api/certs/certificates/ HTTP/1.1" 200 412
+INFO 2025-09-25 16:52:32,162 basehttp 139 139626081949376 "GET /api/certs/certificates/ HTTP/1.1" 200 412
+INFO 2025-09-25 16:52:35,847 basehttp 139 139626090342080 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:52:35,871 basehttp 139 139626181973696 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:52:47,811 basehttp 139 139626081949376 "POST /api/certs/certificates/ HTTP/1.1" 201 139
+INFO 2025-09-25 16:52:47,863 basehttp 139 139626081949376 "GET /api/certs/certificates/ HTTP/1.1" 200 827
+INFO 2025-09-25 16:52:58,913 basehttp 139 139626181973696 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 233
+INFO 2025-09-25 16:52:58,943 tasks 22 139975588797312 Starting background analysis for https://continental.cl:443
+INFO 2025-09-25 16:53:09,036 basehttp 139 139626181973696 "GET /api/v1/analysis/ HTTP/1.1" 200 260
+INFO 2025-09-25 16:53:09,078 basehttp 139 139626090342080 "GET /api/v1/analysis/ HTTP/1.1" 200 260
+INFO 2025-09-25 16:53:10,611 basehttp 139 139626090342080 "OPTIONS /api/v1/analysis/228/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:53:10,689 basehttp 139 139626090342080 "GET /api/v1/analysis/228/ HTTP/1.1" 200 1336
+INFO 2025-09-25 16:53:41,823 tasks 22 139975588797312 Analysis completed for https://continental.cl:443, success: False
+INFO 2025-09-25 16:54:19,524 basehttp 139 139626090342080 "GET /api/certs/certificates/ HTTP/1.1" 200 827
+INFO 2025-09-25 16:54:19,581 basehttp 139 139626090342080 "GET /api/certs/certificates/ HTTP/1.1" 200 827
+INFO 2025-09-25 16:54:23,192 basehttp 139 139626090342080 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:54:23,226 basehttp 139 139626181973696 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 16:56:14,884 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 16:56:43,053 autoreload 139 139626270321536 /app/analysis/external_tools.py changed, reloading.
+INFO 2025-09-25 16:56:45,754 autoreload 177 139646619822976 Watching for file changes with StatReloader
+INFO 2025-09-25 16:59:17,644 basehttp 177 139646531487424 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 16:59:17,670 basehttp 177 139646531487424 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 16:59:22,202 basehttp 177 139646531487424 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 229
+INFO 2025-09-25 16:59:22,213 tasks 22 139975588797312 Starting background analysis for https://google.com:443
+INFO 2025-09-25 16:59:24,863 basehttp 177 139646531487424 "GET /api/v1/analysis/ HTTP/1.1" 200 545
+INFO 2025-09-25 16:59:24,890 basehttp 177 139646511834816 "GET /api/v1/analysis/ HTTP/1.1" 200 545
+INFO 2025-09-25 16:59:26,234 basehttp 177 139646511834816 "OPTIONS /api/v1/analysis/229/ HTTP/1.1" 200 0
+INFO 2025-09-25 16:59:26,265 basehttp 177 139646511834816 "GET /api/v1/analysis/229/ HTTP/1.1" 200 1325
+INFO 2025-09-25 17:00:13,959 tasks 22 139975588797312 Analysis completed for https://google.com:443, success: False
+INFO 2025-09-25 17:01:11,628 basehttp 177 139646511834816 "POST /api/v1/auth/login/ HTTP/1.1" 200 65
+INFO 2025-09-25 17:01:37,474 basehttp 177 139646511834816 "POST /api/v1/auth/mfa/verify/ HTTP/1.1" 200 769
+INFO 2025-09-25 17:01:37,593 basehttp 177 139646531487424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 1123
+INFO 2025-09-25 17:01:37,622 basehttp 177 139646531487424 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 1123
+INFO 2025-09-25 17:01:41,038 basehttp 177 139646511834816 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:01:41,055 basehttp 177 139646531487424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:01:43,056 basehttp 177 139646298224320 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 1123
+INFO 2025-09-25 17:01:43,079 basehttp 177 139646298224320 "GET /api/certs/certificates/?limit=5&ordering=-created_at HTTP/1.1" 200 1123
+INFO 2025-09-25 17:01:47,520 basehttp 177 139646531487424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:01:47,539 basehttp 177 139646511834816 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:01:53,316 basehttp 177 139646511834816 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 17:01:53,336 basehttp 177 139646531487424 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 17:02:06,498 basehttp 177 139646531487424 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:02:06,542 basehttp 177 139646511834816 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:02:07,248 basehttp 177 139646511834816 "GET /api/v1/users/ HTTP/1.1" 200 750
+INFO 2025-09-25 17:02:07,265 basehttp 177 139646531487424 "GET /api/v1/users/ HTTP/1.1" 200 750
+WARNING 2025-09-25 17:03:16,719 log 177 139646511834816 Bad Request: /api/v1/users/
+WARNING 2025-09-25 17:03:16,721 basehttp 177 139646511834816 "POST /api/v1/users/ HTTP/1.1" 400 52
+WARNING 2025-09-25 17:03:18,690 log 177 139646511834816 Bad Request: /api/v1/users/
+WARNING 2025-09-25 17:03:18,697 basehttp 177 139646511834816 "POST /api/v1/users/ HTTP/1.1" 400 52
+INFO 2025-09-25 17:04:54,256 autoreload 177 139646619822976 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:04:55,972 autoreload 196 139955126582144 Watching for file changes with StatReloader
+INFO 2025-09-25 17:05:24,708 basehttp 196 139954970343104 "OPTIONS /api/v1/users/3/toggle_status/ HTTP/1.1" 200 0
+WARNING 2025-09-25 17:05:24,777 log 196 139954970343104 Method Not Allowed: /api/v1/users/3/toggle_status/
+WARNING 2025-09-25 17:05:24,778 basehttp 196 139954970343104 "POST /api/v1/users/3/toggle_status/ HTTP/1.1" 405 43
+INFO 2025-09-25 17:05:28,647 basehttp 196 139954970343104 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:05:28,674 basehttp 196 139954952787648 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:05:29,955 basehttp 196 139954952787648 "GET /api/v1/analysis/ HTTP/1.1" 200 575
+INFO 2025-09-25 17:05:29,993 basehttp 196 139954970343104 "GET /api/v1/analysis/ HTTP/1.1" 200 575
+INFO 2025-09-25 17:05:33,881 basehttp 196 139954944394944 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:05:33,911 basehttp 196 139954944394944 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:05:36,734 basehttp 196 139954970343104 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 233
+INFO 2025-09-25 17:05:36,837 tasks 22 139975588797312 Starting background analysis for https://continental.cl:443
+INFO 2025-09-25 17:05:42,162 basehttp 196 139954970343104 "GET /api/v1/analysis/ HTTP/1.1" 200 834
+INFO 2025-09-25 17:05:43,171 basehttp 196 139954952787648 "GET /api/v1/analysis/ HTTP/1.1" 200 834
+INFO 2025-09-25 17:05:49,476 basehttp 196 139954970343104 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:05:49,503 basehttp 196 139954970343104 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:05:58,177 basehttp 196 139954970343104 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:05:58,194 basehttp 196 139954952787648 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:06:11,693 basehttp 196 139954952787648 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:06:11,719 basehttp 196 139954970343104 "GET /api/v1/clients/ HTTP/1.1" 200 98
+INFO 2025-09-25 17:06:20,194 tasks 22 139975588797312 Analysis completed for https://continental.cl:443, success: False
+INFO 2025-09-25 17:06:28,928 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-25 17:06:50,680 basehttp 196 139954970343104 "POST /api/v1/clients/ HTTP/1.1" 201 88
+INFO 2025-09-25 17:06:50,706 basehttp 196 139954970343104 "GET /api/v1/clients/ HTTP/1.1" 200 187
+INFO 2025-09-25 17:06:59,433 basehttp 196 139954970343104 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:06:59,479 basehttp 196 139954970343104 "GET /api/certs/certificates/ HTTP/1.1" 200 1123
+INFO 2025-09-25 17:07:03,319 basehttp 196 139954970343104 "GET /api/v1/clients/ HTTP/1.1" 200 187
+INFO 2025-09-25 17:07:03,339 basehttp 196 139954952787648 "GET /api/v1/clients/ HTTP/1.1" 200 187
+INFO 2025-09-25 17:09:12,452 basehttp 196 139954952787648 "POST /api/certs/certificates/ HTTP/1.1" 201 149
+INFO 2025-09-25 17:09:12,488 basehttp 196 139954952787648 "GET /api/certs/certificates/ HTTP/1.1" 200 1540
+INFO 2025-09-25 17:09:25,654 basehttp 196 139954952787648 "POST /api/v1/analysis/run_analysis/ HTTP/1.1" 200 225
+INFO 2025-09-25 17:09:25,671 tasks 22 139975588797312 Starting background analysis for https://i3g.cl:443
+INFO 2025-09-25 17:09:30,134 basehttp 196 139954952787648 "GET /api/v1/analysis/ HTTP/1.1" 200 1115
+INFO 2025-09-25 17:09:30,189 basehttp 196 139954970343104 "GET /api/v1/analysis/ HTTP/1.1" 200 1115
+INFO 2025-09-25 17:09:31,581 basehttp 196 139954970343104 "OPTIONS /api/v1/analysis/231/ HTTP/1.1" 200 0
+INFO 2025-09-25 17:09:31,625 basehttp 196 139954970343104 "GET /api/v1/analysis/231/ HTTP/1.1" 200 1313
+INFO 2025-09-25 17:09:53,836 basehttp 196 139954952787648 "GET /api/certs/certificates/ HTTP/1.1" 200 1540
+INFO 2025-09-25 17:09:53,880 basehttp 196 139954952787648 "GET /api/certs/certificates/ HTTP/1.1" 200 1540
+INFO 2025-09-25 17:10:31,758 basehttp 196 139954952787648 "GET /api/certs/certificates/?search=c HTTP/1.1" 200 1540
+INFO 2025-09-25 17:10:33,122 basehttp 196 139954952787648 "GET /api/certs/certificates/ HTTP/1.1" 200 1540
+INFO 2025-09-25 17:10:43,808 tasks 22 139975588797312 Analysis completed for https://i3g.cl:443, success: True
+INFO 2025-09-25 17:11:07,578 basehttp 196 139954952787648 "GET /api/certs/certificates/?status=down HTTP/1.1" 200 1540
+INFO 2025-09-25 17:11:09,947 basehttp 196 139954952787648 "GET /api/certs/certificates/?status=up HTTP/1.1" 200 1540
+INFO 2025-09-25 17:11:13,436 basehttp 196 139954952787648 "GET /api/certs/certificates/?status=down HTTP/1.1" 200 1540
+ERROR 2025-09-25 17:11:14,890 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 17:11:14,892 tasks 22 139975588797312 Failed to send down alert for https://continental.cl:443
+ERROR 2025-09-25 17:11:14,895 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 17:11:14,896 tasks 22 139975588797312 Failed to send down alert for https://google.com:443
+INFO 2025-09-25 17:11:14,897 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 2}
+INFO 2025-09-25 17:11:18,806 basehttp 196 139954952787648 "GET /api/certs/certificates/?protocol=TLS&status=down HTTP/1.1" 200 1688
+INFO 2025-09-25 17:11:20,546 basehttp 196 139954952787648 "GET /api/certs/certificates/?status=down HTTP/1.1" 200 1688
+INFO 2025-09-25 17:12:20,605 autoreload 196 139955126582144 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:12:22,350 autoreload 230 140338162297728 Watching for file changes with StatReloader
+INFO 2025-09-25 17:12:47,626 autoreload 230 140338162297728 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:12:49,568 autoreload 232 140406515731328 Watching for file changes with StatReloader
+INFO 2025-09-25 17:14:06,407 basehttp 232 140406359758528 "GET /api/v1/analysis/ HTTP/1.1" 200 1144
+INFO 2025-09-25 17:14:06,469 basehttp 232 140406342203072 "GET /api/v1/analysis/ HTTP/1.1" 200 1144
+INFO 2025-09-25 17:14:07,443 basehttp 232 140406342203072 "GET /api/v1/analysis/231/ HTTP/1.1" 200 1347
+INFO 2025-09-25 17:15:07,153 basehttp 232 140406342203072 "OPTIONS /api/v1/analysis/230/ HTTP/1.1" 200 0
+INFO 2025-09-25 17:15:07,195 basehttp 232 140406342203072 "GET /api/v1/analysis/230/ HTTP/1.1" 200 1398
+INFO 2025-09-25 17:15:08,354 basehttp 232 140406342203072 "GET /api/v1/analysis/228/ HTTP/1.1" 200 1398
+INFO 2025-09-25 17:15:10,009 basehttp 232 140406342203072 "GET /api/v1/analysis/231/ HTTP/1.1" 200 1347
+INFO 2025-09-25 17:20:10,749 autoreload 232 140406515731328 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:20:12,195 autoreload 251 139696167132032 Watching for file changes with StatReloader
+INFO 2025-09-25 17:22:20,718 autoreload 251 139696167132032 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:22:22,658 autoreload 253 140064399907712 Watching for file changes with StatReloader
+INFO 2025-09-25 17:23:00,300 autoreload 253 140064399907712 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:23:02,467 autoreload 255 139687510014848 Watching for file changes with StatReloader
+INFO 2025-09-25 17:25:32,584 autoreload 11 140362271828864 Watching for file changes with StatReloader
+INFO 2025-09-25 17:26:14,868 tasks 22 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-25 17:26:15,098 email_service 9 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 17:26:15,101 tasks 9 139975588797312 Failed to send down alert for https://i3g.cl:443
+ERROR 2025-09-25 17:26:15,120 email_service 9 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 17:26:15,121 tasks 9 139975588797312 Failed to send down alert for https://continental.cl:443
+ERROR 2025-09-25 17:26:15,124 email_service 9 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-25 17:26:15,125 tasks 9 139975588797312 Failed to send down alert for https://google.com:443
+INFO 2025-09-25 17:26:15,125 tasks 9 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 3}
+INFO 2025-09-25 17:27:14,161 autoreload 11 140083737713536 Watching for file changes with StatReloader
+INFO 2025-09-25 17:29:42,312 autoreload 11 140083737713536 /app/analysis/analysis_engine.py changed, reloading.
+INFO 2025-09-25 17:29:43,236 autoreload 25 140334166350720 Watching for file changes with StatReloader
+INFO 2025-09-26 00:57:29,797 basehttp 25 140334009697984 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+INFO 2025-09-26 00:57:29,794 basehttp 25 140334001305280 "OPTIONS /api/v1/analysis/ HTTP/1.1" 200 0
+WARNING 2025-09-26 00:57:30,288 log 25 140334009697984 Unauthorized: /api/v1/analysis/
+WARNING 2025-09-26 00:57:30,290 basehttp 25 140334009697984 "GET /api/v1/analysis/ HTTP/1.1" 401 183
+WARNING 2025-09-26 00:57:30,350 log 25 140334001305280 Unauthorized: /api/v1/analysis/
+INFO 2025-09-26 00:57:30,354 basehttp 25 140334009697984 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-26 00:57:30,355 basehttp 25 140334001305280 "GET /api/v1/analysis/ HTTP/1.1" 401 183
+INFO 2025-09-26 00:57:30,367 basehttp 25 140334001305280 "OPTIONS /api/v1/auth/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-26 00:57:30,439 basehttp 25 140334009697984 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-26 00:57:30,439 basehttp 25 140334001305280 "POST /api/v1/auth/refresh/ HTTP/1.1" 200 241
+INFO 2025-09-26 00:57:30,773 basehttp 25 140334009697984 "GET /api/v1/analysis/ HTTP/1.1" 200 4763
+INFO 2025-09-26 00:57:30,895 basehttp 25 140334001305280 "GET /api/v1/analysis/ HTTP/1.1" 200 4763
+INFO 2025-09-26 00:58:27,562 basehttp 25 140334009697984 "GET /api/v1/analysis/ HTTP/1.1" 200 4763
+INFO 2025-09-26 00:58:27,675 basehttp 25 140334001305280 "GET /api/v1/analysis/ HTTP/1.1" 200 4763
+INFO 2025-09-26 00:58:33,800 basehttp 25 140334001305280 "GET /api/certs/certificates/ HTTP/1.1" 200 9867
+INFO 2025-09-26 00:58:33,880 basehttp 25 140334001305280 "GET /api/certs/certificates/ HTTP/1.1" 200 9867
+INFO 2025-09-26 00:58:37,407 basehttp 25 140334001305280 "GET /api/certs/certificates/ HTTP/1.1" 200 9867
+INFO 2025-09-26 00:58:37,498 basehttp 25 140334001305280 "GET /api/certs/certificates/ HTTP/1.1" 200 9867
+INFO 2025-09-26 00:58:39,326 tasks 9 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 00:58:39,340 tasks 8 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 00:58:39,398 tasks 23 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 00:58:44,224 basehttp 25 140334001305280 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+INFO 2025-09-26 00:58:44,224 basehttp 25 140334009697984 "OPTIONS /api/v1/clients/ HTTP/1.1" 200 0
+INFO 2025-09-26 00:58:44,273 basehttp 25 140334009697984 "GET /api/v1/clients/ HTTP/1.1" 200 704
+INFO 2025-09-26 00:58:44,349 basehttp 25 140334001305280 "GET /api/v1/clients/ HTTP/1.1" 200 704
+INFO 2025-09-26 01:13:39,853 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 01:28:39,749 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 01:28:40,061 tasks 23 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-26 01:43:40,825 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:43:40,831 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-26 01:43:40,842 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:43:40,843 tasks 22 139975588797312 Failed to send down alert for https://i3g.cl:443
+ERROR 2025-09-26 01:43:40,849 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:43:40,851 tasks 22 139975588797312 Failed to send down alert for https://continental.cl:443
+ERROR 2025-09-26 01:43:40,855 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:43:40,857 tasks 22 139975588797312 Failed to send down alert for https://google.com:443
+INFO 2025-09-26 01:43:40,858 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+INFO 2025-09-26 01:58:39,524 tasks 22 139975588797312 Certificate expiration check completed: {'alerts_sent': 0, 'errors': 0}
+INFO 2025-09-26 01:58:39,759 tasks 22 139975588797312 Vulnerability alerts check completed: {'alerts_sent': 0, 'errors': 0}
+ERROR 2025-09-26 01:58:40,780 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:58:40,781 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-26 01:58:40,787 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:58:40,788 tasks 22 139975588797312 Failed to send down alert for https://i3g.cl:443
+ERROR 2025-09-26 01:58:40,792 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:58:40,794 tasks 22 139975588797312 Failed to send down alert for https://continental.cl:443
+ERROR 2025-09-26 01:58:40,798 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 01:58:40,799 tasks 22 139975588797312 Failed to send down alert for https://google.com:443
+INFO 2025-09-26 01:58:40,800 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}
+ERROR 2025-09-26 02:13:41,157 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 02:13:41,160 tasks 22 139975588797312 Failed to send down alert for mail.google.com:993
+ERROR 2025-09-26 02:13:41,166 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 02:13:41,168 tasks 22 139975588797312 Failed to send down alert for https://i3g.cl:443
+ERROR 2025-09-26 02:13:41,172 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 02:13:41,173 tasks 22 139975588797312 Failed to send down alert for https://continental.cl:443
+ERROR 2025-09-26 02:13:41,182 email_service 22 139975588797312 Error sending certificate down alert: emails/certificate_down.txt
+WARNING 2025-09-26 02:13:41,183 tasks 22 139975588797312 Failed to send down alert for https://google.com:443
+INFO 2025-09-26 02:13:41,185 tasks 22 139975588797312 Certificate down alerts check completed: {'alerts_sent': 0, 'errors': 4}

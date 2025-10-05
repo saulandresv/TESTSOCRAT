@@ -320,7 +320,7 @@ class ExternalSSLAnalyzer:
             
             result = subprocess.run(
                 cmd, capture_output=True, text=True,
-                timeout=30
+                timeout=120  # Aumentar a 2 minutos para análisis completos
             )
             
             if result.returncode == 0:

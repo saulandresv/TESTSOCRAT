@@ -20,7 +20,7 @@ const Clients = () => {
   const fetchClients = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.get('http://localhost:8000/api/clients/');
+      const response = await apiClient.get('/clients/');
       setClients(response.data);
     } catch (error) {
       setError('Error al cargar clientes');
@@ -34,9 +34,9 @@ const Clients = () => {
     e.preventDefault();
     try {
       if (editingClient) {
-        await apiClient.put(`http://localhost:8000/api/clients/${editingClient.id}/`, formData);
+        await apiClient.put(`/clients/${editingClient.id}/`, formData);
       } else {
-        await apiClient.post('http://localhost:8000/api/clients/', formData);
+        await apiClient.post('/clients/', formData);
       }
       
       setShowForm(false);
@@ -58,14 +58,15 @@ const Clients = () => {
     setShowForm(true);
   };
 
-  const handleDelete = async (clientId) => {
-    if (window.confirm('¿Está seguro de que desea eliminar este cliente?')) {
+  const handleToggleStatus = async (client) => {
+    const action = client.status === 'activo' ? 'desactivar' : 'activar';
+    if (window.confirm(`¿Está seguro de que desea ${action} el cliente "${client.name}"?`)) {
       try {
-        await apiClient.delete(`http://localhost:8000/api/clients/${clientId}/`);
+        await apiClient.patch(`/clients/${client.id}/toggle_status/`);
         fetchClients();
       } catch (error) {
-        setError('Error al eliminar cliente');
-        console.error('Error deleting client:', error);
+        setError(`Error al ${action} cliente`);
+        console.error(`Error ${action} client:`, error);
       }
     }
   };
@@ -243,15 +244,15 @@ const Clients = () => {
                   ✏️ Editar
                 </button>
                 <button
-                  onClick={() => handleDelete(client.id)}
+                  onClick={() => handleToggleStatus(client)}
                   style={{
                     ...buttonStyle,
-                    backgroundColor: '#dc2626',
+                    backgroundColor: client.status === 'activo' ? '#dc2626' : '#16a34a',
                     padding: '0.5rem 1rem',
                     fontSize: '0.875rem'
                   }}
                 >
-                  🗑️ Eliminar
+                  {client.status === 'activo' ? '⏸️ Desactivar' : '▶️ Activar'}
                 </button>
               </td>
             </tr>

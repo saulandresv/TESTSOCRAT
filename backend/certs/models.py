@@ -35,18 +35,6 @@ class Certificate(models.Model):
     
     class Meta:
         db_table = 'certificados'
-        constraints = [
-            models.UniqueConstraint(
-                fields=['ip', 'puerto'],
-                condition=models.Q(ip__isnull=False),
-                name='unique_ip_puerto'
-            ),
-            models.UniqueConstraint(
-                fields=['url', 'puerto'],
-                condition=models.Q(url__isnull=False),
-                name='unique_url_puerto'
-            ),
-        ]
         indexes = [
             models.Index(fields=['cliente', 'active']),
             models.Index(fields=['fecha_proxima_revision']),
@@ -55,10 +43,32 @@ class Certificate(models.Model):
     
     def clean(self):
         from django.core.exceptions import ValidationError
+
+        # Validar que tenga IP o URL, pero no ambos
         if not self.ip and not self.url:
             raise ValidationError('Debe especificar IP o URL')
         if self.ip and self.url:
             raise ValidationError('Especifique solo IP o URL, no ambos')
+
+        # Validar que no se repita la combinación cliente + (ip/url) + puerto
+        existing_query = Certificate.objects.filter(
+            cliente=self.cliente,
+            puerto=self.puerto,
+            active=True
+        )
+
+        # Excluir el objeto actual si estamos actualizando
+        if self.pk:
+            existing_query = existing_query.exclude(pk=self.pk)
+
+        # Verificar duplicados
+        if self.ip:
+            if existing_query.filter(ip=self.ip).exists():
+                raise ValidationError(f'Ya existe un certificado para {self.ip}:{self.puerto} en este cliente')
+
+        if self.url:
+            if existing_query.filter(url=self.url).exists():
+                raise ValidationError(f'Ya existe un certificado para {self.url}:{self.puerto} en este cliente')
     
     def get_target_display(self):
         """Retorna la representación del target (IP o URL) con puerto"""

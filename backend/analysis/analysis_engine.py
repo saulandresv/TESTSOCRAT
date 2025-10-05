@@ -220,32 +220,356 @@ class SSLAnalysisEngine:
     
     def _analyze_ssl_certificate(self, analysis, hostname, port):
         """
-        Analizar certificado SSL y parámetros TLS
+        Analizar certificado SSL usando sslscan según especificaciones
         """
         try:
-            # Obtener certificado
+            # Ejecutar sslscan con los parámetros especificados por el usuario
+            self._run_sslscan_analysis(analysis, hostname, port)
+
+            # Análisis complementario con conexión SSL nativa
             context = ssl.create_default_context()
             context.check_hostname = False
             context.verify_mode = ssl.CERT_NONE
-            
+
             with socket.create_connection((hostname, port), timeout=self.timeout) as sock:
                 with context.wrap_socket(sock, server_hostname=hostname) as ssock:
-                    cert_der = ssock.getpeercert_chain()[0] if hasattr(ssock, 'getpeercert_chain') else None
                     cert_info = ssock.getpeercert()
                     cipher = ssock.cipher()
 
-                    # Crear parámetros generales
-                    self._create_general_params(analysis, cert_info)
+                    # Crear parámetros generales solo si no existen
+                    if not hasattr(analysis, 'parametros_generales') or not analysis.parametros_generales.exists():
+                        self._create_general_params(analysis, cert_info)
 
-                    # Crear parámetros TLS
-                    self._create_tls_params(analysis, cipher)
-            
+                    # Crear parámetros TLS solo si no existen
+                    if not hasattr(analysis, 'parametros_tls') or not analysis.parametros_tls.exists():
+                        self._create_tls_params(analysis, cipher)
+
             # Validar cadena de certificación
             self._validate_certificate_chain(analysis, hostname, port)
-            
+
         except Exception as e:
-            # Si falla SSL, intentar análisis básico con openssl
+            self.logger.error(f"SSL certificate analysis failed: {e}")
+            # Si falla, intentar análisis de respaldo
             self._fallback_openssl_analysis(analysis, hostname, port)
+
+    def _run_sslscan_analysis(self, analysis, hostname, port):
+        """
+        Ejecutar análisis SSL usando sslscan según especificaciones del PDF
+        """
+        try:
+            # Comando sslscan estándar para obtener toda la información necesaria (sin XML porque no funciona correctamente)
+            cmd = [
+                'sslscan',
+                '--no-colour',
+                f'{hostname}:{port}'
+            ]
+
+            self.logger.info(f"Running sslscan: {' '.join(cmd)}")
+
+            # Ejecutar sslscan
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+
+            if result.returncode == 0:
+                # Parsear resultado de texto de sslscan
+                self._parse_sslscan_text(analysis, result.stdout)
+                self.logger.info(f"sslscan analysis completed for {hostname}:{port}")
+
+                # También ejecutar análisis de vulnerabilidades específicas
+                self._run_vulnerability_checks_sslscan(analysis, hostname, port)
+            else:
+                self.logger.warning(f"sslscan failed: {result.stderr}")
+                # Continuar con análisis de respaldo
+
+        except subprocess.TimeoutExpired:
+            self.logger.error(f"sslscan timeout for {hostname}:{port}")
+        except Exception as e:
+            self.logger.error(f"sslscan analysis error: {e}")
+
+    def _run_vulnerability_checks_sslscan(self, analysis, hostname, port):
+        """
+        Ejecutar verificaciones específicas de vulnerabilidades según PDF
+        """
+        try:
+            vulnerabilities_found = []
+
+            # Verificar Heartbleed
+            cmd_heartbleed = ['sslscan', '--show-heartbleed', f'{hostname}:{port}']
+            result = subprocess.run(cmd_heartbleed, capture_output=True, text=True, timeout=60)
+            if 'vulnerable' in result.stdout.lower():
+                vulnerabilities_found.append({
+                    'name': 'Heartbleed',
+                    'severity': 'CRITICAL',
+                    'description': 'Vulnerabilidad crítica en OpenSSL (CVE-2014-0160)',
+                    'recommendation': 'Actualizar OpenSSL inmediatamente'
+                })
+
+            # Verificar POODLE (SSLv3)
+            cmd_poodle = ['sslscan', '--ssl3', f'{hostname}:{port}']
+            result = subprocess.run(cmd_poodle, capture_output=True, text=True, timeout=60)
+            if 'SSLv3' in result.stdout and 'enabled' in result.stdout:
+                vulnerabilities_found.append({
+                    'name': 'POODLE',
+                    'severity': 'HIGH',
+                    'description': 'Vulnerabilidad asociada al soporte SSLv3 (CVE-2014-3566)',
+                    'recommendation': 'Deshabilitar SSLv3 completamente'
+                })
+
+            # Verificar DROWN (SSLv2)
+            cmd_drown = ['sslscan', '--ssl2', f'{hostname}:{port}']
+            result = subprocess.run(cmd_drown, capture_output=True, text=True, timeout=60)
+            if 'SSLv2' in result.stdout and 'enabled' in result.stdout:
+                vulnerabilities_found.append({
+                    'name': 'DROWN',
+                    'severity': 'HIGH',
+                    'description': 'Ataque que explota SSLv2 (CVE-2016-0800)',
+                    'recommendation': 'Deshabilitar SSLv2 completamente'
+                })
+
+            # Crear registros de vulnerabilidades
+            for vuln in vulnerabilities_found:
+                Vulnerabilidades.objects.create(
+                    analisis=analysis,
+                    vulnerabilidad=vuln['name'],
+                    severity=vuln['severity'],
+                    description=vuln['description'],
+                    recommendation=vuln['recommendation']
+                )
+
+        except Exception as e:
+            self.logger.error(f"Vulnerability checks failed: {e}")
+
+    def _parse_sslscan_text(self, analysis, text_output):
+        """
+        Parsear salida de texto de sslscan
+        """
+        try:
+            lines = text_output.split('\n')
+
+            # Parsear información básica
+            protocols = {}
+            ciphers = []
+            cert_info = {}
+
+            # Buscar protocolos
+            protocol_section = False
+            for line in lines:
+                if "SSL/TLS Protocols:" in line:
+                    protocol_section = True
+                    continue
+                elif protocol_section and line.strip() == "":
+                    protocol_section = False
+                elif protocol_section:
+                    # Parsear líneas como "TLSv1.2   enabled"
+                    if "SSLv2" in line:
+                        protocols['SSLv2'] = "enabled" in line
+                    elif "SSLv3" in line:
+                        protocols['SSLv3'] = "enabled" in line
+                    elif "TLSv1.0" in line:
+                        protocols['TLSv1.0'] = "enabled" in line
+                    elif "TLSv1.1" in line:
+                        protocols['TLSv1.1'] = "enabled" in line
+                    elif "TLSv1.2" in line:
+                        protocols['TLSv1.2'] = "enabled" in line
+                    elif "TLSv1.3" in line:
+                        protocols['TLSv1.3'] = "enabled" in line
+
+            # Buscar cifrados en la sección "Supported Server Cipher(s):"
+            cipher_section = False
+            for line in lines:
+                if "Supported Server Cipher(s):" in line:
+                    cipher_section = True
+                    continue
+                elif cipher_section and ("SSL Certificate:" in line or "Server Key Exchange" in line):
+                    cipher_section = False
+                elif cipher_section and line.strip():
+                    # Extraer nombre de cipher de líneas como:
+                    # "Accepted  TLSv1.2  256 bits  ECDHE-RSA-AES256-GCM-SHA384"
+                    parts = line.split()
+                    if len(parts) >= 4 and ("Accepted" in parts[0] or "Preferred" in parts[0]):
+                        cipher_name = parts[-1] if len(parts) > 4 else parts[3]
+                        if cipher_name not in ciphers:
+                            ciphers.append(cipher_name)
+
+            # Buscar información del certificado
+            cert_section = False
+            for line in lines:
+                if "SSL Certificate:" in line:
+                    cert_section = True
+                    continue
+                elif cert_section and line.strip() == "":
+                    cert_section = False
+                elif cert_section:
+                    if "Subject:" in line:
+                        cert_info['subject'] = line.split('Subject:')[1].strip()
+                    elif "Issuer:" in line:
+                        cert_info['issuer'] = line.split('Issuer:')[1].strip()
+                    elif "Not valid before:" in line:
+                        cert_info['not_valid_before'] = line.split('Not valid before:')[1].strip()
+                    elif "Not valid after:" in line:
+                        cert_info['not_valid_after'] = line.split('Not valid after:')[1].strip()
+                    elif "Signature Algorithm:" in line:
+                        cert_info['signature_algorithm'] = line.split('Signature Algorithm:')[1].strip()
+
+            # Crear parámetros TLS
+            if protocols:
+                tls_versions = {
+                    'sslv2_supported': protocols.get('SSLv2', False),
+                    'sslv3_supported': protocols.get('SSLv3', False),
+                    'tls10_supported': protocols.get('TLSv1.0', False),
+                    'tls11_supported': protocols.get('TLSv1.1', False),
+                    'tls12_supported': protocols.get('TLSv1.2', False),
+                    'tls13_supported': protocols.get('TLSv1.3', False)
+                }
+
+                # Evaluar PFS y cifrados débiles
+                pfs_ciphers = [c for c in ciphers if any(pfs in c.upper() for pfs in ['ECDHE', 'DHE'])]
+                weak_ciphers = [c for c in ciphers if any(weak in c.upper() for weak in ['DES', 'RC4', 'NULL', 'EXPORT'])]
+
+                pfs = len(pfs_ciphers) > 0
+                fortaleza_score = max(0, 100 - len(weak_ciphers) * 10)  # Reducir 10 puntos por cada cifrado débil
+
+                # Crear parámetros TLS solo si no existen
+                if not hasattr(analysis, 'parametros_tls') or not analysis.parametros_tls.exists():
+                    ParametrosTLS.objects.create(
+                        analisis=analysis,
+                        protocolos=json.dumps(list(protocols.keys())),
+                        cifrados_disponibles=json.dumps(ciphers),
+                        pfs=pfs,
+                        fortaleza_criptografica=fortaleza_score,
+                        cifrados_debiles=json.dumps(weak_ciphers),
+                        **tls_versions
+                    )
+
+                # Crear parámetros generales del certificado si hay información
+                if cert_info and (not hasattr(analysis, 'parametros_generales') or not analysis.parametros_generales.exists()):
+                    self._create_general_params_from_sslscan_text(analysis, cert_info)
+
+                # Detectar vulnerabilidades
+                if weak_ciphers:
+                    Vulnerabilidades.objects.create(
+                        analisis=analysis,
+                        vulnerabilidad='Weak Ciphers Detected',
+                        severity='MEDIUM',
+                        description=f'Cifrados débiles detectados: {", ".join(weak_ciphers[:5])}',
+                        recommendation='Deshabilitar cifrados débiles como DES, RC4, NULL y EXPORT'
+                    )
+
+        except Exception as e:
+            self.logger.error(f"Error parsing sslscan text: {e}")
+
+    def _create_comprehensive_tls_params(self, analysis, protocols, ciphers, pfs_ciphers, weak_ciphers):
+        """
+        Crear parámetros TLS completos según especificaciones del PDF
+        """
+        try:
+            # Detectar versiones de protocolo según PDF (Sección B)
+            tls_versions = {
+                'sslv2_supported': any('SSLv2' in p for p in protocols),
+                'sslv3_supported': any('SSLv3' in p for p in protocols),
+                'tls10_supported': any('TLSv1.0' in p or 'TLSv1 ' in p for p in protocols),
+                'tls11_supported': any('TLSv1.1' in p for p in protocols),
+                'tls12_supported': any('TLSv1.2' in p for p in protocols),
+                'tls13_supported': any('TLSv1.3' in p for p in protocols)
+            }
+
+            # Perfect Forward Secrecy evaluación (Sección B del PDF)
+            pfs = len(pfs_ciphers) > 0
+
+            # Evaluar fortaleza criptográfica general
+            strong_ciphers = [c for c in ciphers if not any(weak in c.upper() for weak in ['DES', 'RC4', 'NULL', 'EXPORT'])]
+            fortaleza_score = min(100, int((len(strong_ciphers) / max(len(ciphers), 1)) * 100))
+
+            ParametrosTLS.objects.create(
+                analisis=analysis,
+                protocolos=json.dumps(protocols),
+                cifrados_disponibles=json.dumps(ciphers),
+                pfs=pfs,
+                fortaleza_criptografica=fortaleza_score,
+                cifrados_debiles=json.dumps(weak_ciphers),
+                **tls_versions
+            )
+
+        except Exception as e:
+            self.logger.error(f"Error creating comprehensive TLS params: {e}")
+
+    def _create_general_params_from_sslscan(self, analysis, cert_info):
+        """
+        Crear parámetros generales del certificado desde sslscan
+        """
+        try:
+            # Parsear fechas
+            fecha_inicio = None
+            fecha_fin = None
+
+            try:
+                if cert_info.get('not_valid_before'):
+                    fecha_inicio = datetime.strptime(cert_info['not_valid_before'][:19], '%Y-%m-%d %H:%M:%S').date()
+                if cert_info.get('not_valid_after'):
+                    fecha_fin = datetime.strptime(cert_info['not_valid_after'][:19], '%Y-%m-%d %H:%M:%S').date()
+            except Exception:
+                pass
+
+            # Calcular días restantes
+            dias_restantes = None
+            if fecha_fin:
+                dias_restantes = (fecha_fin - date.today()).days
+
+            # Extraer Common Name del subject
+            common_name = ''
+            subject = cert_info.get('subject', '')
+            if 'CN=' in subject:
+                common_name = subject.split('CN=')[1].split(',')[0].strip()
+
+            # Procesar SANs
+            san_list = []
+            altnames = cert_info.get('altnames', '')
+            if altnames:
+                san_list = [name.strip() for name in altnames.split(',')]
+
+            ParametrosGenerales.objects.create(
+                analisis=analysis,
+                common_name=common_name,
+                san=json.dumps(san_list),
+                issuer=cert_info.get('issuer', ''),
+                subject=subject,
+                serial_number='',
+                version='',
+                fecha_inicio=fecha_inicio,
+                fecha_fin=fecha_fin,
+                dias_restantes=dias_restantes
+            )
+
+        except Exception as e:
+            self.logger.error(f"Error creating general params from sslscan: {e}")
+
+    def _create_tls_params_from_sslscan(self, analysis, protocols, ciphers):
+        """
+        Crear parámetros TLS desde sslscan
+        """
+        try:
+            # Detectar versiones de protocolo
+            tls_versions = {
+                'sslv2_supported': any('SSLv2' in p for p in protocols),
+                'sslv3_supported': any('SSLv3' in p for p in protocols),
+                'tls10_supported': any('TLSv1.0' in p or 'TLSv1 ' in p for p in protocols),
+                'tls11_supported': any('TLSv1.1' in p for p in protocols),
+                'tls12_supported': any('TLSv1.2' in p for p in protocols),
+                'tls13_supported': any('TLSv1.3' in p for p in protocols)
+            }
+
+            # Verificar Perfect Forward Secrecy básico
+            pfs = any('ECDHE' in cipher or 'DHE' in cipher for cipher in ciphers)
+
+            ParametrosTLS.objects.create(
+                analisis=analysis,
+                protocolos=json.dumps(protocols),
+                cifrados_disponibles=json.dumps(ciphers),
+                pfs=pfs,
+                **tls_versions
+            )
+
+        except Exception as e:
+            self.logger.error(f"Error creating TLS params from sslscan: {e}")
     
     def _create_general_params(self, analysis, cert_info):
         """

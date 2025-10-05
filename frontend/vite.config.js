@@ -10,9 +10,15 @@ export default defineConfig({
       port: 3000
     },
     proxy: {
-      '/api': {
-        target: 'http://backend:8000',
-        changeOrigin: true
+      '/api/v1': {
+        target: 'http://backend:8000/api/v1',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/v1/, '')
+      },
+      '/api/certs': {
+        target: 'http://backend:8000/api/certs',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/certs/, '')
       }
     }
   },

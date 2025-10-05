@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CertificateService } from '../services/certificates';
+import apiClient from '../services/api';
 
 const CertificateForm = ({ onClose, onSuccess }) => {
   const [clients, setClients] = useState([]);
@@ -44,11 +45,14 @@ const CertificateForm = ({ onClose, onSuccess }) => {
 
   const loadClients = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/clients/');
-      const data = await response.json();
-      setClients(data.results || data);
+      console.log('🔍 Loading clients via apiClient...');
+      const response = await apiClient.get('/clients/');
+      console.log('✅ Clients loaded:', response.data);
+      setClients(response.data.results || response.data);
     } catch (error) {
-      console.error('Error loading clients:', error);
+      console.error('❌ Error loading clients:', error);
+      console.error('Error details:', error.response?.status, error.response?.data);
+      setError('Error al cargar clientes');
     }
   };
 
@@ -58,21 +62,50 @@ const CertificateForm = ({ onClose, onSuccess }) => {
     setError('');
 
     try {
+      let processedUrl = null;
+      if (formData.target_type === 'url' && formData.url) {
+        // Asegurar que la URL tenga protocolo
+        processedUrl = formData.url.startsWith('http') ? formData.url : `https://${formData.url}`;
+      }
+
       const certData = {
-        cliente: formData.cliente,
+        cliente: parseInt(formData.cliente), // Asegurar que sea número
         nombre_certificado: formData.nombre_certificado || null,
         ip: formData.target_type === 'ip' ? formData.ip : null,
-        url: formData.target_type === 'url' ? formData.url : null,
+        url: processedUrl,
         puerto: parseInt(formData.puerto),
         protocolo: formData.protocolo,
         frecuencia_analisis: parseInt(formData.frecuencia_analisis)
       };
 
+      console.log('🚀 CertificateForm: Sending data:', certData);
+      console.log('📋 Form data original:', formData);
+      console.log('🎯 Target type:', formData.target_type);
+      console.log('🔢 Cliente ID:', formData.cliente, 'Type:', typeof formData.cliente);
+
       await CertificateService.createCertificate(certData);
       onSuccess && onSuccess();
       onClose && onClose();
     } catch (error) {
-      setError(error.response?.data?.error || 'Error al crear certificado');
+      console.error('❌ CertificateForm error:', error);
+      console.error('❌ Error response data:', error.response?.data);
+      console.error('❌ Error status:', error.response?.status);
+
+      // Mostrar error más detallado
+      let errorMessage = 'Error al crear certificado';
+      if (error.response?.data) {
+        if (typeof error.response.data === 'string') {
+          errorMessage = error.response.data;
+        } else if (error.response.data.error) {
+          errorMessage = error.response.data.error;
+        } else if (error.response.data.detail) {
+          errorMessage = error.response.data.detail;
+        } else {
+          errorMessage = JSON.stringify(error.response.data);
+        }
+      }
+
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

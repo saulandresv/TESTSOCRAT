@@ -16,10 +16,10 @@ class User(AbstractUser):
         max_length=20,
         choices=[
             ('ADMIN', 'Admin'),
-            ('CLIENTE', 'Cliente'), 
+            ('CLIENT', 'Cliente'),
             ('ANALISTA', 'Analista')
         ],
-        default='CLIENTE'
+        default='CLIENT'
     )
     estado = models.CharField(
         max_length=20,
@@ -100,3 +100,30 @@ class User(AbstractUser):
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
         db_table = 'usuarios'  # usar nombre de tabla según esquema BDD
+
+
+class UserClientAccess(models.Model):
+    """
+    Modelo para manejar acceso de usuarios a múltiples clientes
+    Un usuario puede tener acceso a varios clientes
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='client_access'
+    )
+    client = models.ForeignKey(
+        'clients.Client',  # Forward reference para evitar import circular
+        on_delete=models.CASCADE,
+        related_name='user_access'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'client')  # Un usuario no puede tener acceso duplicado al mismo cliente
+        verbose_name = 'Acceso Usuario-Cliente'
+        verbose_name_plural = 'Accesos Usuario-Cliente'
+        db_table = 'user_client_access'
+
+    def __str__(self):
+        return f'{self.user.email} -> {self.client.name}'
